@@ -3,3 +3,9 @@
   justify-content: space-between;
   list-style: none;
 }
+
+@media screen and (max-width: 764px) {
+  .navbar {
+    display: block;
+  }
+}
