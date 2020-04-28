@@ -36,12 +36,12 @@ module.exports = {
         // For Production
         // spaceId: process.env.SPACE_ID,
         // For Development
-        spaceId: `3vnx9ewcif2h`,
+        spaceId: `6y7x6a0he6ux`,
 
         // For Production
         // accessToken: process.env.ACCESS_TOKEN,
         // For Development
-        accessToken: `yqdqKGp2DJYNt_hvE2A2ofph9w4FJ0SZbePbPP07CS8`,
+        accessToken: `ycit--WnQmVydpp1M6TIYcZwox_zZ1C6vn2sD-LercQ`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
