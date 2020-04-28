@@ -10,7 +10,7 @@ const ComponentName = ({ data }) => {
     <section>
       {franchisee.map(data => {
         return (
-          <article key={data.id}>
+          <article className="company" key={data.id}>
             <h1>{data.companyName}</h1>
           </article>
         )
