@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "bootstrap": "^4.4.1",
     "dotenv": "^8.2.0",
     "gatsby": "^2.20.35",
     "gatsby-image": "^2.3.5",

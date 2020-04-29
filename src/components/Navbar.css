@@ -1,11 +1,333 @@
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
+ 
+/* *{
+    transition: 2s;
+} */
+
+.navbar{
+  width: 100%;
+background-image: linear-gradient(to left, rgb(8, 56, 61), rgb(1, 100, 95));
+position: fixed;
+z-index: 111112;
+top: 0;
+box-shadow: 0px 0px 9px #000000a6; 
 }
 
-@media screen and (max-width: 764px) {
-  .navbar {
-    display: block;
+.MuiModal-root-15{
+  z-index: 111113 !important;
+}
+
+a{
+  text-decoration: none !important;
+}
+.navbar_cont{
+  display: flex;
+  /* flex-direction: row !important; */
+  align-items: center;
+  width: 100%;
+  padding-top: 10px;
+
+}
+/* .drop1{
+  position: absolute;
+  padding: 20px;
+} */
+
+
+
+.drop1ul li{
+  line-height: 1.19 !important;
+  border-bottom: 0.1px solid #00d09d !important;
+  padding-left: 0 !important;
+  /* padding-right: 500px !important; */
+  float: none !important;
+  padding: 12px !important;
+  text-align: left !important;
+  /* background-color: #00d09d; */
+  background-image: linear-gradient(to left, rgb(8, 56, 61), rgb(1, 100, 95));
+}
+.navbar-flex{
+  color: white;
+}
+.nav-flex-1 img{
+  height: 56px;
+  margin-right: 10px;
+  margin-top: -5px;
+
+}
+.nav-flex-1{
+  min-width: 150px;
+}
+.nav-flex-1 p{
+  font-family: Montserrat;
+  font-size: 27px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgb(255, 255, 255);
+}
+.nav-flex-2{
+  flex:4;
+}
+/* .nav-flex-ul{
+  justify-content: flex-end;  
+  width: 100%;
+} */
+.nav-flex-3 ul li:hover{
+  cursor: pointer;
+  /* border-bottom: 5px solid #00b990; */
+  color : #00ce9f;
+}
+.nav-flex-3 ul li{
+  line-height: 30px;
+  /* padding-bottom: 25px; */
+  white-space: nowrap;
+  border-bottom: 5px solid transparent;
+  /* float: left; */
+  padding: 0px 30px 15px 30px;
+  /* margin-top: -5px; */
+  /* height: 19px; */
+  font-family: myfontRegular;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  /* line-height: 1.19; */
+  letter-spacing: normal;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+.nav-flex-3 ul {
+  list-style-type: none;
+}
+
+
+/* .nav-flex-3 ul li:hover{
+  color : #00ce9f
+} */
+.logo-width{
+  width: 200px
+}
+
+.nav-flex-3 p{
+     /* flex: 1; */
+      /* flex: 1 1; */
+      width: 166px;
+      /* height: 19px; */
+      font-family: Montserrat;
+      font-size: 16px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.19;
+      letter-spacing: normal;
+      text-align: center; 
+      color: rgb(0, 206, 159);
+      /* padding: 0px 20px 0px 20px; */
+}
+.nav-flex-4{
+  flex: 1;
+}
+.nav-flex-4 p{
+  /* flex: 1; */
+  width: 103px;
+  /* height: 19px; */
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+.nav-flex-5 p{
+  width: 50px;
+  /* height: 19px; */
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+.nav-flex-6 p{
+  width: 46px;
+  /* height: 19px; */
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.19;
+  letter-spacing: normal;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+.nav-flex-7 p{
+  width: 64px;
+/* height: 19px; */
+font-family: Montserrat;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+font-stretch: normal;
+line-height: 1.19;
+letter-spacing: normal;
+text-align: center;
+color: rgb(255, 255, 255);
+}
+.nav-flex-5{
+  padding: 0px 20px 0px 20px;
+}
+.nav-flex-6{
+  padding: 0px 20px 0px 20px;
+}
+.nav-flex-7{
+  padding: 0px 20px 0px 20px;
+}
+@media screen and (max-width: 1149px){
+
+  .nav-flex-1 img{
+      height: 30px;
   }
+  .Navbar-logo-piaic{
+      height: 80px !important;
+      margin-right: 10px !important;
+      margin-top: -10px !important;
+  }
+.navbar_cont{
+  flex-direction: column;
+}
+.nav-flex-3{
+  width: 100%;
+}
+
+.nav-flex-3 ul li{
+  text-align: left;
+  width: 100%;
+  padding: 10px;
+  /* border: 1px solid white; */
+  border-bottom: 1px solid #ffffff30;
+}
+.nav-flex-3 ul {
+  list-style-type: none;
+  padding: 0px;
+  padding-top: 15px;
+}
+.nav-flex-1{
+  width: 100%;
+}
+.navbar-flex-height_35{
+  height: 35px;
+}
+.navbar-flex-height_auto{
+  height: auto;
+}
+.nav-flex-1 p{
+  position: absolute;
+  margin-top: -5px;
+}
+.hamb-btn{
+  float: right;
+  display: block;
+}
+#nav-flex-ul{
+  display: none;
+}
+.Navbar-sidemenuicon-computer-li{
+  display: none;
+}
+.nav-flex-3 ul li {
+  line-height: 30px;
+}
+.hamb-btn{
+  display: block;
+}
+
+
+}
+@media screen and (min-width: 1150px){
+  .nav-flex-1 img {
+      height: 120px;
+      margin-right: 10px;
+      margin-top: 60px;
+  }
+  /* .navbar_cont{
+      flex-direction: row !important;
+  } */
+  .nav-flex-3 ul li{
+      float: left ;
+  }
+  #nav-flex-ul {
+      display: inline !important;
+  }
+  .navbar{
+      height: 65px;
+  }
+  .navbar_cont{
+      height: 65px;
+  }
+  /* #nav-flex-ul{
+      display: block;
+  } */
+  .hamb-btn{
+      display: none;
+  }
+}
+
+
+#about img{
+  height: 12px;
+  margin-left: 3px;
+}
+#about:hover .drop1ul{
+  display: block;
+}
+#about:hover .drop1ul li:hover{
+ color : #00ce9f;
+}
+
+.drop1ul {
+
+  display: none;
+  position: absolute;
+  /* display: none; */
+  padding-top: 5px;
+  /* width: 50px; */
+  padding-left: 0px;
+  /* margin-left: 10px; */
+  /* background-color: #00d09d;
+  border: 1px solid #00d09d; */
+}
+@media screen and (max-width: 1150px){
+
+  .drop1ul {
+      position: unset;
+      border: none;
+  }
+  .drop1ul li{
+      border-bottom: none !important;
+      background-color: #00d09d3b;
+      margin-top: 0px !important;
+  }
+  
+
+}
+
+.active-color{
+  /* color : #00ce9f!important; */
+  border-bottom: 5px solid #00b990 !important;
+}
+
+.Navbar-sidemenuicon-computer{
+  height: 40px;
+  margin-top: -7px;
+  cursor: pointer;
 }
