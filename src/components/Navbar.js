@@ -1,13 +1,11 @@
 /*eslint-disable*/
 
 import React, { Component } from "react";
+import { Location } from '@reach/router'
+import logo from "../assets/Logo.svg";
+import { Link } from "gatsby"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar.css";
-import logo from "../assets/Logo.svg";
-// import { Link } from "react-router-dom";
-import { Link } from "gatsby"
-import "./Navbar.css"
-
 class Navbar extends Component {
   state = {
     navRoutes: {
@@ -58,7 +56,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { condition, height_35 } = this.state;
+    const { height_35 } = this.state;
     return (
       <div data-aos="fade-down" data-aos-delay="0s" className="navbar">
         <div className="container">
@@ -82,127 +80,132 @@ class Navbar extends Component {
             </div>
             <div className="navbar-flex nav-flex-2" />
             <div className="navbar-flex nav-flex-3">
-              <ul id="nav-flex-ul">
-                <Link to="/certification">
-                  {" "}
-                  <li
-                    className={(window.location.pathname.indexOf("certification") == 1) ? "active-color" : ""}
-                    onClick={() => {
-                      this.scrollTop();
-                      this.catd();
-                    }}
-                  >
-                    <span
-                      className="d-block"
-                      data-aos="fade-left"
-                      data-aos-delay="2000"
-                    > Certifications </span>
-                  </li>
-                </Link>
+              <Location>
+                {({ location }) => {
+                  return <ul id="nav-flex-ul">
+                    <Link to="/certification">
+                      {" "}
+                      <li
+                        className={(location.pathname.indexOf("certification") == 1) ? "active-color" : ""}
+                        onClick={() => {
+                          this.scrollTop();
+                          this.catd();
+                        }}
+                      >
+                        <span
+                          className="d-block"
+                          data-aos="fade-left"
+                          data-aos-delay="2000"
+                        > Certifications </span>
+                      </li>
+                    </Link>
 
-                <Link to="/course">
-                  {" "}
-                  <li
-                    className={(window.location.pathname.indexOf("course") == 1) ? "active-color" : ""}
-                    onClick={() => {
-                      this.scrollTop();
-                      this.catd();
-                    }}
-                  >
-                    <span
-                      className="d-block"
-                      data-aos="fade-left"
-                      data-aos-delay="2000"
-                    > Courses </span>
-                  </li>
-                </Link>
+                    <Link to="/course">
+                      {" "}
+                      <li
+                        className={(location.pathname.indexOf("course") == 1) ? "active-color" : ""}
+                        onClick={() => {
+                          this.scrollTop();
+                          this.catd();
+                        }}
+                      >
+                        <span
+                          className="d-block"
+                          data-aos="fade-left"
+                          data-aos-delay="2000"
+                        > Courses </span>
+                      </li>
+                    </Link>
 
-                <Link to="/franchisee">
-                  {" "}
-                  <li
-                    className={(window.location.pathname.indexOf("franchisee") == 1) ? "active-color" : ""}
-                    onClick={() => {
-                      this.scrollTop();
-                      this.catd();
-                    }}
-                  >
-                    <span
-                      className="d-block"
-                      data-aos="fade-left"
-                      data-aos-delay="2000"
-                    > Franchisee </span>
-                  </li>
-                </Link>
+                    <Link to="/franchisee">
+                      {" "}
+                      <li
+                        className={(location.pathname.indexOf("franchisee") == 1) ? "active-color" : ""}
+                        onClick={() => {
+                          this.scrollTop();
+                          this.catd();
+                        }}
+                      >
+                        <span
+                          className="d-block"
+                          data-aos="fade-left"
+                          data-aos-delay="2000"
+                        > Franchisee </span>
+                      </li>
+                    </Link>
 
-                <Link to="/program">
-                  {" "}
-                  <li
-                    className={(window.location.pathname.indexOf("program") == 1) ? "active-color" : ""}
-                    onClick={() => {
-                      this.scrollTop();
-                      this.catd();
-                    }}
-                  >
-                    <span
-                      className="d-block"
-                      data-aos="fade-left"
-                      data-aos-delay="2000"
-                    > Program </span>
-                  </li>
-                </Link>
+                    <Link to="/program">
+                      {" "}
+                      <li
+                        className={(location.pathname.indexOf("program") == 1) ? "active-color" : ""}
+                        onClick={() => {
+                          this.scrollTop();
+                          this.catd();
+                        }}
+                      >
+                        <span
+                          className="d-block"
+                          data-aos="fade-left"
+                          data-aos-delay="2000"
+                        > Program </span>
+                      </li>
+                    </Link>
 
-                <Link to="/track">
-                  {" "}
-                  <li
-                    className={(window.location.pathname.indexOf("track") == 1) ? "active-color" : ""}
-                    onClick={() => {
-                      this.scrollTop();
-                      this.catd();
-                    }}
-                  >
-                    <span
-                      className="d-block"
-                      data-aos="fade-left"
-                      data-aos-delay="2000"
-                    > Track </span>
-                  </li>
-                </Link>
+                    <Link to="/track">
+                      {" "}
+                      <li
+                        className={(location.pathname.indexOf("track") == 1) ? "active-color" : ""}
+                        onClick={() => {
+                          this.scrollTop();
+                          this.catd();
+                        }}
+                      >
+                        <span
+                          className="d-block"
+                          data-aos="fade-left"
+                          data-aos-delay="2000"
+                        > Track </span>
+                      </li>
+                    </Link>
 
-                <Link to="/programCatalog">
-                  {" "}
-                  <li
-                    className={(window.location.pathname.indexOf("/programCatalog") == 1) ? "active-color" : ""}
-                    onClick={() => {
-                      this.scrollTop();
-                      this.catd();
-                    }}
-                  >
-                    <span
-                      className="d-block"
-                      data-aos="fade-left"
-                      data-aos-delay="2000"
-                    > Program Catalog </span>
-                  </li>
-                </Link>
+                    <Link to="/catalog">
+                      {" "}
+                      <li
+                        className={(location.pathname.indexOf("catalog") == 1) ? "active-color" : ""}
+                        onClick={() => {
+                          this.scrollTop();
+                          this.catd();
+                        }}
+                      >
+                        <span
+                          className="d-block"
+                          data-aos="fade-left"
+                          data-aos-delay="2000"
+                        > Program Catalog </span>
+                      </li>
+                    </Link>
 
-                <Link to="/textbook">
-                  {" "}
-                  <li
-                    className={(window.location.pathname.indexOf("textbook") == 1) ? "active-color" : ""}
-                    onClick={() => {
-                      this.scrollTop();
-                      this.catd();
-                    }}
-                  >
-                    <span
-                      className="d-block"
-                      data-aos="fade-left"
-                      data-aos-delay="2000"
-                    > Text Books </span>
-                  </li>
-                </Link>
+                    <Link to="/textbook">
+                      {" "}
+                      <li
+                        className={(location.pathname.indexOf("textbook") == 1) ? "active-color" : ""}
+                        onClick={() => {
+                          this.scrollTop();
+                          this.catd();
+                        }}
+                      >
+                        <span
+                          className="d-block"
+                          data-aos="fade-left"
+                          data-aos-delay="2000"
+                        > Text Books </span>
+                      </li>
+                    </Link>
 
-              </ul>
+                  </ul>
+                }}
+              </Location>
+
             </div>
           </div>
         </div>
