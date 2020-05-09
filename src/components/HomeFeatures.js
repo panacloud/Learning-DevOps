@@ -44,7 +44,7 @@ const HomeFeatures = (props) => {
             </Avatar>
           }
           className={props.classes.featureChipRight}
-          label="Uses Material UI"
+          label="Live Online Interactive Classes"
         />
       </Grid>
       <Grid item md={6}>
@@ -55,7 +55,7 @@ const HomeFeatures = (props) => {
             </Avatar>
           }
           className={props.classes.featureChip}
-          label="Uses Content from Contentful"
+          label="Discussion Forums along side the Classes"
         />
       </Grid>
     
