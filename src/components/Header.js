@@ -27,7 +27,7 @@ const Header = (props) => {
               id="logo"
               label={
                 <Link to="/">
-                  {props.data.contentfulCompany.name}
+                  {props.data.allContentfulFranchisee.edges[0].node.companyName}
                 </Link>
               }
               variant="outlined"
@@ -52,13 +52,17 @@ const Header = (props) => {
 
 export default () => (
   <StaticQuery
-    query={graphql`
-      query {
-        contentfulCompany {
-          name
+    query={graphql`{
+    allContentfulFranchisee {
+      edges {
+        node {
+          companyName
         }
       }
+    }
+  }
     `}
     render={(data) => <Header data={data} />}
   />
 );
+
