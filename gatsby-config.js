@@ -14,7 +14,7 @@ module.exports = {
     },
     menuLinks: [
       {
-        name: "Products",
+        name: "Programs",
         link: "/products",
       },
       {
