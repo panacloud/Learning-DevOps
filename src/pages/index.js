@@ -20,7 +20,7 @@ const styles = () => ({
 const Home = (props) => {
   const products = props.data.allMarkdownRemark.edges;
   return (
-    <Page title="Gatsby Material UI Contentful Business Starter">
+    <Page title={props.data.allContentfulFranchisee.edges[0].node.title}>
       <SEO title="Home">
         <meta
           content="Beautiful Gatsby Material UI Contentful Business Starter. Tiny code. Well organized. Ready to customize and go."
@@ -80,6 +80,13 @@ export const query = graphql`
             date(formatString: "DD MMMM YYYY")
           }
           excerpt
+        }
+      }
+    }
+    allContentfulFranchisee {
+      edges {
+        node {
+          title
         }
       }
     }

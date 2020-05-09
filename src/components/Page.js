@@ -30,7 +30,7 @@ const Component = ({ children, classes, title }) => {
       >
         <Grid className={classes.contentBox} item>
           {title ? (
-            <Typography className={classes.title} gutterBottom variant="h2">
+            <Typography className={classes.title} gutterBottom variant="h4">
               {title}
             </Typography>
           ) : null}
