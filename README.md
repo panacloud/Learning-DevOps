@@ -30,7 +30,7 @@ Agency starter](https://github.com/foxandgeese/tiny-agency).
 - Edit contact detail and menu items in
   [`gatsby-config.json`](https://github.com/bluepeter/gatsby-material-ui-business-starter/blob/master/gatsby-config.js).
 - Want to add a new product? Just add a new markdown file in
-  [`products`](https://github.com/bluepeter/gatsby-material-ui-business-starter/tree/master/src/pages/products)
+  [`programs`](https://github.com/bluepeter/gatsby-material-ui-business-starter/tree/master/src/pages/programs)
   and it will automatically be included.
 
 ### Styling

@@ -1,13 +1,14 @@
 ---
-path: "/products/sneakers"
-title: "Sensitive Sneakers"
+path: "/programs/camera"
+title: "Curious Camera"
 date: 2018-11-18T12:33:46+10:00
-image: "paul-gaudriault-661082-unsplash.jpg"
+image: "pavel-fertikh-113220-unsplash.jpg"
 ---
 
-Offal dolor et portland cillum succulents occaecat gluten-free keffiyeh jean
-shorts sartorial. Sint occaecat proident, etsy plaid salvia quinoa hella fam
-heirloom distillery man braid intelligentsia.
+Disrupt air plant pop-up, lo-fi ugh tilde man bun tumblr pinterest forage man
+braid tote bag jianbing. Aliqua in direct trade, bicycle rights chambray
+kinfolk cardigan kickstarter hot chicken post-ironic taxidermy irony. Id plaid
+thundercats sustainable jean shorts.
 
 ## Shabby chic fixie subway tile in bespoke disrupt
 

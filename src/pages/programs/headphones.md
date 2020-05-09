@@ -1,14 +1,13 @@
 ---
-path: "/products/bug"
-title: "Bumbling Bug"
+path: "/programs/headphones"
+title: "Hallucinogenic Headphones"
 date: 2018-11-18T12:33:46+10:00
-image: "mink-mingle-424587-unsplash.jpg"
+image: "malte-wingen-381988-unsplash.jpg"
 ---
 
-Chambray offal wayfarers hoodie everyday carry photo booth, narwhal schlitz put
-a bird on it tumblr. Art party mustache williamsburg laborum roof party anim,
-gluten-free meh authentic. Tempor selvage craft beer vice occupy migas offal
-chambray fanny pack unicorn authentic cray.
+Dreamcatcher hoodie fashion axe quis helvetica tilde. Id meditation try-hard
+paleo distillery dolore laboris hell of af biodiesel iPhone subway tile green
+juice truffaut.
 
 ## Shabby chic fixie subway tile in bespoke disrupt
 

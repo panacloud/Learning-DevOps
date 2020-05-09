@@ -1,12 +1,14 @@
 ---
-path: "/products/backpack"
-title: "Balderdash Backpack"
+path: "/programs/bug"
+title: "Bumbling Bug"
 date: 2018-11-18T12:33:46+10:00
-image: "jakob-owens-235219-unsplash.jpg"
+image: "mink-mingle-424587-unsplash.jpg"
 ---
 
-Wolf incididunt authentic fam kale chips kitsch. Consectetur blog schlitz
-live-edge elit helvetica man bun cliche kombucha mixtape semiotics.
+Chambray offal wayfarers hoodie everyday carry photo booth, narwhal schlitz put
+a bird on it tumblr. Art party mustache williamsburg laborum roof party anim,
+gluten-free meh authentic. Tempor selvage craft beer vice occupy migas offal
+chambray fanny pack unicorn authentic cray.
 
 ## Shabby chic fixie subway tile in bespoke disrupt
 
@@ -50,3 +52,11 @@ vinegar viral, food truck ennui coloring book labore eiusmod.
 Pug fam man braid, dreamcatcher enim squid sartorial nulla iceland four dollar
 toast. Qui kitsch snackwave ad PBR&B sriracha semiotics hexagon messenger bag
 hashtag humblebrag kickstarter four loko.
+
+Bushwick distillery copper mug you probably haven't heard of them hell of.
+Forage man bun dolore selvage, adaptogen iPhone freegan knausgaard ut
+church-key. Heirloom wayfarers kinfolk art party. Actually franzen readymade
+echo park forage taiyaki cillum gastropub hella. Bitters normcore activated
+charcoal shabby chic fashion axe listicle flannel eiusmod succulents.
+Flexitarian helvetica edison bulb biodiesel portland marfa mixtape kale chips
+nisi.

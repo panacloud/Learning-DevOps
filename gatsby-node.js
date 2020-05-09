@@ -6,7 +6,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return Promise.all(
-    ["products", "team"].map(async item => {
+    ["programs", "team"].map(async item => {
       const result = await graphql(
         `
         query {
@@ -32,7 +32,7 @@ exports.createPages = ({ graphql, actions }) => {
       return Promise.all(
         result.data[item].edges.map(({ node }) => {
           const component = fs.existsSync(`src/templates/${item}.js`)
-            ? // Use specific template for item, e.g., products.js, if it exists.
+            ? // Use specific template for item, e.g., programs.js, if it exists.
               path.resolve(`src/templates/${item}.js`)
             : // Or use general template.
               path.resolve(`src/templates/general.js`);

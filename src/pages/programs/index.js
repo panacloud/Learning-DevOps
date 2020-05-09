@@ -5,20 +5,20 @@ import SEO from "../../components/SEO";
 import Page from "../../components/Page";
 import List from "../../components/List";
 
-const Products = (props) => {
-  const products = props.data.allMarkdownRemark.edges;
+const Programs = (props) => {
+  const programs = props.data.allMarkdownRemark.edges;
   return (
-    <Page title="Products">
-      <SEO title="Products" />
-      <List items={products} />
+    <Page title="Programs">
+      <SEO title="Programs" />
+      <List items={programs} />
     </Page>
   );
 };
 
 export const query = graphql`
-  query ProductsQuery {
+  query ProgramsQuery {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/products/" } }
+      filter: { fileAbsolutePath: { regex: "/programs/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
@@ -37,4 +37,4 @@ export const query = graphql`
   }
 `;
 
-export default withRoot(Products);
+export default withRoot(Programs);
