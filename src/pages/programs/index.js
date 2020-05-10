@@ -3,14 +3,16 @@ import React from "react";
 import { graphql } from "gatsby";
 import SEO from "../../components/SEO";
 import Page from "../../components/Page";
-import List from "../../components/List";
+//import List from "../../components/List";
+import ListOfPrograms from "../../components/ListOfPrograms";
 
 const Programs = (props) => {
   const programs = props.data.allMarkdownRemark.edges;
   return (
     <Page title="Programs">
       <SEO title="Programs" />
-      <List items={programs} />
+      {/*<List items={programs} />*/}
+      <ListOfPrograms items={programs} />
     </Page>
   );
 };
