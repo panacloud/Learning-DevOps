@@ -10,9 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { autoPlay } from "react-swipeable-views-utils";
 import withStyles from "@material-ui/styles/withStyles";
-
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
 const styles = {
   cardMedia: {
     height: "200px",
@@ -36,7 +34,7 @@ class Carousel extends React.Component {
           path: "/",
           image: {
             publicURL:
-              "//images.ctfassets.net/6y7x6a0he6ux/fnmiegLZP7y4t5vqUvrsl/bc8175659334f378aeeed53521a18d20/ai.jpeg",
+              "//images.ctfassets.net/6y7x6a0he6ux/fnmiegLZP7y4t5vqUvrsl/442eff253bee05f2e68597cedc1ee88d/ai.jpg",
           },
         },
       },
