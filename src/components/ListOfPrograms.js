@@ -13,7 +13,11 @@ const styles = {
   cardMedia: {
     height: "200px",
   },
+  cardStyle:{
+    height: '200px',
+  }
 };
+
 
 const ListOfPrograms = (props) => {
     //console.log("AAAAAAAAAAAA");
@@ -29,14 +33,14 @@ const ListOfPrograms = (props) => {
   >
     {programsAvailable.map((program) => {
       return (
-        <Grid item key={"/abc"} md={6} xs={12}>
-          <Card>
+        <Grid item key={"/programs/" + program.slug} md={6} xs={12}>
+          <Card style={styles.cardStyle}>
             
-            <CardContent>
+            <CardContent >
               <Typography component="h2" gutterBottom variant="h5">
-                <Link to={"/xyz"}>{program.title}</Link>
+                <Link to={"/programs/" + program.slug}>Certified {program.title} Professional</Link>
               </Typography>
-              <Typography component="p">{program.shortDescription.childMarkdownRemark.html}</Typography>
+              <Typography component="p" dangerouslySetInnerHTML={{__html: program.shortDescription.childMarkdownRemark.html}}></Typography>
             </CardContent>
           </Card>
         </Grid>
