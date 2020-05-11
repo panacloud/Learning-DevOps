@@ -18,6 +18,11 @@ const UseProgramsData = () => {
                     html
                   }
                 }
+                image {
+                  file {
+                    url
+                  }
+                }
               }
             }
           }

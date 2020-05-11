@@ -14,12 +14,13 @@ const styles = {
     height: "200px",
   },
   cardStyle:{
-    height: '200px',
+    height: '400px',
   }
 };
 
 
 const ListOfPrograms = (props) => {
+    const { classes } = props;
     //console.log("AAAAAAAAAAAA");
     const programsAvailable = programs();
     //console.log(programsAvailable);
@@ -32,10 +33,14 @@ const ListOfPrograms = (props) => {
     spacing={8}
   >
     {programsAvailable.map((program) => {
+        //console.log('zzzzzzzzzzzzzzzzzz ' + program.image.file.url);
       return (
         <Grid item key={"/programs/" + program.slug} md={6} xs={12}>
           <Card style={styles.cardStyle}>
-            
+          <CardMedia
+                className={classes.cardMedia}
+                image={program.image.file.url}
+              />
             <CardContent >
               <Typography component="h2" gutterBottom variant="h5">
                 <Link to={"/programs/" + program.slug}>Certified {program.title} Professional</Link>
