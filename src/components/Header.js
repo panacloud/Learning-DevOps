@@ -11,8 +11,11 @@ import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import Avatar from "@material-ui/core/Avatar";
 import { MaterialUi } from "mdi-material-ui";
+import useCompanyName from "../hooks/useCompanyNameData";
 
 const Header = (props) => {
+  const companyName = useCompanyName();
+  //console.log("NNNNNNNNNNNNNN " + companyName);
   return (
     <AppBar id="appBar">
       <Toolbar>
@@ -27,7 +30,7 @@ const Header = (props) => {
               id="logo"
               label={
                 <Link to="/">
-                  {props.data.allContentfulFranchisee.edges[0].node.companyName}
+                  {companyName}
                 </Link>
               }
               variant="outlined"
@@ -50,19 +53,6 @@ const Header = (props) => {
   );
 };
 
-export default () => (
-  <StaticQuery
-    query={graphql`{
-    allContentfulFranchisee {
-      edges {
-        node {
-          companyName
-        }
-      }
-    }
-  }
-    `}
-    render={(data) => <Header data={data} />}
-  />
-);
+
+export default Header;
 
