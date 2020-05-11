@@ -13,49 +13,55 @@ const styles = {
   cardMedia: {
     height: "200px",
   },
-  cardStyle:{
-    height: '400px',
-  }
+  cardStyle: {
+    height: "400px",
+  },
 };
 
-
 const ListOfPrograms = (props) => {
-    const { classes } = props;
-    //console.log("AAAAAAAAAAAA");
-    const programsAvailable = programs();
-    //console.log(programsAvailable);
-  return ( 
+  const { classes } = props;
+  //console.log("AAAAAAAAAAAA");
+  const programsAvailable = programs();
+  //console.log(programsAvailable);
+  return (
     <Grid
-    alignItems="flex-start"
-    container
-    direction="row"
-    justify="center"
-    spacing={8}
-  >
-    {programsAvailable.map((program) => {
+      alignItems="flex-start"
+      container
+      direction="row"
+      justify="center"
+      spacing={8}
+    >
+      {programsAvailable.map((program) => {
         //console.log('zzzzzzzzzzzzzzzzzz ' + program.image.file.url);
-      return (
-        <Grid item key={"/programs/" + program.slug} md={6} xs={12}>
-          <Card style={styles.cardStyle}>
-          <CardMedia
+        return (
+          <Grid item key={"/programs/" + program.slug} md={6} xs={12}>
+            <Card style={styles.cardStyle}>
+              <CardMedia
                 className={classes.cardMedia}
                 image={program.image.file.url}
               />
-            <CardContent >
-              <Typography component="h2" gutterBottom variant="h5">
-                <Link to={"/programs/" + program.slug}>Certified {program.title} Professional</Link>
-              </Typography>
-              <Typography component="p" dangerouslySetInnerHTML={{__html: program.shortDescription.childMarkdownRemark.html}}></Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      );
-    })}
-  </Grid>
-    
+              <CardContent>
+                <Typography component="h2" gutterBottom variant="h5">
+                  <Link
+                    to={"/app/program/" + program.slug}
+                    state={{ program: program }}
+                  >
+                    Certified {program.title} Professional
+                  </Link>
+                </Typography>
+                <Typography
+                  component="p"
+                  dangerouslySetInnerHTML={{
+                    __html: program.shortDescription.childMarkdownRemark.html,
+                  }}
+                ></Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        );
+      })}
+    </Grid>
   );
 };
 
-
 export default withStyles(styles)(ListOfPrograms);
-

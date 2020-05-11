@@ -17,42 +17,43 @@ const Header = (props) => {
   const companyName = useCompanyName();
   //console.log("NNNNNNNNNNNNNN " + companyName);
   return (
-    <AppBar id="appBar">
-      <Toolbar>
-        <Grid alignItems="center" container justify="space-between" spacing={8}>
-          <Grid item>
-            <Chip
-              avatar={
-                <Avatar id="logoIcon">
-                  <MaterialUi />
-                </Avatar>
-              }
-              id="logo"
-              label={
-                <Link to="/">
-                  {companyName}
-                </Link>
-              }
-              variant="outlined"
-            />
+    <div>
+      <AppBar id="appBar">
+        <Toolbar>
+          <Grid
+            alignItems="center"
+            container
+            justify="space-between"
+            spacing={8}
+          >
+            <Grid item>
+              <Chip
+                avatar={
+                  <Avatar id="logoIcon">
+                    <MaterialUi />
+                  </Avatar>
+                }
+                id="logo"
+                label={<Link to="/">{companyName}</Link>}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item>
+              <Hidden smDown>
+                <Typography component="span" variant="caption">
+                  <Menu />
+                </Typography>
+              </Hidden>
+              <Hidden mdUp>
+                <MenuMobile />
+              </Hidden>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Hidden smDown>
-              <Typography component="span" variant="caption">
-                <Menu />
-              </Typography>
-            </Hidden>
-            <Hidden mdUp>
-              <MenuMobile />
-            </Hidden>
-          </Grid>
-        </Grid>
-        <Grid item />
-      </Toolbar>
-    </AppBar>
+          <Grid item />
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 };
 
-
 export default Header;
-

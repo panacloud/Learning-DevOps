@@ -6,18 +6,16 @@ import Hidden from "@material-ui/core/Hidden";
 import withStyles from "@material-ui/styles/withStyles";
 import useCompanyName from "../hooks/useCompanyNameData";
 
-
 const styles = (theme) => ({
   divider: {
-    marginTop: theme.spacing(6),
-    marginBottom: theme.spacing(3),
+    // marginTop: theme.spacing(6),
+    // marginBottom: theme.spacing(3),
   },
   footer: {
-    marginBottom: theme.spacing(3),
-    whiteSpace: "nowrap",
+    // marginBottom: theme.spacing(3),
+    // whiteSpace: "nowrap",
   },
 });
-
 
 const Footer = withStyles(styles)((props) => {
   const companyName = useCompanyName();
@@ -39,7 +37,7 @@ const Footer = withStyles(styles)((props) => {
       <footer className={classes.footer} id="footer">
         <span>
           <Typography component="span" variant="caption">
-             {"Franchisee of Zenoit"}
+            {"Franchisee of Zenoit"}
             <Hidden only={["xl", "lg", "md"]}>
               <br />
             </Hidden>{" "}
