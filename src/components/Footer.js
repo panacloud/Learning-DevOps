@@ -4,6 +4,8 @@ import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Hidden from "@material-ui/core/Hidden";
 import withStyles from "@material-ui/styles/withStyles";
+import useCompanyName from "../hooks/useCompanyNameData";
+
 
 const styles = (theme) => ({
   divider: {
@@ -16,7 +18,10 @@ const styles = (theme) => ({
   },
 });
 
+
 const Footer = withStyles(styles)((props) => {
+  const companyName = useCompanyName();
+  //console.log("NNNNNNNNNNNNNN " + companyName);
   const {
     classes,
     data: {
@@ -34,17 +39,10 @@ const Footer = withStyles(styles)((props) => {
       <footer className={classes.footer} id="footer">
         <span>
           <Typography component="span" variant="caption">
-            ©{new Date().getFullYear()} {title}{" "}
-            <Hidden only={["xs", "sm"]}>–</Hidden>
+             {"Franchisee of Zenoit"}
             <Hidden only={["xl", "lg", "md"]}>
               <br />
             </Hidden>{" "}
-            {email} – {phone}
-            <br />
-            &middot;
-            <br />
-            Starter created by{" "}
-            <a href="https://foxandgeese.com">Fox and Geese</a>
           </Typography>
         </span>
       </footer>
