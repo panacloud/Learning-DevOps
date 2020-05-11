@@ -7,6 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { withPrefix } from "gatsby";
 import withStyles from "@material-ui/styles/withStyles";
+import programs from "../hooks/useProgramsData";
 
 const styles = {
   cardMedia: {
@@ -15,8 +16,9 @@ const styles = {
 };
 
 const ListOfPrograms = (props) => {
-    console.log(props);
-    const programs = props.data.allContentfulFranchisee.edges[0].node.courseCatalog.programsAvailable;
+    //console.log("AAAAAAAAAAAA");
+    const programsAvailable = programs();
+    //console.log(programsAvailable);
   return ( 
     <Grid
     alignItems="flex-start"
@@ -25,7 +27,7 @@ const ListOfPrograms = (props) => {
     justify="center"
     spacing={8}
   >
-    {programs.map((program) => {
+    {programsAvailable.map((program) => {
       return (
         <Grid item key={"/abc"} md={6} xs={12}>
           <Card>
@@ -45,27 +47,6 @@ const ListOfPrograms = (props) => {
   );
 };
 
-export const query = graphql`
-  query {
-    allContentfulFranchisee {
-        edges {
-          node {
-            courseCatalog {
-              programsAvailable {
-                title
-                shortDescription {
-                  childMarkdownRemark {
-                    html
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-  }
-`;
 
 export default withStyles(styles)(ListOfPrograms);
 
-//{props.data.allContentfulFranchisee.edges[0].node.courseCatalog.programsAvailable}
