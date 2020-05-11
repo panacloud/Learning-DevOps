@@ -9,7 +9,7 @@ import ListOfPrograms from "../../components/ListOfPrograms";
 const Programs = (props) => {
   const programs = props.data.allMarkdownRemark.edges;
   return (
-    <Page title="Programs">
+    <Page title="Programs of Study">
       <SEO title="Programs" />
       {/*<List items={programs} />*/}
       <ListOfPrograms items={programs} />
