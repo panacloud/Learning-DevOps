@@ -7,36 +7,16 @@ import Page from "../../components/Page";
 import ListOfPrograms from "../../components/ListOfPrograms";
 
 const Programs = (props) => {
-  const programs = props.data.allMarkdownRemark.edges;
+  //const programs = props.data.allMarkdownRemark.edges;
   return (
     <Page title="Programs of Study">
       <SEO title="Programs" />
       {/*<List items={programs} />*/}
-      <ListOfPrograms items={programs} />
+      <ListOfPrograms />
     </Page>
   );
 };
 
-export const query = graphql`
-  query ProgramsQuery {
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/programs/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          excerpt
-          frontmatter {
-            image {
-              publicURL
-            }
-            title
-            path
-          }
-        }
-      }
-    }
-  }
-`;
+
 
 export default withRoot(Programs);

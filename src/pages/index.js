@@ -18,7 +18,7 @@ const styles = () => ({
   },
 });
 const Home = (props) => {
-  const programs = props.data.allMarkdownRemark.edges;
+  //const programs = props.data.allMarkdownRemark.edges;
   return (
     <Page title={props.data.allContentfulFranchisee.edges[0].node.title}>
       <SEO title="Home">
@@ -49,7 +49,7 @@ const Home = (props) => {
         style={{ minHeight: 523 }}
         title="Our Teaching Programs"
       >
-        <Carousel items={programs} />
+        <Carousel />
       </Card>
     </Page>
   );
@@ -57,32 +57,6 @@ const Home = (props) => {
 
 export const query = graphql`
   query {
-    allFile(filter: { extension: { eq: "jpg" } }) {
-      edges {
-        node {
-          publicURL
-        }
-      }
-    }
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/programs/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            image {
-              publicURL
-            }
-            path
-            title
-            date(formatString: "DD MMMM YYYY")
-          }
-          excerpt
-        }
-      }
-    }
     allContentfulFranchisee {
       edges {
         node {
