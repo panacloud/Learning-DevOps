@@ -27,7 +27,7 @@ class Carousel extends React.Component {
       node: {
         id: "31d6a4bf-62e5-5211-9d87-2537f9628a52",
         excerpt:
-          "A one year AI program in Data Science, Machine Learning, and Deep Learning.",
+          "A one year AI program in Python, Numpy, Pandas, deep learning with Tensorflow, AI model deployment with Kubernetes and Kubeflow, and micro services development using Flask.",
         frontmatter: {
           title: "Artificial Intelligence (AI)",
           date: "Unknown",
