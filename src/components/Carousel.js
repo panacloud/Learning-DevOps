@@ -62,9 +62,6 @@ class Carousel extends React.Component {
   render() {
     const { activeStep } = this.state;
     const { classes, items } = this.props;
-    const maxSteps = items.length;
-
-    console.log("items: ", items);
     const filteredData = [];
     return (
       <Paper elevation={0}>
@@ -96,7 +93,6 @@ class Carousel extends React.Component {
             const defaultData =
               data.allContentfulFranchisee.nodes[0].courseCatalog
                 .programsAvailable;
-            console.log("defaultData: ", defaultData);
             defaultData.forEach((dataItem, dataIndex) => {
               const filteredItem = Object.assign(
                 {},
@@ -134,8 +130,6 @@ class Carousel extends React.Component {
             {/* {JSON.stringify(this.items)} */}
             {this.items.length > 0
               ? this.items.map((item, index) => {
-                  console.log("this.items > item: ", item);
-                  console.log("this.items > index: ", index);
                   const {
                     node: {
                       excerpt,
@@ -184,7 +178,7 @@ class Carousel extends React.Component {
             }
             nextButton={
               <Button
-                disabled={activeStep === maxSteps - 1}
+                disabled={activeStep === this.items.length - 1}
                 onClick={this.handleNext}
                 size="small"
               >
