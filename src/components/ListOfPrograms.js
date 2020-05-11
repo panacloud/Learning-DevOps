@@ -36,7 +36,7 @@ const ListOfPrograms = (props) => {
               <Typography component="h2" gutterBottom variant="h5">
                 <Link to={"/xyz"}>{program.title}</Link>
               </Typography>
-              <Typography component="p">{program.shortDescription.childMarkdownRemark.html}</Typography>
+              <Typography component="p" dangerouslySetInnerHTML={{__html: program.shortDescription.childMarkdownRemark.html}}></Typography>
             </CardContent>
           </Card>
         </Grid>
