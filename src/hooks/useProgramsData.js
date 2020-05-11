@@ -11,6 +11,7 @@ const UseProgramsData = () => {
           node {
             courseCatalog {
               programsAvailable {
+                slug
                 title
                 shortDescription {
                   childMarkdownRemark {

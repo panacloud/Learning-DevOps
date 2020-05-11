@@ -33,12 +33,12 @@ const ListOfPrograms = (props) => {
   >
     {programsAvailable.map((program) => {
       return (
-        <Grid item key={"/abc"} md={6} xs={12}>
+        <Grid item key={"/programs/" + program.slug} md={6} xs={12}>
           <Card style={styles.cardStyle}>
             
             <CardContent >
               <Typography component="h2" gutterBottom variant="h5">
-                <Link to={"/xyz"}>Certified {program.title} Professional</Link>
+                <Link to={"/programs/" + program.slug}>Certified {program.title} Professional</Link>
               </Typography>
               <Typography component="p" dangerouslySetInnerHTML={{__html: program.shortDescription.childMarkdownRemark.html}}></Typography>
             </CardContent>
