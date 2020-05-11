@@ -38,7 +38,7 @@ const ListOfPrograms = (props) => {
             
             <CardContent >
               <Typography component="h2" gutterBottom variant="h5">
-                <Link to={"/xyz"}>{program.title}</Link>
+                <Link to={"/xyz"}>Certified {program.title} Professional</Link>
               </Typography>
               <Typography component="p" dangerouslySetInnerHTML={{__html: program.shortDescription.childMarkdownRemark.html}}></Typography>
             </CardContent>
