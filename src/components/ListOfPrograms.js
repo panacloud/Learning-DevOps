@@ -43,7 +43,7 @@ const ListOfPrograms = (props) => {
               <CardContent>
                 <Typography component="h2" gutterBottom variant="h5">
                   <Link
-                    to={"/details/program/" + program.slug}
+                    to={"/app/program/" + program.slug}
                     state={{ program: program }}
                   >
                     Certified {program.title} Professional
