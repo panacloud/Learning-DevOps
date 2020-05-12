@@ -9,7 +9,7 @@ const DynamicProgramRoute = (props) => {
   return (
     <Page>
       <SEO title="P rograms" />
-      <Router location={location}>
+      <Router>
         <ProgramDetails path="/details/program/:program" />
       </Router>
     </Page>
