@@ -26,6 +26,8 @@ const ProgramDetails = (props) => {
     return program.slug === props.program;
   }
   selectedProgram = availablePrograms.filter(getProgramData);
+  console.log(selectedProgram);
+
   const { classes } = props;
   const [person, setPerson] = useState();
   useEffect(() => {});
