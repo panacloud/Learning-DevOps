@@ -7,7 +7,7 @@ const DynamicProgramRoute = () => {
   return (
     <Page>
       <Router>
-        <ProgramDetails path="/app/program/:program" />
+        <ProgramDetails path="/details/program/:program" />
       </Router>
     </Page>
   );
