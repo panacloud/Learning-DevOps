@@ -45,7 +45,7 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/app/*`] },
+      options: { prefixes: [`/details/*`] },
     },
     `gatsby-plugin-netlify`,
   ],

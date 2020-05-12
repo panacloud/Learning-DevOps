@@ -30,14 +30,9 @@ const ProgramDetails = (props) => {
 
   const { classes } = props;
   const [person, setPerson] = useState();
-  useEffect(() => {
-    fetch(`https://randomuser.me/api?results=${1}`)
-      .then((x) => x.json())
-      .then((x) => setPerson(x));
-  }, [1]);
+  useEffect(() => {});
   return (
     <div>
-      <pre>{JSON.stringify(person, null, 2)}</pre>
       <h1 className="program-title">{selectedProgram[0].title}</h1>
       <Grid
         alignItems="flex-start"
