@@ -30,46 +30,60 @@ const ProgramDetails = (props) => {
 
   const { classes } = props;
   const [person, setPerson] = useState();
-  useEffect(() => {});
+  useEffect(() => {
+    setPerson(selectedProgram);
+  }, [availablePrograms]);
   return (
     <div>
-      <h1 className="program-title">{selectedProgram[0].title}</h1>
-      <Grid
-        alignItems="flex-start"
-        container
-        direction="row"
-        justify="center"
-        spacing={8}
-      >
-        <Grid item key={"/programs/" + selectedProgram[0].slug} md={10} xs={12}>
-          <Card>
-            <CardMedia
-              className={classes.cardMedia}
-              image={selectedProgram[0].image.file.url}
-            />
-            <CardContent>
-              <Typography component="h2" gutterBottom variant="h5">
-                <Link to={"/"}>
-                  Certified {selectedProgram[0].title} Professional
-                </Link>
-              </Typography>
-              <Typography
-                component="p"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    selectedProgram[0].shortDescription.childMarkdownRemark
-                      .html,
-                }}
-              ></Typography>
-              <article>
-                {documentToReactComponents(
-                  selectedProgram[0].longDescription.json
-                )}
-              </article>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+      {console.log(person)}
+      {person ? (
+        <div>
+          <h1 className="program-title">{selectedProgram[0].title}</h1>
+          <Grid
+            alignItems="flex-start"
+            container
+            direction="row"
+            justify="center"
+            spacing={8}
+          >
+            <Grid
+              item
+              key={"/programs/" + selectedProgram[0].slug}
+              md={10}
+              xs={12}
+            >
+              <Card>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image={selectedProgram[0].image.file.url}
+                />
+                <CardContent>
+                  <Typography component="h2" gutterBottom variant="h5">
+                    <Link to={"/"}>
+                      Certified {selectedProgram[0].title} Professional
+                    </Link>
+                  </Typography>
+                  <Typography
+                    component="p"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        selectedProgram[0].shortDescription.childMarkdownRemark
+                          .html,
+                    }}
+                  ></Typography>
+                  <article>
+                    {documentToReactComponents(
+                      selectedProgram[0].longDescription.json
+                    )}
+                  </article>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <h1>bye</h1>
+      )}
     </div>
   );
 };
