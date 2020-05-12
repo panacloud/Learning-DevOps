@@ -29,17 +29,18 @@ const ProgramDetails = (props) => {
   console.log(selectedProgram);
 
   const { classes } = props;
-  const [person, setPerson] = useState();
+  const [person, setPerson] = useState(selectedProgram);
   useEffect(() => {
-    setPerson(selectedProgram);
-  }, [availablePrograms]);
+    setTimeout(() => {
+      setPerson(selectedProgram);
+    }, 6000);
+  }, [selectedProgram]);
   return (
     <div>
-      {console.log(person)}
       {person ? (
         <div>
           <p>4IR</p>
-          <h1 className="program-title">{selectedProgram[0].title}</h1>
+          <h1 className="program-title">{person[0].title}</h1>
           <Grid
             alignItems="flex-start"
             container
@@ -47,35 +48,27 @@ const ProgramDetails = (props) => {
             justify="center"
             spacing={8}
           >
-            <Grid
-              item
-              key={"/programs/" + selectedProgram[0].slug}
-              md={10}
-              xs={12}
-            >
+            <Grid item key={"/programs/" + person[0].slug} md={10} xs={12}>
               <Card>
                 <CardMedia
                   className={classes.cardMedia}
-                  image={selectedProgram[0].image.file.url}
+                  image={person[0].image.file.url}
                 />
                 <CardContent>
                   <Typography component="h2" gutterBottom variant="h5">
                     <Link to={"/"}>
-                      Certified {selectedProgram[0].title} Professional
+                      Certified {person[0].title} Professional
                     </Link>
                   </Typography>
                   <Typography
                     component="p"
                     dangerouslySetInnerHTML={{
                       __html:
-                        selectedProgram[0].shortDescription.childMarkdownRemark
-                          .html,
+                        person[0].shortDescription.childMarkdownRemark.html,
                     }}
                   ></Typography>
                   <article>
-                    {documentToReactComponents(
-                      selectedProgram[0].longDescription.json
-                    )}
+                    {documentToReactComponents(person[0].longDescription.json)}
                   </article>
                 </CardContent>
               </Card>
