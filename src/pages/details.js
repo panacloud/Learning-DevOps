@@ -9,16 +9,9 @@ const DynamicProgramRoute = (props) => {
   return (
     <Page>
       <SEO title="P rograms" />
-      <Location>
-        {({ location }) => (
-          <div>
-            {console.log("location", location)}
-            <Router location={location}>
-              <ProgramDetails path="/details/program/:program" />
-            </Router>
-          </div>
-        )}
-      </Location>
+      <Router location={location}>
+        <ProgramDetails path="/details/program/:program" />
+      </Router>
     </Page>
   );
 };
