@@ -1,11 +1,13 @@
 import { Router } from "@reach/router";
 import React from "react";
-import ProgramDetails from "../modules/ProgramDetails";
+import ProgramDetails from "../components/ProgramDetails";
 import Page from "../components/Page";
+import SEO from "../components/SEO";
 
 const DynamicProgramRoute = () => {
   return (
     <Page>
+      <SEO title="P rograms" />
       <Router>
         <ProgramDetails path="/details/program/:program" />
       </Router>
