@@ -38,6 +38,7 @@ const ProgramDetails = (props) => {
       {console.log(person)}
       {person ? (
         <div>
+          <p>4IR</p>
           <h1 className="program-title">{selectedProgram[0].title}</h1>
           <Grid
             alignItems="flex-start"
