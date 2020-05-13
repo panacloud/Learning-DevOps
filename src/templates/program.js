@@ -22,6 +22,7 @@ const styles = {
 const ProgramDetails = (props) => {
   // All programs list
   const program = props.pageContext.program;
+  console.log(program)
 
 
   const { classes } = props;
