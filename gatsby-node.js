@@ -1,6 +1,8 @@
+const path = require(`path`);
+
 // Implement the Gatsby API “onCreatePage”. This is
 // called after every page is created.
-exports.onCreatePage = async ({ page, actions }) => {
+/*exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions;
 
   // Only update the `/details` page.
@@ -12,35 +14,65 @@ exports.onCreatePage = async ({ page, actions }) => {
     // Update the page.
     createPage(page);
   }
-};
+};*/
 
-const path = require(`path`);
-console.log(path);
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
-  const { data } = await graphql(`
+  const { createPage } = actions
+  const result = await graphql(`
     query {
-      allContentfulProgram {
+      allContentfulFranchisee {
         edges {
           node {
-            slug
+            courseCatalog {
+              programsAvailable {
+                slug
+                title
+                shortDescription {
+                  childMarkdownRemark {
+                    html
+                  }
+                }
+                image {
+                  file {
+                    url
+                  }
+                }
+                longDescription {
+                  json
+                }
+              }
+            }
           }
         }
       }
     }
-  `);
-  data.allContentfulProgram.edges.forEach((node) => {
-    console.log(node);
+  `)
+  //console.log("Result: " + JSON.stringify(result, null, 4));
+  const availablePrograms = result.data.allContentfulFranchisee.edges[0].node.courseCatalog.programsAvailable;
+  //console.log("Available Programs: " + JSON.stringify(availablePrograms, null, 4));
+  availablePrograms.map((program) => {
+    //console.log("Programs: " + JSON.stringify(program, null, 4));
     createPage({
-      path: `${node.node.slug}`,
-      component: path.resolve(`./src/templates/name.js`),
+      path: '/programs/' + program.slug + "/",
+      component: path.resolve(`./src/templates/program.js`),
       context: {
-        node,
         // Data passed to context is available
         // in page queries as GraphQL variables.
-        firstName: "zia",
-        lastName: "khan",
+        program: program,
       },
-    });
-  });
-};
+    })
+  })
+}
+
+
+/*
+There are two different ways to create dynamic pages:
+1. This method will create a HTML page in the public directory and uses data that is available at build time:
+https://www.gatsbyjs.org/tutorial/part-seven/
+2. This method does not create a HTML page because it gets data at run time just like React:
+https://stackoverflow.com/questions/55756994/how-to-create-dynamic-route-in-gatsby
+Here we are using method 1
+*/
+
+
+
