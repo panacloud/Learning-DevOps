@@ -10,6 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { autoPlay } from "react-swipeable-views-utils";
 import withStyles from "@material-ui/styles/withStyles";
+import carouselData from "../services/carousel-service.json";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const styles = {
   cardMedia: {
@@ -21,25 +22,8 @@ class Carousel extends React.Component {
   state = {
     activeStep: 0,
   };
-  
-  items = [
-    {
-      node: {
-        id: "31d6a4bf-62e5-5211-9d87-2537f9628a52",
-        excerpt:
-          "A one year AI program in Python, Numpy, Pandas, deep learning with Tensorflow, AI model deployment with Kubernetes and Kubeflow, and micro services development using Flask.",
-        frontmatter: {
-          title: "Artificial Intelligence (AI)",
-          date: "Unknown",
-          path: "/",
-          image: {
-            publicURL:
-              "//images.ctfassets.net/6y7x6a0he6ux/fnmiegLZP7y4t5vqUvrsl/442eff253bee05f2e68597cedc1ee88d/ai.jpg",
-          },
-        },
-      },
-    },
-  ];
+
+  items = carouselData;
 
   handleNext = () => {
     this.setState((prevState) => ({

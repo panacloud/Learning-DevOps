@@ -16,9 +16,9 @@ const styles = {
   cardStyle: {
     height: "400px",
   },
-  color:{
-    color: "black"
-  }
+  color: {
+    color: "black",
+  },
 };
 
 const ListOfPrograms = (props) => {
@@ -45,12 +45,19 @@ const ListOfPrograms = (props) => {
               />
               <CardContent>
                 <Typography component="h2" gutterBottom variant="h5">
-                  <Link to={"/programs/" + program.slug} state={{ program: program }}>
+                  <Link
+                    to={"/programs/" + program.slug}
+                    state={{ program: program }}
+                  >
                     Certified {program.title} Professional
                   </Link>
                 </Typography>
                 <Typography component="h2" gutterBottom variant="h5">
-                <Link style={styles.color} to={"/track/" + program.slug} state={{ program: program }}>
+                  <Link
+                    style={styles.color}
+                    to={"/track/" + program.slug}
+                    state={{ program: program }}
+                  >
                     Track
                   </Link>
                 </Typography>
