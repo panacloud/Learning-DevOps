@@ -71,6 +71,7 @@ class Carousel extends React.Component {
                   courseCatalog {
                     programsAvailable {
                       title
+                      slug
                       id
                       shortDescription {
                         shortDescription
@@ -101,7 +102,7 @@ class Carousel extends React.Component {
                     frontmatter: {
                       title: dataItem.title,
                       date: "Unknown",
-                      path: "/programs",
+                      path: "/programs/" + dataItem.slug,
                       image: {
                         publicURL: dataItem.image.file.url,
                       },
