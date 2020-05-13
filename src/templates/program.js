@@ -1,15 +1,4 @@
-
-/*
-export default function Name(props) {
-    const context = props.pageContext;
-    console.log("PAGE CONTEXT: " + JSON.stringify(context, null, 4))
-  return (
-      <div>Hello {context.firstName} {context.lastName}</div>
-  )
-}
-*/
-
-
+import withRoot from "../utils/withRoot";
 import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import Grid from "@material-ui/core/Grid";
@@ -19,6 +8,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/styles/withStyles";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import SEO from "../components/SEO";
+import Page from "../components/Page";
 
 const styles = {
   cardMedia: {
@@ -36,6 +27,8 @@ const ProgramDetails = (props) => {
   const { classes } = props;
   useEffect(() => {});
   return (
+    <Page title="">
+    <SEO title="Programs" />
     <div>
       <h1 className="program-title">{program.title}</h1>
       <Grid
@@ -75,7 +68,8 @@ const ProgramDetails = (props) => {
         </Grid>
       </Grid>
     </div>
+    </Page>
   );
 };
 
-export default withStyles(styles)(ProgramDetails);
+export default withRoot(withStyles(styles)(ProgramDetails));
