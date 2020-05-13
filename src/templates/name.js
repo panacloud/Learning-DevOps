@@ -26,7 +26,7 @@ export default function Name(props) {
   // Filter program specific data
   function getProgramData(program) {
     console.log(program, props);
-    return program.slug === "ai";
+    return program.slug === props.pageContext.node.node.slug;
   }
   selectedProgram = availablePrograms.filter(getProgramData);
   const { classes } = props;
