@@ -27,8 +27,8 @@ const ProgramDetails = (props) => {
   const { classes } = props;
   useEffect(() => {});
   return (
-    <Page title="">
-    <SEO title="Programs" />
+    <Page title="Program of Study">
+    <SEO title="Program of Study" />
     <div>
       <h1 className="program-title">{program.title}</h1>
       <Grid
