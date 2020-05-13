@@ -20,14 +20,11 @@ const ProgramDetails = (props) => {
   // All programs list
   const availablePrograms = programs();
   let selectedProgram = [];
-  console.log(props, availablePrograms);
   // Filter program specific data
   function getProgramData(program) {
     return program.slug === props.program;
   }
   selectedProgram = availablePrograms.filter(getProgramData);
-  console.log(selectedProgram);
-
   const { classes } = props;
   const [person, setPerson] = useState();
   useEffect(() => {});

@@ -5,7 +5,6 @@ import Page from "../components/Page";
 import SEO from "../components/SEO";
 
 const DynamicProgramRoute = (props) => {
-  console.log("props", props);
   return (
     <Page>
       <SEO title="P rograms" />
