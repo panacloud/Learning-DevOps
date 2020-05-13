@@ -21,7 +21,7 @@ class Carousel extends React.Component {
   state = {
     activeStep: 0,
   };
-
+  
   items = [
     {
       node: {
