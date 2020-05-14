@@ -26,6 +26,94 @@ exports.createPages = async ({ graphql, actions }) => {
                 longDescription {
                   json
                 }
+                technicalTrack {
+                  title
+                  objective {
+                    childMarkdownRemark {
+                    html
+                  }
+                  }
+                  certifications{
+                    title
+                  }
+                  description {
+                    json
+                  }
+                  courses {
+                    title
+                    certification {
+                      title
+                    }
+                    quarter
+                    track {
+                      courses {
+                        quarter
+                      }
+                    }
+                  }
+                }
+
+                innovationTrack {
+                  title
+                  objective {
+                    childMarkdownRemark {
+                    html
+                  }
+                  }
+                  certifications{
+                    title
+                  }
+                  description {
+                    json
+                  }
+                  courses {
+                    title
+                    certification {
+                      title
+                    }
+                    quarter
+                    track {
+                      courses {
+                        quarter
+                      }
+                    }
+                  }
+                }
+
+                appDevelopmentTrack {
+                  title
+                  objective {
+                    childMarkdownRemark {
+                    html
+                  }
+                  }
+                  certifications{
+                    title
+                  }
+                  description {
+                    json
+                  }
+                  courses {
+                    title
+                    certification {
+                      title
+                    }
+                    quarter
+                    track {
+                      courses {
+                        quarter
+                      }
+                    }
+                  }
+                }
+                
+
+
+
+
+
+
+
               }
             }
           }
