@@ -43,14 +43,81 @@ const TrackDetails = (props) => {
   const { classes } = props;
   const classess = useStyles();
 
+  function createObjectiveMarkup() {
+    return {__html: track.objective.childMarkdownRemark.html};
+  }
+
+  const certifications = track.certifications;
+
   useEffect(() => {});
   return (
-    <Page title="Track">
-      <SEO title="Track" />
-      <div>
-        <h1 className="program-title">{track.title}</h1>
-        
-      </div>
+    <Page title={track.title}>
+      <SEO title={track.title} />
+      <div>Objective of the Track</div>
+      <div dangerouslySetInnerHTML={createObjectiveMarkup()} />
+      <div>Prepares the student for the following International Certifications</div>
+      <div>Add Certifications here</div>
+
+
+      <article>
+                {track.courses.map((course) => {
+                    return (
+                        <Grid
+                className="card-pad"
+                item
+                key={course.quarter}
+                md={4}
+                xs={12}
+              >
+                {/* <Paper className={classes.paper}> */}
+                <div className="card-pad" style={styles.pad}>
+                  <Card
+                    className="card-pad"
+                    style={styles.pad}
+                    className={classes.root}
+                    variant="outlined"
+                  >
+                    <CardContent className={useStyles.centerContent}>
+                      <Typography
+                        className={classess.centerContent}
+                        gutterBottom
+                      >
+                        Quarter {course.quarter}
+                      </Typography>
+                      <Typography variant="h5" component="h2">
+                        {/* be{bull}nev{bull}o{bull}lent */}
+                      </Typography>
+                      <Typography className={classes.pos} color="textSecondary">
+                        {/* adjective */}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        component="p"
+                        className={classess.centerContent}
+                      >
+                        <Link to={"/programs/tracks/courses/" + course.courseNumber}>
+                          {course.title}
+                        </Link>
+                        {/* {'"a benevolent smile"'} */}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      {/* <Button size="small">See more</Button> */}
+                    </CardActions>
+                  </Card>
+                </div>
+                {/* </Paper> */}
+              </Grid>
+                    
+                    );
+                  })}
+                </article>
+
+
+
+
+
+
     </Page>
   );
 };

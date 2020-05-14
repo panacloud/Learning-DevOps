@@ -36,6 +36,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   }
                   certifications{
                     title
+                    url
                   }
                   description {
                     json
@@ -45,6 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     title
                     certification {
                       title
+                      url
                     }
                     quarter
                     track {
@@ -65,6 +67,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   }
                   certifications{
                     title
+                    url
                   }
                   description {
                     json
@@ -74,6 +77,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     title
                     certification {
                       title
+                      url
                     }
                     quarter
                     track {
@@ -94,6 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   }
                   certifications{
                     title
+                    url
                   }
                   description {
                     json
@@ -103,6 +108,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     title
                     certification {
                       title
+                      url
                     }
                     quarter
                     track {
