@@ -78,8 +78,11 @@ const ProgramDetails = (props) => {
   return (
     <Page title="Program of Study">
       <SEO title="Program of Study" />
-      <div style={bgcolor}>
-        <h1 className="program-title">{program.title}</h1>
+
+      <div>
+        <h1 className="program-title">
+          Certified {program.title} Professional
+        </h1>
         <Grid
           alignItems="flex-start"
           container
@@ -87,25 +90,96 @@ const ProgramDetails = (props) => {
           justify="center"
           spacing={4}
         >
-          <Grid item key={"/program/" + program.slug} md={12} xs={12}>
-            {/* <Card> */}
-            <CardMedia
-              className={classes.cardMedia}
-              image={program.image.file.url}
-            />
-            <CardContent>
-              <Typography component="h2" gutterBottom variant="h5">
-                <Link to={"/"}>Certified {program.title} Professional</Link>
-              </Typography>
-              <Typography
-                component="p"
-                dangerouslySetInnerHTML={{
-                  __html: program.shortDescription.childMarkdownRemark.html,
-                }}
-              ></Typography>
-            </CardContent>
-            {/* </Card> */}
+          <Grid item key={"/programs/" + program.slug} md={12} xs={12}>
+            <Card>
+              <CardMedia
+                className={classes.cardMedia}
+                image={program.image.file.url}
+              />
+              <CardContent>
+                <Typography
+                  component="p"
+                  dangerouslySetInnerHTML={{
+                    __html: program.shortDescription.childMarkdownRemark.html,
+                  }}
+                ></Typography>
+
+                <Typography component="h3" gutterBottom variant="h6">
+                  In order to receive the certification the student has to
+                  complete three tracks (sequence of courses):
+                </Typography>
+              </CardContent>
+            </Card>
           </Grid>
+
+          {/* <article> */}
+          <Grid
+            item
+            alignItems="flex-start"
+            container
+            direction="row"
+            justify="center"
+            spacing={4}
+          >
+            <Typography component="h3" gutterBottom variant="h5">
+              <Link to={"/programs/tracks/" + technicalTrack.slug}>
+                {technicalTrack.title} Course Sequence
+              </Link>
+            </Typography>
+          </Grid>
+          {technicalTrack.courses.map((course) => {
+            return (
+              <Grid
+                className="card-pad"
+                item
+                key={course.quarter}
+                md={3}
+                xs={12}
+              >
+                {/* <Paper className={classes.paper}> */}
+                <div className="card-pad" style={styles.pad}>
+                  <Card
+                    className="card-pad"
+                    style={styles.pad}
+                    className={classes.root}
+                    variant="outlined"
+                  >
+                    <CardContent className={useStyles.centerContent}>
+                      <Typography
+                        className={classess.centerContent}
+                        gutterBottom
+                      >
+                        Quarter {course.quarter}
+                      </Typography>
+                      <Typography variant="h5" component="h2">
+                        {/* be{bull}nev{bull}o{bull}lent */}
+                      </Typography>
+                      <Typography className={classes.pos} color="textSecondary">
+                        {/* adjective */}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        component="p"
+                        className={classess.centerContent}
+                      >
+                        <Link
+                          to={"/programs/tracks/courses/" + course.courseNumber}
+                        >
+                          {course.title}
+                        </Link>
+                        {/* {'"a benevolent smile"'} */}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      {/* <Button size="small">See more</Button> */}
+                    </CardActions>
+                  </Card>
+                </div>
+                {/* </Paper> */}
+              </Grid>
+            );
+          })}
+          {/* </article> */}
 
           {/* Heading for Technical Track */}
           <Grid

@@ -52,15 +52,7 @@ const ListOfPrograms = (props) => {
                     Certified {program.title} Professional
                   </Link>
                 </Typography>
-                <Typography component="h2" gutterBottom variant="h5">
-                  <Link
-                    style={styles.color}
-                    to={"/track/" + program.slug}
-                    state={{ program: program }}
-                  >
-                    Track
-                  </Link>
-                </Typography>
+                
                 <Typography
                   component="p"
                   dangerouslySetInnerHTML={{
