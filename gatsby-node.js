@@ -28,6 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
                 technicalTrack {
                   title
+                  slug
                   objective {
                     childMarkdownRemark {
                     html
@@ -40,6 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     json
                   }
                   courses {
+                    courseNumber
                     title
                     certification {
                       title
@@ -55,6 +57,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
                 innovationTrack {
                   title
+                  slug
                   objective {
                     childMarkdownRemark {
                     html
@@ -67,6 +70,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     json
                   }
                   courses {
+                    courseNumber
                     title
                     certification {
                       title
@@ -82,6 +86,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
                 appDevelopmentTrack {
                   title
+                  slug
                   objective {
                     childMarkdownRemark {
                     html
@@ -94,6 +99,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     json
                   }
                   courses {
+                    courseNumber
                     title
                     certification {
                       title
@@ -124,6 +130,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const availablePrograms =
     detailProgram.data.allContentfulFranchisee.edges[0].node.courseCatalog
       .programsAvailable;
+  
+      var technicalTrack;    
+  let isDoOnceFlag = true;
   availablePrograms.map((program) => {
     createPage({
       path: "/programs/" + program.slug + "/",
@@ -134,61 +143,67 @@ exports.createPages = async ({ graphql, actions }) => {
         program: program,
       },
     });
-  });
 
-  //  Program Track Pages
-  const track = await graphql(`
-    query {
-      allContentfulTrack {
-        edges {
-          node {
-            program {
-              slug
-              title
-              appDevelopmentTrack {
-                title
-              }
-              innovationTrack {
-                title
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
+    technicalTrack = program.technicalTrack;
 
-  const availableProgramsTrack = track.data.allContentfulTrack.edges;
-  availableProgramsTrack.map((allnodes) => {
-    allnodes.node.program.map((data) => {
+    createPage({
+      path: "/programs/tracks/" + technicalTrack.slug + "/",
+      component: path.resolve(`./src/templates/track.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        track: technicalTrack,
+      },
+    });
+
+    technicalTrack.courses.map((course) => {
       createPage({
-        path: "/track/" + data.slug + "/",
+        path: "/programs/tracks/courses/" + course.courseNumber + "/",
+        component: path.resolve(`./src/templates/course.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          course: course,
+        },
+      });
+    });
+
+    if(isDoOnceFlag){
+      isDoOnceFlag = false;
+
+      innovationTrack = program.innovationTrack;
+
+      createPage({
+        path: "/programs/tracks/" + innovationTrack.slug + "/",
         component: path.resolve(`./src/templates/track.js`),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
-          program: allnodes,
+          track: innovationTrack,
         },
       });
-    });
+
+      appDevelopmentTrack = program.appDevelopmentTrack;
+
+      createPage({
+        path: "/programs/tracks/" + appDevelopmentTrack.slug + "/",
+        component: path.resolve(`./src/templates/track.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          track: appDevelopmentTrack,
+        },
+      });
+
+
+
+    }
+
+
   });
 
-  //console.log("Result: " + JSON.stringify(result, null, 4));
-  //  const availablePrograms1 = result1.data.allContentfulTrack.nodes[0].program;
-  //  //console.log("Available Programs: " + JSON.stringify(availablePrograms, null, 4));
-  //  availablePrograms1.map((program) => {
-  //    //console.log("Programs: " + JSON.stringify(program, null, 4));
-  //    createPage({
-  //      path: '/track/' + program.slug + "/",
-  //      component: path.resolve(`./src/templates/track.js`),
-  //      context: {
-  //        // Data passed to context is available
-  //        // in page queries as GraphQL variables.
-  //        program: program,
-  //      },
-  //    })
-  //  })
-};
+}
+  
 
 /*
 There are two different ways to create dynamic pages:
@@ -199,18 +214,20 @@ https://stackoverflow.com/questions/55756994/how-to-create-dynamic-route-in-gats
 Here we are using method 1
 */
 
+
 // Implement the Gatsby API “onCreatePage”. This is
-// called after every page is created.
-/*exports.onCreatePage = async ({ page, actions }) => {
-  const { createPage } = actions;
+//alled after every page is created.
+//exports.onCreatePage = async ({ page, actions }) => {
+//  const { createPage } = actions;
 
   // Only update the `/details` page.
-  if (page.path.match(/^\/details/)) {
+//  if (page.path.match(/^\/details/)) {
     // page.matchPath is a special key that's used for matching pages
     // with corresponding routes only on the client.
-    page.matchPath = "/details/*";
+//    page.matchPath = "/details/*";
 
     // Update the page.
-    createPage(page);
-  }
-};*/
+//    createPage(page);
+//  }};
+//}
+

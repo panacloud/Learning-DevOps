@@ -36,23 +36,23 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
 }));
-const TrackDetails = (props) => {
+const CourseDetails = (props) => {
   // All programs list
-  const track = props.pageContext.track;
+  const course = props.pageContext.course;
 
   const { classes } = props;
   const classess = useStyles();
 
   useEffect(() => {});
   return (
-    <Page title="Track">
-      <SEO title="Track" />
+    <Page title="Course">
+      <SEO title="Course" />
       <div>
-        <h1 className="program-title">{track.title}</h1>
+        <h1 className="program-title">{course.title}</h1>
         
       </div>
     </Page>
   );
 };
 
-export default withRoot(withStyles(styles)(TrackDetails));
+export default withRoot(withStyles(styles)(CourseDetails));

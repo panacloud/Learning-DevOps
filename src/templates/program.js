@@ -102,7 +102,10 @@ const ProgramDetails = (props) => {
 
 
                 <Typography component="h3" gutterBottom variant="h5">
-                   {technicalTrack.title} Course Sequence
+                  <Link to= {"/programs/tracks/" + technicalTrack.slug} >
+                      {technicalTrack.title} Course Sequence
+                  </Link>
+                
                 </Typography>
                 <article>
                 {technicalTrack.courses.map((course) => {
