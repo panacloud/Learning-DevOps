@@ -60,6 +60,7 @@ const ProgramDetails = (props) => {
   ];
   // All programs list
   const program = props.pageContext.program;
+  const technicalTrack = program.technicalTrack;
   const { classes } = props;
   const classess = useStyles();
 
@@ -92,6 +93,62 @@ const ProgramDetails = (props) => {
                     __html: program.shortDescription.childMarkdownRemark.html,
                   }}
                 ></Typography>
+                <Typography component="h3" gutterBottom variant="h5">
+                   {technicalTrack.title} Course Sequence
+                </Typography>
+                <article>
+                  {technicalTrack.courses.map((course) => {
+                    return (
+                        <Grid
+                className="card-pad"
+                item
+                key={course.quarter}
+                md={4}
+                xs={12}
+              >
+                {/* <Paper className={classes.paper}> */}
+                <div className="card-pad" style={styles.pad}>
+                  <Card
+                    className="card-pad"
+                    style={styles.pad}
+                    className={classes.root}
+                    variant="outlined"
+                  >
+                    <CardContent className={useStyles.centerContent}>
+                      <Typography
+                        className={classess.centerContent}
+                        gutterBottom
+                      >
+                        Quarter {course.quarter}
+                      </Typography>
+                      <Typography variant="h5" component="h2">
+                        {/* be{bull}nev{bull}o{bull}lent */}
+                      </Typography>
+                      <Typography className={classes.pos} color="textSecondary">
+                        {/* adjective */}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        component="p"
+                        className={classess.centerContent}
+                      >
+                        <Link to={`/track/{"abc"}`}>
+                          {course.title}
+                        </Link>
+                        {/* {'"a benevolent smile"'} */}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      {/* <Button size="small">See more</Button> */}
+                    </CardActions>
+                  </Card>
+                </div>
+                {/* </Paper> */}
+              </Grid>
+                    
+                    );
+                  })}
+                </article>
                 <article>
                   {documentToReactComponents(program.longDescription.json)}
                 </article>
