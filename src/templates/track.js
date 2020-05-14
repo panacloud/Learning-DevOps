@@ -57,7 +57,7 @@ const TrackDetails = (props) => {
               <Card className={classes.root} variant="outlined">
                 <CardContent>
                   <Typography className={classes.title} gutterBottom>
-                    {selectedProgramTrack[0].title}
+                    {/* {selectedProgramTrack[0].title} */}
                   </Typography>
                   <Typography variant="h5" component="h2">
                     {/* be{bull}nev{bull}o{bull}lent */}
@@ -82,7 +82,7 @@ const TrackDetails = (props) => {
               <Card className={classes.root} variant="outlined">
                 <CardContent>
                   <Typography className={classes.title} gutterBottom>
-                    {selectedProgramTrack[0].appDevelopmentTrack.title}
+                    {/* {selectedProgramTrack[0].appDevelopmentTrack.title} */}
                   </Typography>
                   <Typography variant="h5" component="h2">
                     {/* be{bull}nev{bull}o{bull}lent */}
@@ -108,7 +108,7 @@ const TrackDetails = (props) => {
               <Card className={classes.root} variant="outlined">
                 <CardContent>
                   <Typography className={classes.title} gutterBottom>
-                    {selectedProgramTrack[0].innovationTrack.title}
+                    {/* {selectedProgramTrack[0].innovationTrack.title} */}
                   </Typography>
                   <Typography variant="h5" component="h2">
                     {/* be{bull}nev{bull}o{bull}lent */}
