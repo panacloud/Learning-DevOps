@@ -62,7 +62,7 @@ const ProgramDetails = (props) => {
   const program = props.pageContext.program;
   const technicalTrack = program.technicalTrack;
   const innovationTrack = program.innovationTrack;
-  console.log("IIIIIIIIIIIII " + innovationTrack.title);
+  //console.log("IIIIIIIIIIIII " + innovationTrack.title);
   const appDevelopmentTrack = program.appDevelopmentTrack;
   const { classes } = props;
   const classess = useStyles();
@@ -72,7 +72,7 @@ const ProgramDetails = (props) => {
     <Page title="Program of Study">
       <SEO title="Program of Study" />
       <div>
-        <h1 className="program-title">{program.title}</h1>
+        <h1 className="program-title">Certified {program.title} Professional</h1>
         <Grid
           alignItems="flex-start"
           container
@@ -80,16 +80,14 @@ const ProgramDetails = (props) => {
           justify="center"
           spacing={8}
         >
-          <Grid item key={"/program/" + program.slug} md={12} xs={12}>
+          <Grid item key={"/programs/" + program.slug} md={12} xs={12}>
             <Card>
               <CardMedia
                 className={classes.cardMedia}
                 image={program.image.file.url}
               />
               <CardContent>
-                <Typography component="h2" gutterBottom variant="h5">
-                  <Link to={"/"}>Certified {program.title} Professional</Link>
-                </Typography>
+                
                 <Typography
                   component="p"
                   dangerouslySetInnerHTML={{
@@ -97,7 +95,9 @@ const ProgramDetails = (props) => {
                   }}
                 ></Typography>
 
-
+                <Typography component="h3" gutterBottom variant="h6">
+                  In order to receive the certification the student has to complete three tracks (sequence of courses):
+                </Typography>
 
 
 
@@ -143,7 +143,7 @@ const ProgramDetails = (props) => {
                         component="p"
                         className={classess.centerContent}
                       >
-                        <Link to={`/track/{"abc"}`}>
+                        <Link to={"/programs/tracks/courses/" + course.courseNumber}>
                           {course.title}
                         </Link>
                         {/* {'"a benevolent smile"'} */}
