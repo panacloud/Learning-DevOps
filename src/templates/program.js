@@ -41,9 +41,30 @@ var cardStyle = {
   // display: 'block',
   // width: '30vw',
   transitionDuration: "1s",
-  height: "15vw",
+  height: "10vw",
+  backgroundColor: "rgba(25,42,86,.5)",
+  color: "white",
 };
-const color = { backgroundColor: "white" };
+const bgcolorTechnical = {
+  transitionDuration: "1s",
+  height: "10vw",
+  backgroundColor: "rgba(25,42,86,.5)",
+  color: "gold",
+};
+const bgcolorInnovation = {
+  transitionDuration: "1s",
+  height: "10vw",
+  backgroundColor: "rgba(25,42,86,.75)",
+  color: "gold",
+};
+const bgcolorApplicationDev = {
+  transitionDuration: "1s",
+  height: "10vw",
+  backgroundColor: "#192a56",
+  color: "gold",
+};
+const bgcolor = { backgroundColor: "white" };
+const titleColor = { color: "white" };
 const ProgramDetails = (props) => {
   // All programs list
   const program = props.pageContext.program;
@@ -57,7 +78,7 @@ const ProgramDetails = (props) => {
   return (
     <Page title="Program of Study">
       <SEO title="Program of Study" />
-      <div style={color}>
+      <div style={bgcolor}>
         <h1 className="program-title">{program.title}</h1>
         <Grid
           alignItems="flex-start"
@@ -67,27 +88,23 @@ const ProgramDetails = (props) => {
           spacing={4}
         >
           <Grid item key={"/program/" + program.slug} md={12} xs={12}>
-            <Card>
-              <CardMedia
-                className={classes.cardMedia}
-                image={program.image.file.url}
-              />
-              <CardContent>
-                <Typography component="h2" gutterBottom variant="h5">
-                  <Link to={"/"}>Certified {program.title} Professional</Link>
-                </Typography>
-                <Typography
-                  component="p"
-                  dangerouslySetInnerHTML={{
-                    __html: program.shortDescription.childMarkdownRemark.html,
-                  }}
-                ></Typography>
-
-                <article>
-                  {documentToReactComponents(program.longDescription.json)}
-                </article>
-              </CardContent>
-            </Card>
+            {/* <Card> */}
+            <CardMedia
+              className={classes.cardMedia}
+              image={program.image.file.url}
+            />
+            <CardContent>
+              <Typography component="h2" gutterBottom variant="h5">
+                <Link to={"/"}>Certified {program.title} Professional</Link>
+              </Typography>
+              <Typography
+                component="p"
+                dangerouslySetInnerHTML={{
+                  __html: program.shortDescription.childMarkdownRemark.html,
+                }}
+              ></Typography>
+            </CardContent>
+            {/* </Card> */}
           </Grid>
 
           {/* Heading for Technical Track */}
@@ -116,7 +133,7 @@ const ProgramDetails = (props) => {
                 <div className="card-pad" style={styles.pad}>
                   <Card
                     className="card-pad"
-                    style={cardStyle}
+                    style={bgcolorTechnical}
                     className={classes.root}
                     variant="outlined"
                   >
@@ -138,7 +155,9 @@ const ProgramDetails = (props) => {
                         component="p"
                         className={classess.centerContent}
                       >
-                        <Link to={`/track/{"abc"}`}>{course.title}</Link>
+                        <Link style={titleColor} to={`/track/{"abc"}`}>
+                          {course.title}
+                        </Link>
                         {/* {'"a benevolent smile"'} */}
                       </Typography>
                     </CardContent>
@@ -178,7 +197,7 @@ const ProgramDetails = (props) => {
                 <div className="card-pad" style={styles.pad}>
                   <Card
                     className="card-pad"
-                    style={cardStyle}
+                    style={bgcolorInnovation}
                     className={classes.root}
                     variant="outlined"
                   >
@@ -200,7 +219,9 @@ const ProgramDetails = (props) => {
                         component="p"
                         className={classess.centerContent}
                       >
-                        <Link to={`/track/{"abc"}`}>{course.title}</Link>
+                        <Link style={titleColor} to={`/track/{"abc"}`}>
+                          {course.title}
+                        </Link>
                         {/* {'"a benevolent smile"'} */}
                       </Typography>
                     </CardContent>
@@ -240,7 +261,7 @@ const ProgramDetails = (props) => {
                 <div className="card-pad" style={styles.pad}>
                   <Card
                     className="card-pad"
-                    style={cardStyle}
+                    style={bgcolorApplicationDev}
                     className={classes.root}
                     variant="outlined"
                   >
@@ -262,7 +283,9 @@ const ProgramDetails = (props) => {
                         component="p"
                         className={classess.centerContent}
                       >
-                        <Link to={`/track/{"abc"}`}>{course.title}</Link>
+                        <Link style={titleColor} to={`/track/{"abc"}`}>
+                          {course.title}
+                        </Link>
                         {/* {'"a benevolent smile"'} */}
                       </Typography>
                     </CardContent>
@@ -275,6 +298,9 @@ const ProgramDetails = (props) => {
               </Grid>
             );
           })}
+          <article>
+            {documentToReactComponents(program.longDescription.json)}
+          </article>
         </Grid>
       </div>
     </Page>
