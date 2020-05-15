@@ -52,7 +52,7 @@ const TrackDetails = (props) => {
     console.log("CCCCCCCCCCC " + track.title + JSON.stringify(certifications));
   }
 
-  var certificationsJSX;
+  var certificationsJSX = < > </>;
   var certMessage = <></>;
   var once = true;
   if (certifications) {
@@ -61,7 +61,7 @@ const TrackDetails = (props) => {
         certMessage = <div>Prepares the student for the following International Certifications</div>;
         once = false;
       }
-      certificationsJSX = <a href={cert.url} target="_blank">{cert.title}</a> 
+    certificationsJSX = <div><div>{certificationsJSX}</div><a href={cert.url} target="_blank">{cert.title}</a></div> 
   });
   } else {
     certificationsJSX = < > </>;
