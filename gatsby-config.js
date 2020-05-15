@@ -1,7 +1,7 @@
-const dotenv = require ("dotenv");
+const dotenv = require("dotenv");
 
 //if(process.env.NODE_ENV !== 'production'){
-  dotenv.config();
+dotenv.config();
 //}
 
 module.exports = {
@@ -40,8 +40,13 @@ module.exports = {
       options: {
         spaceId: `6y7x6a0he6ux`,
         // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/details/*`] },
+    },
+    `gatsby-plugin-netlify`,
   ],
 };

@@ -1,0 +1,74 @@
+.card-media {
+  height: 200px;
+}
+.pad {
+  padding: 0px !important;
+}
+.bg-white div {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2) !important;
+  height: 180px !important;
+}
+
+.bg-color-technical div {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3) !important;
+  height: 180px !important;
+  color: gold !important;
+  background-color: rgba(25, 42, 86, 0.5) !important;
+}
+.bg-color-innovation div {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3) !important;
+  height: 180px !important;
+  color: gold !important;
+  background-color: rgba(25, 42, 86, 0.75) !important;
+}
+
+.bg-technical-card div {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3) !important;
+  height: 180px !important;
+  color: gold;
+  background-color: rgba(25, 42, 86, 0.5);
+}
+.bg-color-applicationDev div {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3) !important;
+  height: 180px !important;
+  color: gold;
+  background-color: #192a56;
+}
+
+.link-title {
+  color: white;
+}
+
+.card-pad {
+  cursor: pointer;
+}
+
+.MuiTypography-body1 {
+  font-size: 1.5em !important;
+  padding-top: 15px;
+}
+
+.MuiPaper-root {
+  transition: all 0.4s ease-in-out !important;
+}
+
+.card-pad:hover .MuiPaper-root {
+  height: 180px !important;
+  margin-top: -15px !important;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.arrow-right {
+  text-align: center;
+  padding: 10px 0px;
+  display: none;
+}
+
+.card-pad:hover .arrow-right {
+  display: block;
+  padding: 10px 0px;
+}
+
+.link-color {
+  color: white;
+}

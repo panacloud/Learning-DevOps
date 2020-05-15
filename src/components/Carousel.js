@@ -10,6 +10,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { autoPlay } from "react-swipeable-views-utils";
 import withStyles from "@material-ui/styles/withStyles";
+import carouselData from "../services/carousel-service.json";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const styles = {
   cardMedia: {
@@ -21,7 +22,9 @@ class Carousel extends React.Component {
   state = {
     activeStep: 0,
   };
-  arr = [];
+
+  items = carouselData;
+
   handleNext = () => {
     this.setState((prevState) => ({
       activeStep: prevState.activeStep + 1,
@@ -41,7 +44,8 @@ class Carousel extends React.Component {
   render() {
     const { activeStep } = this.state;
     const { classes, items } = this.props;
-    const maxSteps = items.length;
+
+    const filteredData = [];
     return (
       <Paper elevation={0}>
         <StaticQuery
@@ -52,9 +56,18 @@ class Carousel extends React.Component {
                   courseCatalog {
                     programsAvailable {
                       title
+
+                      slug
                       id
                       shortDescription {
                         shortDescription
+                      }
+
+                      image {
+                        title
+                        file {
+                          url
+                        }
                       }
                     }
                   }
@@ -63,55 +76,80 @@ class Carousel extends React.Component {
             }
           `}
           render={(data) => {
-            console.log(
+            const defaultData =
               data.allContentfulFranchisee.nodes[0].courseCatalog
-                .programsAvailable
-            );
-            this.arr =
-              data.allContentfulFranchisee.nodes[0].courseCatalog.programsAvailable;
+                .programsAvailable;
+            defaultData.forEach((dataItem, dataIndex) => {
+              const filteredItem = Object.assign(
+                {},
+                {
+                  node: {
+                    id: dataItem.id,
+                    excerpt: dataItem.shortDescription.shortDescription,
+                    frontmatter: {
+                      title: dataItem.title,
+                      date: "Unknown",
+                      path: "/programs/" + dataItem.slug,
+                      image: {
+                        publicURL: dataItem.image.file.url,
+                      },
+                    },
+                  },
+                }
+              );
+              filteredData.push(filteredItem);
+            });
+            this.items = filteredData;
           }}
         ></StaticQuery>
+
         <div>
-          <Typography>{items[activeStep].title}</Typography>
+          <Typography>
+            {(this.items[activeStep] || { title: "qwerty" }).title}
+          </Typography>
           <AutoPlaySwipeableViews
             axis={"x"}
             enableMouseEvents
             index={activeStep}
             onChangeIndex={this.handleStepChange}
           >
-            {/* {this.arr.map((data) => {
-              const { title } = data;
-            })} */}
-            {items.map((item, index) => {
-              const {
-                node: {
-                  excerpt,
-                  frontmatter: {
-                    path,
-                    title,
-                    image: { publicURL },
-                  },
-                },
-              } = item;
-              return (
-                <div key={index}>
-                  {Math.abs(activeStep - index) <= 2 ? (
-                    <Card>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image={withPrefix(publicURL)}
-                      />
-                      <CardContent>
-                        <Typography component="h2" gutterBottom variant="h5">
-                          <Link to={path}>{title}</Link>
-                        </Typography>
-                        <Typography component="p">{excerpt}</Typography>
-                      </CardContent>
-                    </Card>
-                  ) : null}
-                </div>
-              );
-            })}
+            {/* {JSON.stringify(this.items)} */}
+            {this.items.length > 0
+              ? this.items.map((item, index) => {
+                  const {
+                    node: {
+                      excerpt,
+                      frontmatter: {
+                        path,
+                        title,
+                        image: { publicURL },
+                      },
+                    },
+                  } = item;
+                  return (
+                    <div key={index}>
+                      {Math.abs(activeStep - index) <= 2 ? (
+                        <Card>
+                          <CardMedia
+                            className={classes.cardMedia}
+                            image={publicURL}
+                          />
+                          <CardContent>
+                            <Typography
+                              component="h2"
+                              gutterBottom
+                              variant="h5"
+                            >
+                              <Link to={path}>{title}</Link>
+                            </Typography>
+                            <Typography component="p">{excerpt}</Typography>
+                          </CardContent>
+                        </Card>
+                      ) : null}
+                    </div>
+                  );
+                })
+              : null}
           </AutoPlaySwipeableViews>
           <MobileStepper
             activeStep={activeStep}
@@ -126,7 +164,7 @@ class Carousel extends React.Component {
             }
             nextButton={
               <Button
-                disabled={activeStep === maxSteps - 1}
+                disabled={activeStep === this.items.length - 1}
                 onClick={this.handleNext}
                 size="small"
               >
@@ -134,7 +172,7 @@ class Carousel extends React.Component {
               </Button>
             }
             position="static"
-            steps={maxSteps}
+            steps={this.items.length}
           />
         </div>
       </Paper>

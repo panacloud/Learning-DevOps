@@ -61,6 +61,8 @@ Update contentful space id in gatsby.config.js
 
 Update contentful access token in .env e.g. CONTENTFUL_ACCESS_TOKEN=my_access_token
 
+> > > > > > > 509eab674c258a994cc442331fefc71cc2f043c7
+
 ## Deployment
 
 ```

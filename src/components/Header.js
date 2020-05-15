@@ -12,57 +12,49 @@ import Chip from "@material-ui/core/Chip";
 import Avatar from "@material-ui/core/Avatar";
 import { MaterialUi } from "mdi-material-ui";
 
+import useCompanyName from "../hooks/useCompanyNameData";
+
 const Header = (props) => {
+  const companyName = useCompanyName();
+  //console.log("NNNNNNNNNNNNNN " + companyName);
   return (
-    <AppBar id="appBar">
-      <Toolbar>
-        <Grid alignItems="center" container justify="space-between" spacing={8}>
-          <Grid item>
-            <Chip
-              avatar={
-                <Avatar id="logoIcon">
-                  <MaterialUi />
-                </Avatar>
-              }
-              id="logo"
-              label={
-                <Link to="/">
-                  {props.data.allContentfulFranchisee.edges[0].node.companyName}
-                </Link>
-              }
-              variant="outlined"
-            />
+    <div>
+      <AppBar id="appBar">
+        <Toolbar>
+          <Grid
+            alignItems="center"
+            container
+            justify="space-between"
+            spacing={8}
+          >
+            <Grid item>
+              <Chip
+                avatar={
+                  <Avatar id="logoIcon">
+                    <MaterialUi />
+                  </Avatar>
+                }
+                id="logo"
+                label={<Link to="/">{companyName}</Link>}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item>
+              <Hidden smDown>
+                <Typography component="span" variant="caption">
+                  <Menu />
+                </Typography>
+              </Hidden>
+              <Hidden mdUp>
+                <MenuMobile />
+              </Hidden>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Hidden smDown>
-              <Typography component="span" variant="caption">
-                <Menu />
-              </Typography>
-            </Hidden>
-            <Hidden mdUp>
-              <MenuMobile />
-            </Hidden>
-          </Grid>
-        </Grid>
-        <Grid item />
-      </Toolbar>
-    </AppBar>
+          <Grid item />
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 };
 
-export default () => (
-  <StaticQuery
-    query={graphql`{
-    allContentfulFranchisee {
-      edges {
-        node {
-          companyName
-        }
-      }
-    }
-  }
-    `}
-    render={(data) => <Header data={data} />}
-  />
-);
-
+export default Header;

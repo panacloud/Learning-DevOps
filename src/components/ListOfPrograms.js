@@ -7,33 +7,67 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { withPrefix } from "gatsby";
 import withStyles from "@material-ui/styles/withStyles";
-import { StaticQuery, graphql } from "gatsby";
+
+import programs from "../hooks/useProgramsData";
 
 const styles = {
   cardMedia: {
     height: "200px",
   },
+
+  cardStyle: {
+    height: "400px",
+  },
+  color: {
+    color: "black",
+  },
 };
+
 const ListOfPrograms = (props) => {
+  const { classes } = props;
+  //console.log("AAAAAAAAAAAA");
+  const programsAvailable = programs();
+  //console.log(programsAvailable);
   return (
-    <StaticQuery
-      query={detailsQuery}
-      render={(data) => {
-        // console.log(data);
-        return <div></div>;
-      }}
-    />
+    <Grid
+      alignItems="flex-start"
+      container
+      direction="row"
+      justify="center"
+      spacing={8}
+    >
+      {programsAvailable.map((program) => {
+        //console.log('zzzzzzzzzzzzzzzzzz ' + program.image.file.url);
+        return (
+          <Grid item key={"/programs/" + program.slug} md={6} xs={12}>
+            <Card style={styles.cardStyle}>
+              <CardMedia
+                className={classes.cardMedia}
+                image={program.image.file.url}
+              />
+              <CardContent>
+                <Typography component="h2" gutterBottom variant="h5">
+                  <Link
+                    to={"/programs/" + program.slug}
+                    state={{ program: program }}
+                  >
+                    Certified {program.title} Professional
+                  </Link>
+                </Typography>
+
+                <Typography
+                  component="p"
+                  dangerouslySetInnerHTML={{
+                    __html: program.shortDescription.childMarkdownRemark.html,
+                  }}
+                ></Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        );
+      })}
+    </Grid>
   );
 };
 
-export const detailsQuery = graphql`
-  {
-    contentfulQuiz {
-      title
-    }
-  }
-`;
-
 export default withStyles(styles)(ListOfPrograms);
-
-//{props.data.allContentfulFranchisee.edges[0].node.courseCatalog.programsAvailable}

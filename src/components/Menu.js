@@ -7,7 +7,7 @@ import withStyles from "@material-ui/styles/withStyles";
 
 const styles = (theme) => ({
   menuButton: {
-    color: theme.palette.primary.contrastText,
+    // color: theme.palette.primary.contrastText,
   },
 });
 
