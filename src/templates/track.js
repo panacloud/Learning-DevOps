@@ -132,12 +132,13 @@ const TrackDetails = (props) => {
                   <CardContent className={useStyles.centerContent}>
                     <Typography className={classess.centerContent} gutterBottom>
                       Quarter {course.quarter}
+                      
                     </Typography>
-                    <Typography variant="h5" component="h2">
-                      {/* be{bull}nev{bull}o{bull}lent */}
+                    <Typography variant="h5" component="h2" className={classess.centerContent} >
+                    { course.courseNumber }
                     </Typography>
                     <Typography className={classes.pos} color="textSecondary">
-                      {/* adjective */}
+                    
                     </Typography>
                     <Typography
                       variant="body2"
@@ -161,8 +162,12 @@ const TrackDetails = (props) => {
               {/* </Paper> */}
             </Grid>
           );
+          
         })}
         {/* </article> */}
+        <article>
+            {documentToReactComponents(track.description.json)}
+            </article>
       </Grid>
     </Page>
   );
