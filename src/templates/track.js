@@ -48,32 +48,36 @@ const TrackDetails = (props) => {
   }
 
   const certifications = track.certifications;
-  if (certifications) {
-    console.log("CCCCCCCCCCC " + track.title + JSON.stringify(certifications));
-  }
+  // if (certifications) {
+  //   console.log("CCCCCCCCCCC " + track.title + JSON.stringify(certifications));
+  // }
 
-  var certificationsJSX;
-  var certMessage = <></>;
-  var once = true;
-  if (certifications) {
-    certifications.map((cert) => {
-      if (once) {
-        certMessage = (
-          <div>
-            Prepares the student for the following International Certifications
-          </div>
-        );
-        once = false;
-      }
-      certificationsJSX = (
-        <a href={cert.url} target="_blank">
-          {cert.title}
-        </a>
-      );
-    });
-  } else {
-    certificationsJSX = <> </>;
-  }
+  // var certificationsJSX = <> </>;
+  // var certMessage = <></>;
+  // var once = true;
+  // if (certifications) {
+  //   certifications.map((cert) => {
+  //     if (once) {
+  //       certMessage = (
+  //         <div>
+  //           Prepares the student for the following International Certifications
+  //         </div>
+  //       );
+  //       once = false;
+  //     }
+
+  //     certificationsJSX = (
+  //       <div>
+  //         <div>{certificationsJSX}</div>
+  //         <a href={cert.url} target="_blank">
+  //           {cert.title}
+  //         </a>
+  //       </div>
+  //     );
+  //   });
+  // } else {
+  //   certificationsJSX = <> </>;
+  // }
 
   useEffect(() => {});
   return (
@@ -81,10 +85,27 @@ const TrackDetails = (props) => {
       <SEO title={track.title} />
       <div>Objective of the Track</div>
       <div dangerouslySetInnerHTML={createObjectiveMarkup()} />
-
       {/* Note that external links still use `a` tags not Link. */}
-      {certMessage}
-      {certificationsJSX}
+      {/* {certMessage}
+      {certificationsJSX} */}
+      <ol>
+        {certifications && (
+          <span style={{ color: "#296" }}>
+            Prepares the student for the following International Certifications:
+          </span>
+        )}
+        {certifications &&
+          certifications?.map((cert, key) => {
+            return (
+              <li key={key}>
+                <a href={cert.url} target="_blank">
+                  {cert.title}
+                </a>
+              </li>
+            );
+          })}
+      </ol>
+      {/* <div>{}</div> */}
 
       <article>
         {track.courses.map((course) => {
