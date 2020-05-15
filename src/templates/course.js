@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const CourseDetails = (props) => {
+  console.log(props);
   // All programs list
   const course = props.pageContext.course;
 
@@ -49,7 +50,6 @@ const CourseDetails = (props) => {
       <SEO title="Course" />
       <div>
         <h1 className="program-title">{course.title}</h1>
-        
       </div>
     </Page>
   );

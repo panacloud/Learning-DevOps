@@ -12,6 +12,7 @@ import SEO from "../components/SEO";
 import Page from "../components/Page";
 import { makeStyles } from "@material-ui/core/styles";
 import CardActions from "@material-ui/core/CardActions";
+import style from "../css/program.css";
 
 const styles = {
   cardMedia: {
@@ -19,6 +20,10 @@ const styles = {
   },
   pad: {
     padding: "0px !important",
+  },
+  card: {
+    boxShadow: "0px 0px 18px rgba(0,0,0,0.2)",
+    height: "170px",
   },
   cardStyle: {
     height: "400px",
@@ -37,31 +42,24 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
 }));
-var cardStyle = {
-  // display: 'block',
-  // width: '30vw',
-  transitionDuration: "1s",
-  height: "10vw",
-  backgroundColor: "rgba(25,42,86,.5)",
-  color: "white",
-};
+
 const bgcolorTechnical = {
-  transitionDuration: "1s",
-  height: "10vw",
+  boxShadow: "0px 0px 20px rgba(0,0,0,0.3)",
+  height: "180px",
+  color: "white",
   backgroundColor: "rgba(25,42,86,.5)",
-  color: "gold",
 };
 const bgcolorInnovation = {
-  transitionDuration: "1s",
-  height: "10vw",
+  boxShadow: "0px 0px 20px rgba(0,0,0,0.3)",
+  height: "180px",
   backgroundColor: "rgba(25,42,86,.75)",
-  color: "gold",
+  color: "white",
 };
 const bgcolorApplicationDev = {
-  transitionDuration: "1s",
-  height: "10vw",
+  boxShadow: "0px 0px 20px rgba(0,0,0,0.3)",
+  height: "180px",
   backgroundColor: "#192a56",
-  color: "gold",
+  color: "white",
 };
 const bgcolor = { backgroundColor: "white" };
 const titleColor = { color: "white" };
@@ -103,278 +101,264 @@ const ProgramDetails = (props) => {
                     __html: program.shortDescription.childMarkdownRemark.html,
                   }}
                 ></Typography>
-
-                <Typography component="h3" gutterBottom variant="h6">
+                <br />
+                <Typography
+                  style={{ textAlign: "center" }}
+                  component="h3"
+                  gutterBottom
+                  variant="h6"
+                >
                   In order to receive the certification the student has to
                   complete three tracks (sequence of courses):
                 </Typography>
+                {/* <article> */}
+
+                {/* </article> */}
+
+                {/* Heading for Technical Track */}
+                <br />
+                <br />
+                <Grid
+                  item
+                  alignItems="flex-start"
+                  container
+                  direction="row"
+                  justify="center"
+                  spacing={4}
+                >
+                  <Typography component="h3" gutterBottom variant="h5">
+                    <Link to={"/programs/tracks/" + technicalTrack.slug}>
+                      {technicalTrack.title} Course Sequence
+                    </Link>
+                  </Typography>
+                </Grid>
+                <br />
+                <Grid container spacing={2}>
+                  {technicalTrack.courses.map((course) => {
+                    return (
+                      <Grid
+                        className="card-pad"
+                        item
+                        key={course.quarter}
+                        md={3}
+                        xs={12}
+                      >
+                        {/* <Paper className={classes.paper}> */}
+                        <div className="card-pad" style={styles.pad}>
+                          <Card
+                            className="card-pad"
+                            style={bgcolorTechnical}
+                            className={classes.root}
+                            variant="outlined"
+                          >
+                            <CardContent className={useStyles.centerContent}>
+                              <Typography
+                                className={classess.centerContent}
+                                gutterBottom
+                              >
+                                Quarter {course.quarter}
+                              </Typography>
+                              <Typography variant="h5" component="h2">
+                                {/* be{bull}nev{bull}o{bull}lent */}
+                              </Typography>
+                              <Typography
+                                className={classes.pos}
+                                color="textSecondary"
+                              >
+                                {/* adjective */}
+                              </Typography>
+                              <Typography
+                                variant="body2"
+                                component="p"
+                                className={classess.centerContent}
+                              >
+                                <Link
+                                  style={titleColor}
+                                  to={
+                                    "/programs/tracks/courses/" +
+                                    course.courseNumber
+                                  }
+                                >
+                                  {course.title}
+                                </Link>
+                                {/* {'"a benevolent smile"'} */}
+                              </Typography>
+                            </CardContent>
+                            <CardActions>
+                              {/* <Button size="small">See more</Button> */}
+                            </CardActions>
+                          </Card>
+                        </div>
+                        {/* </Paper> */}
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+                {/* Heading for innovation track */}
+                <br />
+                <br />
+                <Grid
+                  item
+                  alignItems="flex-start"
+                  container
+                  direction="row"
+                  justify="center"
+                  spacing={4}
+                >
+                  <Typography component="h3" gutterBottom variant="h5">
+                    <Link to={"/programs/tracks/" + innovationTrack.slug}>
+                      {innovationTrack.title} Course Sequence
+                    </Link>
+                  </Typography>
+                </Grid>
+                <br />
+                <Grid container spacing={2}>
+                  {innovationTrack.courses.map((course) => {
+                    return (
+                      <Grid
+                        className="card-pad"
+                        item
+                        key={course.quarter}
+                        md={4}
+                        xs={12}
+                      >
+                        {/* <Paper className={classes.paper}> */}
+                        <div className="card-pad" style={styles.pad}>
+                          <Card
+                            className="card-pad"
+                            style={bgcolorInnovation}
+                            className={classes.root}
+                            variant="outlined"
+                          >
+                            <CardContent className={useStyles.centerContent}>
+                              <Typography
+                                className={classess.centerContent}
+                                gutterBottom
+                              >
+                                Quarter {course.quarter}
+                              </Typography>
+                              <Typography variant="h5" component="h2">
+                                {/* be{bull}nev{bull}o{bull}lent */}
+                              </Typography>
+                              <Typography
+                                className={classes.pos}
+                                color="textSecondary"
+                              >
+                                {/* adjective */}
+                              </Typography>
+                              <Typography
+                                variant="body2"
+                                component="p"
+                                className={classess.centerContent}
+                              >
+                                <Link
+                                  style={titleColor}
+                                  to={
+                                    "/programs/tracks/courses/" +
+                                    course.courseNumber
+                                  }
+                                >
+                                  {course.title}
+                                </Link>
+                                {/* {'"a benevolent smile"'} */}
+                              </Typography>
+                            </CardContent>
+                            <CardActions>
+                              {/* <Button size="small">See more</Button> */}
+                            </CardActions>
+                          </Card>
+                        </div>
+                        {/* </Paper> */}
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+                {/* Heading for development track */}
+                <br />
+                <br />
+                <Grid
+                  item
+                  alignItems="flex-start"
+                  container
+                  direction="row"
+                  justify="center"
+                  spacing={4}
+                >
+                  <Typography component="h3" gutterBottom variant="h5">
+                    <Link to={"/programs/tracks/" + appDevelopmentTrack.slug}>
+                      {appDevelopmentTrack.title} Course Sequence
+                    </Link>
+                  </Typography>
+                </Grid>
+                <br />
+                <Grid container spacing={2}>
+                  {appDevelopmentTrack.courses.map((course) => {
+                    return (
+                      <Grid
+                        className="card-pad"
+                        item
+                        key={course.quarter}
+                        md={4}
+                        xs={12}
+                      >
+                        {/* <Paper className={classes.paper}> */}
+                        <div className="card-pad" style={styles.pad}>
+                          <Card
+                            className="card-pad"
+                            style={bgcolorApplicationDev}
+                            className={classes.root}
+                            variant="outlined"
+                          >
+                            <CardContent className={useStyles.centerContent}>
+                              <Typography
+                                className={classess.centerContent}
+                                gutterBottom
+                              >
+                                Quarter {course.quarter}
+                              </Typography>
+                              <Typography variant="h5" component="h2">
+                                {/* be{bull}nev{bull}o{bull}lent */}
+                              </Typography>
+                              <Typography
+                                className={classes.pos}
+                                color="textSecondary"
+                              >
+                                {/* adjective */}
+                              </Typography>
+                              <Typography
+                                variant="body2"
+                                component="p"
+                                className={classess.centerContent}
+                              >
+                                <Link
+                                  style={titleColor}
+                                  to={
+                                    "/programs/tracks/courses/" +
+                                    course.courseNumber
+                                  }
+                                >
+                                  {course.title}
+                                </Link>
+                                {/* {'"a benevolent smile"'} */}
+                              </Typography>
+                            </CardContent>
+                            <CardActions>
+                              {/* <Button size="small">See more</Button> */}
+                            </CardActions>
+                          </Card>
+                        </div>
+                        {/* </Paper> */}
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+                <br />
+                <article>
+                  {documentToReactComponents(program.longDescription.json)}
+                </article>
               </CardContent>
             </Card>
           </Grid>
-
-          {/* <article> */}
-          <Grid
-            item
-            alignItems="flex-start"
-            container
-            direction="row"
-            justify="center"
-            spacing={4}
-          >
-            <Typography component="h3" gutterBottom variant="h5">
-              <Link to={"/programs/tracks/" + technicalTrack.slug}>
-                {technicalTrack.title} Course Sequence
-              </Link>
-            </Typography>
-          </Grid>
-          {technicalTrack.courses.map((course) => {
-            return (
-              <Grid
-                className="card-pad"
-                item
-                key={course.quarter}
-                md={3}
-                xs={12}
-              >
-                {/* <Paper className={classes.paper}> */}
-                <div className="card-pad" style={styles.pad}>
-                  <Card
-                    className="card-pad"
-                    style={styles.pad}
-                    className={classes.root}
-                    variant="outlined"
-                  >
-                    <CardContent className={useStyles.centerContent}>
-                      <Typography
-                        className={classess.centerContent}
-                        gutterBottom
-                      >
-                        Quarter {course.quarter}
-                      </Typography>
-                      <Typography variant="h5" component="h2">
-                        {/* be{bull}nev{bull}o{bull}lent */}
-                      </Typography>
-                      <Typography className={classes.pos} color="textSecondary">
-                        {/* adjective */}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        component="p"
-                        className={classess.centerContent}
-                      >
-                        <Link
-                          to={"/programs/tracks/courses/" + course.courseNumber}
-                        >
-                          {course.title}
-                        </Link>
-                        {/* {'"a benevolent smile"'} */}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      {/* <Button size="small">See more</Button> */}
-                    </CardActions>
-                  </Card>
-                </div>
-                {/* </Paper> */}
-              </Grid>
-            );
-          })}
-          {/* </article> */}
-
-          {/* Heading for Technical Track */}
-          <Grid
-            item
-            alignItems="flex-start"
-            container
-            direction="row"
-            justify="center"
-            spacing={4}
-          >
-            <Typography component="h3" gutterBottom variant="h5">
-              {technicalTrack.title} Course Sequence
-            </Typography>
-          </Grid>
-          {technicalTrack.courses.map((course) => {
-            return (
-              <Grid
-                className="card-pad"
-                item
-                key={course.quarter}
-                md={3}
-                xs={12}
-              >
-                {/* <Paper className={classes.paper}> */}
-                <div className="card-pad" style={styles.pad}>
-                  <Card
-                    className="card-pad"
-                    style={bgcolorTechnical}
-                    className={classes.root}
-                    variant="outlined"
-                  >
-                    <CardContent className={useStyles.centerContent}>
-                      <Typography
-                        className={classess.centerContent}
-                        gutterBottom
-                      >
-                        Quarter {course.quarter}
-                      </Typography>
-                      <Typography variant="h5" component="h2">
-                        {/* be{bull}nev{bull}o{bull}lent */}
-                      </Typography>
-                      <Typography className={classes.pos} color="textSecondary">
-                        {/* adjective */}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        component="p"
-                        className={classess.centerContent}
-                      >
-                        <Link style={titleColor} to={`/track/{"abc"}`}>
-                          {course.title}
-                        </Link>
-                        {/* {'"a benevolent smile"'} */}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      {/* <Button size="small">See more</Button> */}
-                    </CardActions>
-                  </Card>
-                </div>
-                {/* </Paper> */}
-              </Grid>
-            );
-          })}
-
-          {/* Heading for innovation track */}
-          <Grid
-            item
-            alignItems="flex-start"
-            container
-            direction="row"
-            justify="center"
-            spacing={4}
-          >
-            <Typography component="h3" gutterBottom variant="h5">
-              {innovationTrack.title} Course Sequence
-            </Typography>
-          </Grid>
-          {innovationTrack.courses.map((course) => {
-            return (
-              <Grid
-                className="card-pad"
-                item
-                key={course.quarter}
-                md={4}
-                xs={12}
-              >
-                {/* <Paper className={classes.paper}> */}
-                <div className="card-pad" style={styles.pad}>
-                  <Card
-                    className="card-pad"
-                    style={bgcolorInnovation}
-                    className={classes.root}
-                    variant="outlined"
-                  >
-                    <CardContent className={useStyles.centerContent}>
-                      <Typography
-                        className={classess.centerContent}
-                        gutterBottom
-                      >
-                        Quarter {course.quarter}
-                      </Typography>
-                      <Typography variant="h5" component="h2">
-                        {/* be{bull}nev{bull}o{bull}lent */}
-                      </Typography>
-                      <Typography className={classes.pos} color="textSecondary">
-                        {/* adjective */}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        component="p"
-                        className={classess.centerContent}
-                      >
-                        <Link style={titleColor} to={`/track/{"abc"}`}>
-                          {course.title}
-                        </Link>
-                        {/* {'"a benevolent smile"'} */}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      {/* <Button size="small">See more</Button> */}
-                    </CardActions>
-                  </Card>
-                </div>
-                {/* </Paper> */}
-              </Grid>
-            );
-          })}
-
-          {/* Heading for development track */}
-          <Grid
-            item
-            alignItems="flex-start"
-            container
-            direction="row"
-            justify="center"
-            spacing={4}
-          >
-            <Typography component="h3" gutterBottom variant="h5">
-              {appDevelopmentTrack.title} Course Sequence
-            </Typography>
-          </Grid>
-          {appDevelopmentTrack.courses.map((course) => {
-            return (
-              <Grid
-                className="card-pad"
-                item
-                key={course.quarter}
-                md={4}
-                xs={12}
-              >
-                {/* <Paper className={classes.paper}> */}
-                <div className="card-pad" style={styles.pad}>
-                  <Card
-                    className="card-pad"
-                    style={bgcolorApplicationDev}
-                    className={classes.root}
-                    variant="outlined"
-                  >
-                    <CardContent className={useStyles.centerContent}>
-                      <Typography
-                        className={classess.centerContent}
-                        gutterBottom
-                      >
-                        Quarter {course.quarter}
-                      </Typography>
-                      <Typography variant="h5" component="h2">
-                        {/* be{bull}nev{bull}o{bull}lent */}
-                      </Typography>
-                      <Typography className={classes.pos} color="textSecondary">
-                        {/* adjective */}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        component="p"
-                        className={classess.centerContent}
-                      >
-                        <Link style={titleColor} to={`/track/{"abc"}`}>
-                          {course.title}
-                        </Link>
-                        {/* {'"a benevolent smile"'} */}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      {/* <Button size="small">See more</Button> */}
-                    </CardActions>
-                  </Card>
-                </div>
-                {/* </Paper> */}
-              </Grid>
-            );
-          })}
-          <article>
-            {documentToReactComponents(program.longDescription.json)}
-          </article>
         </Grid>
       </div>
     </Page>

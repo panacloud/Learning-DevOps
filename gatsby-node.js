@@ -31,10 +31,10 @@ exports.createPages = async ({ graphql, actions }) => {
                   slug
                   objective {
                     childMarkdownRemark {
-                    html
+                      html
+                    }
                   }
-                  }
-                  certifications{
+                  certifications {
                     title
                     url
                   }
@@ -62,10 +62,10 @@ exports.createPages = async ({ graphql, actions }) => {
                   slug
                   objective {
                     childMarkdownRemark {
-                    html
+                      html
+                    }
                   }
-                  }
-                  certifications{
+                  certifications {
                     title
                     url
                   }
@@ -93,10 +93,10 @@ exports.createPages = async ({ graphql, actions }) => {
                   slug
                   objective {
                     childMarkdownRemark {
-                    html
+                      html
+                    }
                   }
-                  }
-                  certifications{
+                  certifications {
                     title
                     url
                   }
@@ -118,14 +118,6 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                   }
                 }
-                
-
-
-
-
-
-
-
               }
             }
           }
@@ -136,8 +128,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const availablePrograms =
     detailProgram.data.allContentfulFranchisee.edges[0].node.courseCatalog
       .programsAvailable;
-  
-      var technicalTrack;    
+
+  var technicalTrack;
   let isDoOnceFlag = true;
   availablePrograms.map((program) => {
     createPage({
@@ -174,7 +166,51 @@ exports.createPages = async ({ graphql, actions }) => {
       });
     });
 
-    if(isDoOnceFlag){
+    innovationTrack = program.innovationTrack;
+    createPage({
+      path: "/programs/tracks/" + innovationTrack.slug + "/",
+      component: path.resolve(`./src/templates/track.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        track: innovationTrack,
+      },
+    });
+    innovationTrack.courses.map((course) => {
+      createPage({
+        path: "/programs/tracks/courses/" + course.courseNumber + "/",
+        component: path.resolve(`./src/templates/course.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          course: course,
+        },
+      });
+    });
+
+    appDevelopmentTrack = program.appDevelopmentTrack;
+    createPage({
+      path: "/programs/tracks/" + appDevelopmentTrack.slug + "/",
+      component: path.resolve(`./src/templates/track.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        track: appDevelopmentTrack,
+      },
+    });
+    appDevelopmentTrack.courses.map((course) => {
+      createPage({
+        path: "/programs/tracks/courses/" + course.courseNumber + "/",
+        component: path.resolve(`./src/templates/course.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          course: course,
+        },
+      });
+    });
+
+    if (isDoOnceFlag) {
       isDoOnceFlag = false;
 
       innovationTrack = program.innovationTrack;
@@ -200,16 +236,9 @@ exports.createPages = async ({ graphql, actions }) => {
           track: appDevelopmentTrack,
         },
       });
-
-
-
     }
-
-
   });
-
-}
-  
+};
 
 /*
 There are two different ways to create dynamic pages:
@@ -220,20 +249,18 @@ https://stackoverflow.com/questions/55756994/how-to-create-dynamic-route-in-gats
 Here we are using method 1
 */
 
-
 // Implement the Gatsby API “onCreatePage”. This is
 //alled after every page is created.
 //exports.onCreatePage = async ({ page, actions }) => {
 //  const { createPage } = actions;
 
-  // Only update the `/details` page.
+// Only update the `/details` page.
 //  if (page.path.match(/^\/details/)) {
-    // page.matchPath is a special key that's used for matching pages
-    // with corresponding routes only on the client.
+// page.matchPath is a special key that's used for matching pages
+// with corresponding routes only on the client.
 //    page.matchPath = "/details/*";
 
-    // Update the page.
+// Update the page.
 //    createPage(page);
 //  }};
 //}
-

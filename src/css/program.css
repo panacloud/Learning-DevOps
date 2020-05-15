@@ -1,0 +1,30 @@
+.card-pad {
+  cursor: pointer;
+}
+
+.MuiTypography-body1 {
+  font-size: 1.5em !important;
+  padding-top: 15px;
+}
+
+.MuiPaper-root {
+  transition: margin-top 600ms ease-in-out 1s;
+}
+
+.card-pad:hover .MuiPaper-root {
+  height: 180px !important;
+  margin-top: -13px !important;
+  width: 103% !important;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9);
+  opacity: 1;
+}
+
+.arrow-right {
+  text-align: end;
+  padding: 10px 0px;
+  display: none;
+}
+
+.card-pad:hover .arrow-right {
+  display: block;
+}
