@@ -50,6 +50,7 @@ You can adjust the theme palette colors in
 [`getPageContext.js`](https://github.com/bluepeter/gatsby-material-ui-business-starter/blob/master/src/utils/getPageContext.js).
 
 ## Development
+
 ```
 npm install
 ```
@@ -59,7 +60,6 @@ Delete node_modules/gatsby-source-contentful/src/fragements.js
 Update contentful space id in gatsby.config.js
 
 Update contentful access token in .env e.g. CONTENTFUL_ACCESS_TOKEN=my_access_token
-
 
 ## Deployment
 
