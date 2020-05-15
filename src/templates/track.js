@@ -48,6 +48,25 @@ const TrackDetails = (props) => {
   }
 
   const certifications = track.certifications;
+  if(certifications){
+    console.log("CCCCCCCCCCC " + track.title + JSON.stringify(certifications));
+  }
+
+  var certificationsJSX;
+  var certMessage = <></>;
+  var once = true;
+  if (certifications) {
+    certifications.map((cert) => {
+      if(once){
+        certMessage = <div>Prepares the student for the following International Certifications</div>;
+        once = false;
+      }
+      certificationsJSX = <a href={cert.url} target="_blank">{cert.title}</a> 
+  });
+  } else {
+    certificationsJSX = < > </>;
+  } 
+
 
   useEffect(() => {});
   return (
@@ -55,9 +74,10 @@ const TrackDetails = (props) => {
       <SEO title={track.title} />
       <div>Objective of the Track</div>
       <div dangerouslySetInnerHTML={createObjectiveMarkup()} />
-      <div>Prepares the student for the following International Certifications</div>
-      <div>Add Certifications here</div>
-
+      
+      {/* Note that external links still use `a` tags not Link. */}
+      {certMessage}
+      {certificationsJSX}
 
       <article>
                 {track.courses.map((course) => {
