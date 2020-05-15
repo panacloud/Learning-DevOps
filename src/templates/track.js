@@ -88,14 +88,12 @@ const TrackDetails = (props) => {
       {/* Note that external links still use `a` tags not Link. */}
       {/* {certMessage}
       {certificationsJSX} */}
-      <ol>
-        {certifications && (
-          <span style={{ color: "#296" }}>
+      {certifications && (
+        <ol>
+          <h5 style={{ color: "#296" }}>
             Prepares the student for the following International Certifications:
-          </span>
-        )}
-        {certifications &&
-          certifications?.map((cert, key) => {
+          </h5>
+          {certifications?.map((cert, key) => {
             return (
               <li key={key}>
                 <a href={cert.url} target="_blank">
@@ -104,18 +102,30 @@ const TrackDetails = (props) => {
               </li>
             );
           })}
-      </ol>
-      {/* <div>{}</div> */}
+        </ol>
+      )}
 
-      <article>
+      <Grid
+        alignItems="flex-start"
+        container
+        direction="row"
+        justify="center"
+        spacing={4}
+      >
+        {/* <article> */}
         {track.courses.map((course) => {
           return (
-            <Grid className="card-pad" item key={course.quarter} md={4} xs={12}>
+            <Grid
+              className="card-pad bg-color-applicationDev"
+              item
+              key={course.quarter}
+              md={3}
+              xs={12}
+            >
               {/* <Paper className={classes.paper}> */}
-              <div className="card-pad" style={styles.pad}>
+              <div className="card-pad pad" style={styles.pad}>
                 <Card
                   className="card-pad"
-                  style={styles.pad}
                   className={classes.root}
                   variant="outlined"
                 >
@@ -135,6 +145,7 @@ const TrackDetails = (props) => {
                       className={classess.centerContent}
                     >
                       <Link
+                        className="link-title"
                         to={"/programs/tracks/courses/" + course.courseNumber}
                       >
                         {course.title}
@@ -151,7 +162,8 @@ const TrackDetails = (props) => {
             </Grid>
           );
         })}
-      </article>
+        {/* </article> */}
+      </Grid>
     </Page>
   );
 };

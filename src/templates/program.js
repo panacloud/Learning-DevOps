@@ -43,26 +43,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const bgcolorTechnical = {
-  boxShadow: "0px 0px 20px rgba(0,0,0,0.3)",
-  height: "180px",
-  color: "white",
-  backgroundColor: "rgba(25,42,86,.5)",
-};
-const bgcolorInnovation = {
-  boxShadow: "0px 0px 20px rgba(0,0,0,0.3)",
-  height: "180px",
-  backgroundColor: "rgba(25,42,86,.75)",
-  color: "white",
-};
-const bgcolorApplicationDev = {
-  boxShadow: "0px 0px 20px rgba(0,0,0,0.3)",
-  height: "180px",
-  backgroundColor: "#192a56",
-  color: "white",
-};
-const bgcolor = { backgroundColor: "white" };
-const titleColor = { color: "white" };
 const ProgramDetails = (props) => {
   // All programs list
   const program = props.pageContext.program;
@@ -91,7 +71,7 @@ const ProgramDetails = (props) => {
           <Grid item key={"/programs/" + program.slug} md={12} xs={12}>
             <Card>
               <CardMedia
-                className={classes.cardMedia}
+                className={"card-media"}
                 image={program.image.file.url}
               />
               <CardContent>
@@ -111,11 +91,7 @@ const ProgramDetails = (props) => {
                   In order to receive the certification the student has to
                   complete three tracks (sequence of courses):
                 </Typography>
-                {/* <article> */}
 
-                {/* </article> */}
-
-                {/* Heading for Technical Track */}
                 <br />
                 <br />
                 <Grid
@@ -137,22 +113,23 @@ const ProgramDetails = (props) => {
                   {technicalTrack.courses.map((course) => {
                     return (
                       <Grid
-                        className="card-pad"
+                        className="card-pad bg-color-technical"
                         item
                         key={course.quarter}
                         md={3}
                         xs={12}
                       >
                         {/* <Paper className={classes.paper}> */}
-                        <div className="card-pad" style={styles.pad}>
+                        <div className="card-pad pad">
                           <Card
-                            className="card-pad"
-                            style={bgcolorTechnical}
+                            className="card-pad bg-color-technical"
+                            // style={bgcolorTechnical}
                             className={classes.root}
                             variant="outlined"
                           >
                             <CardContent className={useStyles.centerContent}>
                               <Typography
+                                className="cardTitle"
                                 className={classess.centerContent}
                                 gutterBottom
                               >
@@ -173,7 +150,7 @@ const ProgramDetails = (props) => {
                                 className={classess.centerContent}
                               >
                                 <Link
-                                  style={titleColor}
+                                  className="link-color"
                                   to={
                                     "/programs/tracks/courses/" +
                                     course.courseNumber
@@ -182,6 +159,13 @@ const ProgramDetails = (props) => {
                                   {course.title}
                                 </Link>
                                 {/* {'"a benevolent smile"'} */}
+                              </Typography>
+                              <Typography className="arrow-right">
+                                <img
+                                  height="20px"
+                                  width="20px"
+                                  src={require("../pages/team/point-to.png")}
+                                />
                               </Typography>
                             </CardContent>
                             <CardActions>
@@ -216,17 +200,16 @@ const ProgramDetails = (props) => {
                   {innovationTrack.courses.map((course) => {
                     return (
                       <Grid
-                        className="card-pad"
+                        className="card-pad bg-color-technical"
                         item
                         key={course.quarter}
                         md={4}
                         xs={12}
                       >
                         {/* <Paper className={classes.paper}> */}
-                        <div className="card-pad" style={styles.pad}>
+                        <div className="card-pad pad">
                           <Card
-                            className="card-pad"
-                            style={bgcolorInnovation}
+                            className="card-pad bg-color-innovation"
                             className={classes.root}
                             variant="outlined"
                           >
@@ -252,7 +235,7 @@ const ProgramDetails = (props) => {
                                 className={classess.centerContent}
                               >
                                 <Link
-                                  style={titleColor}
+                                  className="link-color"
                                   to={
                                     "/programs/tracks/courses/" +
                                     course.courseNumber
@@ -261,6 +244,13 @@ const ProgramDetails = (props) => {
                                   {course.title}
                                 </Link>
                                 {/* {'"a benevolent smile"'} */}
+                              </Typography>
+                              <Typography className="arrow-right">
+                                <img
+                                  height="20px"
+                                  width="20px"
+                                  src={require("../pages/team/point-to.png")}
+                                />
                               </Typography>
                             </CardContent>
                             <CardActions>
@@ -295,17 +285,16 @@ const ProgramDetails = (props) => {
                   {appDevelopmentTrack.courses.map((course) => {
                     return (
                       <Grid
-                        className="card-pad"
+                        className="card-pad bg-color-applicationDev"
                         item
                         key={course.quarter}
                         md={4}
                         xs={12}
                       >
                         {/* <Paper className={classes.paper}> */}
-                        <div className="card-pad" style={styles.pad}>
+                        <div className="card-pad pad" style={styles.pad}>
                           <Card
                             className="card-pad"
-                            style={bgcolorApplicationDev}
                             className={classes.root}
                             variant="outlined"
                           >
@@ -331,7 +320,7 @@ const ProgramDetails = (props) => {
                                 className={classess.centerContent}
                               >
                                 <Link
-                                  style={titleColor}
+                                  className="link-title"
                                   to={
                                     "/programs/tracks/courses/" +
                                     course.courseNumber
@@ -340,6 +329,13 @@ const ProgramDetails = (props) => {
                                   {course.title}
                                 </Link>
                                 {/* {'"a benevolent smile"'} */}
+                              </Typography>
+                              <Typography className="arrow-right">
+                                <img
+                                  height="20px"
+                                  width="20px"
+                                  src={require("../pages/team/point-to.png")}
+                                />
                               </Typography>
                             </CardContent>
                             <CardActions>
