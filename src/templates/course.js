@@ -40,8 +40,10 @@ const CourseDetails = (props) => {
   // All programs list
   const course = props.pageContext.course;
   const certification = course.certification;
+  const textBooks = course.textBooks;
+  const referenceBooks = course.referenceBooks;
 
-  console.log("certification" + JSON.stringify(course.certification));
+  //console.log("Text Booksaa " + JSON.stringify(course.textBooks));
 
   const { classes } = props;
   const classess = useStyles();
@@ -73,6 +75,41 @@ const CourseDetails = (props) => {
           })}
         </ol>
       )}
+
+        {textBooks && (
+        <ol>
+          <h5 style={{ color: "#296" }}>
+            Text Book(s):
+          </h5>
+          {textBooks?.map((book, key) => {
+            return (
+              <li key={key}>
+                <a href={book.url} target="_blank">
+                  {book.title} by {book.authors}
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+      )}
+
+      {referenceBooks && (
+        <ol>
+          <h5 style={{ color: "#296" }}>
+            Reference Book(s):
+          </h5>
+          {referenceBooks?.map((book, key) => {
+            return (
+              <li key={key}>
+                <a href={book.url} target="_blank">
+                  {book.title} by {book.authors}
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+      )}
+
 
       </div>
     </Page>

@@ -53,6 +53,16 @@ exports.createPages = async ({ graphql, actions }) => {
                       title
                       url
                     }
+                    textBooks{
+                      title
+                      authors
+                      url
+                    }
+                    referenceBooks{
+                      title
+                      authors
+                      url
+                    }
                     quarter
                     track {
                       courses {
@@ -89,6 +99,16 @@ exports.createPages = async ({ graphql, actions }) => {
                       title
                       url
                     }
+                    textBooks{
+                      title
+                      authors
+                      url
+                    }
+                    referenceBooks{
+                      title
+                      authors
+                      url
+                    }
                     quarter
                     track {
                       courses {
@@ -123,6 +143,16 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                     certification {
                       title
+                      url
+                    }
+                    textBooks{
+                      title
+                      authors
+                      url
+                    }
+                    referenceBooks{
+                      title
+                      authors
                       url
                     }
                     quarter
