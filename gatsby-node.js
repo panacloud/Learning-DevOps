@@ -63,6 +63,23 @@ exports.createPages = async ({ graphql, actions }) => {
                       authors
                       url
                     }
+                    sections{
+                      title
+                      serialNumber
+                      weeks
+                      quiz{
+                        title
+                        week
+                      }
+                      lineItem{
+                        title
+                        shortDescription {
+                          childMarkdownRemark {
+                            html
+                          }
+                        }
+                      }
+                    }
                     quarter
                     track {
                       courses {
@@ -109,6 +126,23 @@ exports.createPages = async ({ graphql, actions }) => {
                       authors
                       url
                     }
+                    sections{
+                      title
+                      serialNumber
+                      weeks
+                      quiz{
+                        title
+                        week
+                      }
+                      lineItem{
+                        title
+                        shortDescription {
+                          childMarkdownRemark {
+                            html
+                          }
+                        }
+                      }
+                    }
                     quarter
                     track {
                       courses {
@@ -154,6 +188,23 @@ exports.createPages = async ({ graphql, actions }) => {
                       title
                       authors
                       url
+                    }
+                    sections{
+                      title
+                      serialNumber
+                      weeks
+                      quiz{
+                        title
+                        week
+                      }
+                      lineItem{
+                        title
+                        shortDescription {
+                          childMarkdownRemark {
+                            html
+                          }
+                        }
+                      }
                     }
                     quarter
                     track {

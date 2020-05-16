@@ -42,8 +42,9 @@ const CourseDetails = (props) => {
   const certification = course.certification;
   const textBooks = course.textBooks;
   const referenceBooks = course.referenceBooks;
+  const sections = course.sections;
 
-  //console.log("Text Booksaa " + JSON.stringify(course.textBooks));
+  console.log("Sections " + JSON.stringify(sections));
 
   const { classes } = props;
   const classess = useStyles();
@@ -111,6 +112,31 @@ const CourseDetails = (props) => {
       )}
 
 
+       <div>Course Outline:</div>
+
+      {sections.map((item)=>{
+          return (
+          <div>
+            <div>{item.serialNumber}. {item.title} (Week {item.weeks})</div>
+            {item.lineItem.map((line) => {
+                return (
+                    <div>
+                        <div>{line.title}</div>
+                        <div dangerouslySetInnerHTML={{
+                            __html: line.shortDescription.childMarkdownRemark.html,
+                        }}></div>
+                    </div>
+                )
+            })}
+            {item.quiz && (
+                <div>{item.quiz?.title} in Week {item.quiz?.week}</div>
+            )}
+            
+            <br/>
+          </div>
+          )
+      })}
+    
       </div>
     </Page>
   );
