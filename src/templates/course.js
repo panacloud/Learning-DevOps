@@ -39,8 +39,9 @@ const useStyles = makeStyles((theme) => ({
 const CourseDetails = (props) => {
   // All programs list
   const course = props.pageContext.course;
+  const certification = course.certification;
 
-  console.log("Description" + JSON.stringify(course.description));
+  console.log("certification" + JSON.stringify(course.certification));
 
   const { classes } = props;
   const classess = useStyles();
@@ -55,6 +56,23 @@ const CourseDetails = (props) => {
         <div dangerouslySetInnerHTML={{
                     __html: course.description.childMarkdownRemark.html,
                   }}></div>
+
+        {certification && (
+        <ol>
+          <h5 style={{ color: "#296" }}>
+            Prepares the student for the following International Certification(s):
+          </h5>
+          {certification?.map((cert, key) => {
+            return (
+              <li key={key}>
+                <a href={cert.url} target="_blank">
+                  {cert.title}
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+      )}
 
       </div>
     </Page>
