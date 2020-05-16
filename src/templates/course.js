@@ -40,15 +40,22 @@ const CourseDetails = (props) => {
   // All programs list
   const course = props.pageContext.course;
 
+  console.log("Description" + JSON.stringify(course.description));
+
   const { classes } = props;
   const classess = useStyles();
 
   useEffect(() => {});
   return (
-    <Page title="Course">
-      <SEO title="Course" />
+    <Page title="Course Syllabus">
+      <SEO title="Course Syllabus" />
       <div>
-        <h1 className="program-title">{course.title}</h1>
+        <h1 className="program-title">{course.courseNumber} {course.title}</h1>
+        <div>Description:</div>
+        <div dangerouslySetInnerHTML={{
+                    __html: course.description.childMarkdownRemark.html,
+                  }}></div>
+
       </div>
     </Page>
   );

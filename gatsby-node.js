@@ -44,6 +44,11 @@ exports.createPages = async ({ graphql, actions }) => {
                   courses {
                     courseNumber
                     title
+                    description {
+                      childMarkdownRemark {
+                        html
+                      }
+                    }
                     certification {
                       title
                       url
@@ -75,6 +80,11 @@ exports.createPages = async ({ graphql, actions }) => {
                   courses {
                     courseNumber
                     title
+                    description {
+                      childMarkdownRemark {
+                        html
+                      }
+                    }
                     certification {
                       title
                       url
@@ -106,6 +116,11 @@ exports.createPages = async ({ graphql, actions }) => {
                   courses {
                     courseNumber
                     title
+                    description {
+                      childMarkdownRemark {
+                        html
+                      }
+                    }
                     certification {
                       title
                       url
