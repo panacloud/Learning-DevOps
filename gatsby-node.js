@@ -44,9 +44,41 @@ exports.createPages = async ({ graphql, actions }) => {
                   courses {
                     courseNumber
                     title
+                    description {
+                      childMarkdownRemark {
+                        html
+                      }
+                    }
                     certification {
                       title
                       url
+                    }
+                    textBooks{
+                      title
+                      authors
+                      url
+                    }
+                    referenceBooks{
+                      title
+                      authors
+                      url
+                    }
+                    sections{
+                      title
+                      serialNumber
+                      weeks
+                      quiz{
+                        title
+                        week
+                      }
+                      lineItem{
+                        title
+                        shortDescription {
+                          childMarkdownRemark {
+                            html
+                          }
+                        }
+                      }
                     }
                     quarter
                     track {
@@ -75,9 +107,41 @@ exports.createPages = async ({ graphql, actions }) => {
                   courses {
                     courseNumber
                     title
+                    description {
+                      childMarkdownRemark {
+                        html
+                      }
+                    }
                     certification {
                       title
                       url
+                    }
+                    textBooks{
+                      title
+                      authors
+                      url
+                    }
+                    referenceBooks{
+                      title
+                      authors
+                      url
+                    }
+                    sections{
+                      title
+                      serialNumber
+                      weeks
+                      quiz{
+                        title
+                        week
+                      }
+                      lineItem{
+                        title
+                        shortDescription {
+                          childMarkdownRemark {
+                            html
+                          }
+                        }
+                      }
                     }
                     quarter
                     track {
@@ -106,9 +170,41 @@ exports.createPages = async ({ graphql, actions }) => {
                   courses {
                     courseNumber
                     title
+                    description {
+                      childMarkdownRemark {
+                        html
+                      }
+                    }
                     certification {
                       title
                       url
+                    }
+                    textBooks{
+                      title
+                      authors
+                      url
+                    }
+                    referenceBooks{
+                      title
+                      authors
+                      url
+                    }
+                    sections{
+                      title
+                      serialNumber
+                      weeks
+                      quiz{
+                        title
+                        week
+                      }
+                      lineItem{
+                        title
+                        shortDescription {
+                          childMarkdownRemark {
+                            html
+                          }
+                        }
+                      }
                     }
                     quarter
                     track {
@@ -154,6 +250,7 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
 
+    const techCoursePrerequisite = [];
     technicalTrack.courses.map((course) => {
       createPage({
         path: "/programs/tracks/courses/" + course.courseNumber + "/",
@@ -162,55 +259,15 @@ exports.createPages = async ({ graphql, actions }) => {
           // Data passed to context is available
           // in page queries as GraphQL variables.
           course: course,
+          track: technicalTrack,
+          prereq: [...techCoursePrerequisite],
         },
       });
+      techCoursePrerequisite.push(course);
     });
-
-    innovationTrack = program.innovationTrack;
-    createPage({
-      path: "/programs/tracks/" + innovationTrack.slug + "/",
-      component: path.resolve(`./src/templates/track.js`),
-      context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
-        track: innovationTrack,
-      },
-    });
-    innovationTrack.courses.map((course) => {
-      createPage({
-        path: "/programs/tracks/courses/" + course.courseNumber + "/",
-        component: path.resolve(`./src/templates/course.js`),
-        context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
-          course: course,
-        },
-      });
-    });
-
-    appDevelopmentTrack = program.appDevelopmentTrack;
-    createPage({
-      path: "/programs/tracks/" + appDevelopmentTrack.slug + "/",
-      component: path.resolve(`./src/templates/track.js`),
-      context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
-        track: appDevelopmentTrack,
-      },
-    });
-    appDevelopmentTrack.courses.map((course) => {
-      createPage({
-        path: "/programs/tracks/courses/" + course.courseNumber + "/",
-        component: path.resolve(`./src/templates/course.js`),
-        context: {
-          // Data passed to context is available
-          // in page queries as GraphQL variables.
-          course: course,
-        },
-      });
-    });
-
-    if (isDoOnceFlag) {
+    
+    if (isDoOnceFlag) {//Becuase innovation and app development tracks are in 
+                       //all programs therefore create them only once
       isDoOnceFlag = false;
 
       innovationTrack = program.innovationTrack;
@@ -225,6 +282,22 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       });
 
+      const innovCoursePrerequisite = [];
+      innovationTrack.courses.map((course) => {
+        createPage({
+          path: "/programs/tracks/courses/" + course.courseNumber + "/",
+          component: path.resolve(`./src/templates/course.js`),
+          context: {
+            // Data passed to context is available
+            // in page queries as GraphQL variables.
+            course: course,
+            track: innovationTrack,
+            prereq: [...innovCoursePrerequisite],
+          },
+        });
+        innovCoursePrerequisite.push(course);
+      });
+
       appDevelopmentTrack = program.appDevelopmentTrack;
 
       createPage({
@@ -236,6 +309,24 @@ exports.createPages = async ({ graphql, actions }) => {
           track: appDevelopmentTrack,
         },
       });
+
+      appDevCoursePrerequisite = [];
+
+      appDevelopmentTrack.courses.map((course) => {
+        createPage({
+          path: "/programs/tracks/courses/" + course.courseNumber + "/",
+          component: path.resolve(`./src/templates/course.js`),
+          context: {
+            // Data passed to context is available
+            // in page queries as GraphQL variables.
+            course: course,
+            track: appDevelopmentTrack,
+            prereq: [...appDevCoursePrerequisite],
+          },
+        });
+        appDevCoursePrerequisite.push(course);
+      });
+
     }
   });
 };
