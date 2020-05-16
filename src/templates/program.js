@@ -71,7 +71,7 @@ const ProgramDetails = (props) => {
           <Grid item key={"/programs/" + program.slug} md={12} xs={12}>
             <Card>
               <CardMedia
-                className={"card-media"}
+                className={classes.cardMedia}
                 image={program.image.file.url}
               />
               <CardContent>
@@ -113,7 +113,7 @@ const ProgramDetails = (props) => {
                   {technicalTrack.courses.map((course) => {
                     return (
                       <Grid
-                        className="card-pad bg-color-technical"
+                        className="card-pad bg-color-technical card-box"
                         item
                         key={course.quarter}
                         md={3}
@@ -200,7 +200,7 @@ const ProgramDetails = (props) => {
                   {innovationTrack.courses.map((course) => {
                     return (
                       <Grid
-                        className="card-pad bg-color-technical"
+                        className="card-pad bg-color-innovation card-box"
                         item
                         key={course.quarter}
                         md={4}
@@ -209,7 +209,7 @@ const ProgramDetails = (props) => {
                         {/* <Paper className={classes.paper}> */}
                         <div className="card-pad pad">
                           <Card
-                            className="card-pad bg-color-innovation"
+                            className="card-pad "
                             className={classes.root}
                             variant="outlined"
                           >
@@ -285,7 +285,7 @@ const ProgramDetails = (props) => {
                   {appDevelopmentTrack.courses.map((course) => {
                     return (
                       <Grid
-                        className="card-pad bg-color-applicationDev"
+                        className="card-pad bg-color-applicationDev card-box"
                         item
                         key={course.quarter}
                         md={4}
