@@ -31,24 +31,23 @@
 }
 
 .card-box .MuiPaper-root {
-  transition: all 0.4s ease-in-out !important;
+  transition: all 0.4s ease-in-out;
 }
 
 .card-box:hover .MuiPaper-root {
-  height: 180px !important;
-  margin-top: -15px !important;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4) !important;
+  height: 180px;
+  margin-top: -15px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
 }
 
 .arrow-right {
   text-align: center;
-  padding: 10px 0px;
+  padding: 0px;
   display: none;
 }
 
 .card-box:hover .arrow-right {
   display: block;
-  padding: 10px 0px;
 }
 
 .link-color {

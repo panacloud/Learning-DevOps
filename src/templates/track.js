@@ -4,14 +4,13 @@ import { Link } from "gatsby";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/styles/withStyles";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import SEO from "../components/SEO";
 import Page from "../components/Page";
 import { makeStyles } from "@material-ui/core/styles";
-import CardActions from "@material-ui/core/CardActions";
+
 const styles = {
   cardMedia: {
     height: "200px",
@@ -48,63 +47,11 @@ const TrackDetails = (props) => {
   }
 
   const certifications = track.certifications;
-  // if (certifications) {
-  //   console.log("CCCCCCCCCCC " + track.title + JSON.stringify(certifications));
-  // }
-
-  // var certificationsJSX = <> </>;
-  // var certMessage = <></>;
-  // var once = true;
-  // if (certifications) {
-  //   certifications.map((cert) => {
-  //     if (once) {
-  //       certMessage = (
-  //         <div>
-  //           Prepares the student for the following International Certifications
-  //         </div>
-  //       );
-  //       once = false;
-  //     }
-
-  //     certificationsJSX = (
-  //       <div>
-  //         <div>{certificationsJSX}</div>
-  //         <a href={cert.url} target="_blank">
-  //           {cert.title}
-  //         </a>
-  //       </div>
-  //     );
-  //   });
-  // } else {
-  //   certificationsJSX = <> </>;
-  // }
 
   useEffect(() => {});
   return (
     <Page title={track.title}>
       <SEO title={track.title} />
-      <div>Objective of the Track</div>
-      <div dangerouslySetInnerHTML={createObjectiveMarkup()} />
-      {/* Note that external links still use `a` tags not Link. */}
-      {/* {certMessage}
-      {certificationsJSX} */}
-      {certifications && (
-        <ol>
-          <h5 style={{ color: "#296" }}>
-            Prepares the student for the following International Certifications:
-          </h5>
-          {certifications?.map((cert, key) => {
-            return (
-              <li key={key}>
-                <a href={cert.url} target="_blank">
-                  {cert.title}
-                </a>
-              </li>
-            );
-          })}
-        </ol>
-      )}
-
       <Grid
         alignItems="flex-start"
         container
@@ -112,62 +59,113 @@ const TrackDetails = (props) => {
         justify="center"
         spacing={4}
       >
-        {/* <article> */}
-        {track.courses.map((course) => {
-          return (
-            <Grid
-              className="card-pad bg-color-applicationDev"
-              item
-              key={course.quarter}
-              md={3}
-              xs={12}
-            >
-              {/* <Paper className={classes.paper}> */}
-              <div className="card-pad pad" style={styles.pad}>
-                <Card
-                  className="card-pad"
-                  className={classes.root}
-                  variant="outlined"
-                >
-                  <CardContent className={useStyles.centerContent}>
-                    <Typography className={classess.centerContent} gutterBottom>
-                      Quarter {course.quarter}
-                      
-                    </Typography>
-                    <Typography variant="h5" component="h2" className={classess.centerContent} >
-                    { course.courseNumber }
-                    </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-                    
-                    </Typography>
+        <Grid item md={12} xs={12}>
+          <Card>
+            <CardContent>
+              <Typography component="h3" gutterBottom variant="h6">
+                Objective of the Track:
+              </Typography>
+              <div dangerouslySetInnerHTML={createObjectiveMarkup()} />
+              {certifications && (
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <ol>
                     <Typography
-                      variant="body2"
-                      component="p"
-                      className={classess.centerContent}
+                      style={{ textAlign: "center", color: "indigo" }}
+                      variant="h6"
                     >
-                      <Link
-                        className="link-title"
-                        to={"/programs/tracks/courses/" + course.courseNumber}
-                      >
-                        {course.title}
-                      </Link>
-                      {/* {'"a benevolent smile"'} */}
+                      Prepares the student for the following International
+                      Certifications
                     </Typography>
-                  </CardContent>
-                  <CardActions>
-                    {/* <Button size="small">See more</Button> */}
-                  </CardActions>
-                </Card>
-              </div>
-              {/* </Paper> */}
-            </Grid>
-          );
-          
-        })}
-        {/* </article> */}
-        <article>
-            {documentToReactComponents(track.description.json)}
-            </article>
+                    {certifications?.map((cert, key) => {
+                      return (
+                        <li key={key} style={{ margin: "5px 0px 5px 25%" }}>
+                          <a href={cert.url} target="_blank">
+                            {cert.title}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>
+              )}
+              <Grid container spacing={2}>
+                {track.courses.map((course) => {
+                  console.log(course);
+                  return (
+                    <Grid
+                      className="card-pad bg-color-applicationDev  card-box"
+                      item
+                      key={course.quarter}
+                      md={3}
+                      xs={12}
+                    >
+                      <div className="card-pad">
+                        <Card
+                          className="card-pad"
+                          // style={styles.pad}
+                          className={classes.root}
+                          variant="outlined"
+                        >
+                          <CardContent className={useStyles.centerContent}>
+                            <Typography
+                              variant="h6"
+                              component="h6"
+                              className={classess.centerContent}
+                              gutterBottom
+                            >
+                              Quarter {course.quarter}
+                            </Typography>
+                            <Typography
+                              variant="h6"
+                              component="h6"
+                              className={classess.centerContent}
+                            >
+                              {course.courseNumber}
+                            </Typography>
+                            <Typography
+                              className={classes.pos}
+                              color="textSecondary"
+                            ></Typography>
+                            <Typography
+                              variant="body2"
+                              component="p"
+                              className={classess.centerContent}
+                            >
+                              <Link
+                                className="link-title"
+                                to={
+                                  "/programs/tracks/courses/" +
+                                  course.courseNumber
+                                }
+                              >
+                                {course.title}
+                              </Link>
+                              {/* {'"a benevolent smile"'} */}
+                            </Typography>
+                            <Typography className="arrow-right">
+                              <img
+                                height="20px"
+                                width="20px"
+                                src={require("../pages/team/point-to.png")}
+                              />
+                            </Typography>
+                          </CardContent>
+                        </Card>
+                      </div>
+                      {/* </Paper> */}
+                    </Grid>
+                  );
+                })}
+                <article>
+                  {documentToReactComponents(track.description.json)}
+                </article>
+                ;
+              </Grid>
+            </CardContent>
+            <br />
+            <br />
+          </Card>
+        </Grid>
       </Grid>
     </Page>
   );
