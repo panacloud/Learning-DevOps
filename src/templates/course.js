@@ -77,17 +77,15 @@ const CourseDetails = (props) => {
         ) : (
           <div>Course Prerequisites: None</div>
         )}
-
-        {prereqCourses.map((prereq) => {
+        {prereqCourses.map((prereq, key) => {
           return (
-            <div>
+            <div key={key}>
               <Link to={"/programs/tracks/courses/" + prereq.courseNumber}>
                 {prereq.courseNumber} {prereq.title}
               </Link>
             </div>
           );
         })}
-
         {certification && (
           <ol>
             <h5 style={{ color: "#296" }}>
@@ -105,7 +103,6 @@ const CourseDetails = (props) => {
             })}
           </ol>
         )}
-
         {textBooks && (
           <ol>
             <h5 style={{ color: "#296" }}>Text Book(s):</h5>
@@ -120,7 +117,6 @@ const CourseDetails = (props) => {
             })}
           </ol>
         )}
-
         {referenceBooks && (
           <ol>
             <h5 style={{ color: "#296" }}>Reference Book(s):</h5>
@@ -135,37 +131,39 @@ const CourseDetails = (props) => {
             })}
           </ol>
         )}
-
         <div>Course Outline:</div>
-
-        {sections.map((item) => {
-          return (
-            <div>
-              <div>
-                {item.serialNumber}. {item.title} (Week {item.weeks})
-              </div>
-              {item.lineItem.map((line) => {
-                return (
+        {sections
+          ? sections.map((item, key) => {
+              console.log("item", item);
+              return (
+                <div key={key}>
                   <div>
-                    <div>{line.title}</div>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: line.shortDescription.childMarkdownRemark.html,
-                      }}
-                    ></div>
+                    {item.serialNumber}. {item.title} (Week {item.weeks})
                   </div>
-                );
-              })}
-              {item.quiz && (
-                <div>
-                  {item.quiz?.title} in Week {item.quiz?.week}
-                </div>
-              )}
+                  {item.lineItem.map((line, key) => {
+                    return (
+                      <div key={key}>
+                        <div>{line.title}</div>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              line.shortDescription.childMarkdownRemark.html,
+                          }}
+                        ></div>
+                      </div>
+                    );
+                  })}
+                  {item.quiz && (
+                    <div>
+                      {item.quiz?.title} in Week {item.quiz?.week}
+                    </div>
+                  )}
 
-              <br />
-            </div>
-          );
-        })}
+                  <br />
+                </div>
+              );
+            })
+          : null}
       </div>
     </Page>
   );
