@@ -48,36 +48,6 @@ const TrackDetails = (props) => {
   }
 
   const certifications = track.certifications;
-  // if (certifications) {
-  //   console.log("CCCCCCCCCCC " + track.title + JSON.stringify(certifications));
-  // }
-
-  // var certificationsJSX = <> </>;
-  // var certMessage = <></>;
-  // var once = true;
-  // if (certifications) {
-  //   certifications.map((cert) => {
-  //     if (once) {
-  //       certMessage = (
-  //         <div>
-  //           Prepares the student for the following International Certifications
-  //         </div>
-  //       );
-  //       once = false;
-  //     }
-
-  //     certificationsJSX = (
-  //       <div>
-  //         <div>{certificationsJSX}</div>
-  //         <a href={cert.url} target="_blank">
-  //           {cert.title}
-  //         </a>
-  //       </div>
-  //     );
-  //   });
-  // } else {
-  //   certificationsJSX = <> </>;
-  // }
 
   useEffect(() => {});
   return (
@@ -132,14 +102,18 @@ const TrackDetails = (props) => {
                   <CardContent className={useStyles.centerContent}>
                     <Typography className={classess.centerContent} gutterBottom>
                       Quarter {course.quarter}
-                      
                     </Typography>
-                    <Typography variant="h5" component="h2" className={classess.centerContent} >
-                    { course.courseNumber }
+                    <Typography
+                      variant="h5"
+                      component="h2"
+                      className={classess.centerContent}
+                    >
+                      {course.courseNumber}
                     </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-                    
-                    </Typography>
+                    <Typography
+                      className={classes.pos}
+                      color="textSecondary"
+                    ></Typography>
                     <Typography
                       variant="body2"
                       component="p"
@@ -162,12 +136,9 @@ const TrackDetails = (props) => {
               {/* </Paper> */}
             </Grid>
           );
-          
         })}
         {/* </article> */}
-        <article>
-            {documentToReactComponents(track.description.json)}
-            </article>
+        <article>{documentToReactComponents(track.description.json)}</article>
       </Grid>
     </Page>
   );
