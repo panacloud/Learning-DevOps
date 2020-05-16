@@ -260,7 +260,7 @@ exports.createPages = async ({ graphql, actions }) => {
           // in page queries as GraphQL variables.
           course: course,
           track: technicalTrack,
-          prereq: techCoursePrerequisite,
+          prereq: [...techCoursePrerequisite],
         },
       });
       techCoursePrerequisite.push(course);
@@ -292,7 +292,7 @@ exports.createPages = async ({ graphql, actions }) => {
             // in page queries as GraphQL variables.
             course: course,
             track: innovationTrack,
-            prereq: innovCoursePrerequisite,
+            prereq: [...innovCoursePrerequisite],
           },
         });
         innovCoursePrerequisite.push(course);
@@ -321,7 +321,7 @@ exports.createPages = async ({ graphql, actions }) => {
             // in page queries as GraphQL variables.
             course: course,
             track: appDevelopmentTrack,
-            prereq: appDevCoursePrerequisite,
+            prereq: [...appDevCoursePrerequisite],
           },
         });
         appDevCoursePrerequisite.push(course);

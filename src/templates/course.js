@@ -43,6 +43,8 @@ const CourseDetails = (props) => {
   const textBooks = course.textBooks;
   const referenceBooks = course.referenceBooks;
   const sections = course.sections;
+  const belongsToTrack = props.pageContext.track;
+  const prereqCourses = props.pageContext.prereq;
 
   console.log("Sections " + JSON.stringify(sections));
 
@@ -59,6 +61,26 @@ const CourseDetails = (props) => {
         <div dangerouslySetInnerHTML={{
                     __html: course.description.childMarkdownRemark.html,
                   }}></div>
+        <div>This Course is taught in the following Track: </div>
+        <div><Link to={"/programs/tracks/" + belongsToTrack.slug}>
+                      {belongsToTrack.title} Course Sequence
+        </Link></div>
+        <br/>
+        {
+            (prereqCourses.length > 0)? <div>Course Prerequisites: </div> : <div>Course Prerequisites: None</div>
+        }
+        
+        {
+            prereqCourses.map((prereq) => {
+                return (
+                    <div>
+                    <Link to={"/programs/tracks/courses/" + prereq.courseNumber}>
+                      {prereq.courseNumber} {prereq.title}
+                    </Link>
+                    </div>
+                )
+            })
+        }
 
         {certification && (
         <ol>
