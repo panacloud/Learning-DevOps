@@ -18,6 +18,10 @@ module.exports = {
         link: "/programs",
       },
       {
+        name: "Courses",
+        link: "/courses",
+      },
+      {
         name: "Team",
         link: "/team",
       },
