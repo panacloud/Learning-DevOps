@@ -139,7 +139,7 @@ const CourseDetails = (props) => {
                   <div>
                     {item.serialNumber}. {item.title} (Week {item.weeks})
                   </div>
-                  {item.lineItem.map((line, key) => {
+                  {item.lineItem?.map((line, key) => {
                     return (
                       <div key={key}>
                         <div>{line.title}</div>
