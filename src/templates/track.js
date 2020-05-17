@@ -73,8 +73,7 @@ const TrackDetails = (props) => {
                       style={{ textAlign: "center", color: "indigo" }}
                       variant="h6"
                     >
-                      Prepares the student for the following International
-                      Certifications
+                      Also prepares the student for the following Certifications
                     </Typography>
                     {certifications?.map((cert, key) => {
                       return (

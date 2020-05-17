@@ -89,8 +89,7 @@ const CourseDetails = (props) => {
         {certification && (
           <ol>
             <h5 style={{ color: "#296" }}>
-              Prepares the student for the following International
-              Certification(s):
+              Also prepares the student for the following Certifications:
             </h5>
             {certification?.map((cert, key) => {
               return (
