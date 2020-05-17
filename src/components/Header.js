@@ -27,16 +27,7 @@ const Header = (props) => {
             spacing={8}
           >
             <Grid item>
-              <Chip
-                avatar={
-                  <Avatar id="logoIcon">
-                    <MaterialUi />
-                  </Avatar>
-                }
-                id="logo"
-                label={<Link to="/">{companyName}</Link>}
-                variant="outlined"
-              />
+            <Link to="/"><img src="https://images.ctfassets.net/6y7x6a0he6ux/3KHz62otb9GvG0quUFy7Dv/9ee403ef1f030bda89bdd6f1f7036e7a/4iru_white" alt="Smiley face" height="43.2" width="72"/></Link>
             </Grid>
             <Grid item>
               <Hidden smDown>

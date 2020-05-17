@@ -14,7 +14,7 @@ module.exports = {
     },
     menuLinks: [
       {
-        name: "Programs",
+        name: "Certification Programs",
         link: "/programs",
       },
       {

@@ -7,7 +7,7 @@ import withStyles from "@material-ui/styles/withStyles";
 
 const styles = (theme) => ({
   menuButton: {
-    // color: theme.palette.primary.contrastText,
+    color: theme.palette.primary.contrastText,
   },
 });
 
@@ -32,9 +32,7 @@ const Menu = withStyles(styles)((props) => {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <IconButton className={classes.menuButton}>
-          <Github />
-        </IconButton>
+        
       </a>
     </>
   );
