@@ -35,12 +35,13 @@ const Footer = withStyles(styles)((props) => {
     <>
       <Divider className={classes.divider} />
       <footer className={classes.footer} id="footer">
-        <span>
+      <span>
+           <br/>
           <Typography component="span" variant="caption">
-            {"Franchisee of Zenoit"}
-            <Hidden only={["xl", "lg", "md"]}>
-              <br />
-            </Hidden>{" "}
+            ©{new Date().getFullYear()} {"Panacloud LLC, USA "}
+            <br />
+           
+            <br />
           </Typography>
         </span>
       </footer>
