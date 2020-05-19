@@ -7,13 +7,12 @@ import withStyles from "@material-ui/styles/withStyles";
 
 const styles = (theme) => ({
   menuButton: {
-    color: theme.palette.primary.contrastText,
+    color: "white",
   },
 });
 
-const Menu = withStyles(styles)((props) => {
+const Menu = (props) => {
   const {
-    classes,
     data: {
       site: {
         siteMetadata: { menuLinks },
@@ -21,22 +20,20 @@ const Menu = withStyles(styles)((props) => {
     },
   } = props;
   return (
-    <>
+    <div>
       {menuLinks.map((link) => (
         <Link key={link.name} to={link.link}>
-          <Button className={classes.menuButton}>{link.name}</Button>
+          <Button style={{ color: "white" }}>{link.name}</Button>
         </Link>
       ))}
       <a
         href="https://github.com/bluepeter/gatsby-material-ui-business-starter"
         rel="noopener noreferrer"
         target="_blank"
-      >
-        
-      </a>
-    </>
+      ></a>
+    </div>
   );
-});
+};
 
 export default () => (
   <StaticQuery

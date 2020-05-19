@@ -19,7 +19,8 @@ const styles = (theme) => ({
     float: "right",
   },
   featureGrid: {
-    marginBottom: "25px",
+    marginBottom: "5px !important",
+    marginTop: "5px !important",
   },
   avi: {
     width: "40px",
@@ -58,7 +59,6 @@ const HomeFeatures = (props) => {
           label="Discussion Forums along side the Classes"
         />
       </Grid>
-    
     </Grid>
   );
 };
