@@ -29,7 +29,7 @@ const styles = () => ({
 const OnlineLearningPanel = (props) => {
   return (
     <div className="sectionInfo">
-      <Grid spacing={2} className="sectionInfo">
+      <Grid container spacing={2} className="sectionInfo">
         <Grid container justify="center" spacing={2}>
           <Typography variant="h3" gutterBottom>
             Online Learning Experiences
