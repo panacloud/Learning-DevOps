@@ -66,11 +66,11 @@ const CourseDetails = (props) => {
           {course.courseNumber} {course.title}
         </h1>
         <Typography variant="h4">Description</Typography>
-        <div
+        <Typography
           dangerouslySetInnerHTML={{
-            __html: course.description.childMarkdownRemark.html,
+            __html: course?.description.childMarkdownRemark?.html,
           }}
-        ></div>
+        ></Typography>
 
         <Card gutterBottom>
           <CardContent>
@@ -187,13 +187,15 @@ const CourseDetails = (props) => {
                                 <Typography variant="subtitle1" gutterBottom>
                                   <b>{line.title}</b>
                                 </Typography>
-                                <div
+
+                                <Typography
+                                  component="p"
                                   dangerouslySetInnerHTML={{
                                     __html:
-                                      line.shortDescription.childMarkdownRemark
-                                        .html,
+                                      line?.shortDescription
+                                        ?.childMarkdownRemark?.html,
                                   }}
-                                ></div>
+                                ></Typography>
                               </div>
                             );
                           })

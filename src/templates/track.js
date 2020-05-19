@@ -89,7 +89,6 @@ const TrackDetails = (props) => {
               )}
               <Grid container spacing={2}>
                 {track.courses.map((course) => {
-                  console.log(course);
                   return (
                     <Grid
                       className="card-pad bg-color-applicationDev  card-box"
