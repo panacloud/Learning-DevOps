@@ -16,21 +16,22 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const styles = {
   root: {
     display: "flex",
-    flexDirection: "row-reverse",
+    boxShadow: "none !important",
   },
   cardMedia: {
     height: "300px",
-    // width: '517px'
   },
   content: {
-    width: "50%",
+    height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
   },
   cover: {
-    width: "80%",
     height: "400px",
+  },
+  contentTitle: {
+    color: "#706aaf",
   },
 };
 
@@ -126,7 +127,6 @@ class Carousel extends React.Component {
             index={activeStep}
             onChangeIndex={this.handleStepChange}
           >
-            {/* {JSON.stringify(this.items)} */}
             {this.items.length > 0
               ? this.items.map((item, index) => {
                   const {
@@ -143,18 +143,30 @@ class Carousel extends React.Component {
                     <div key={index}>
                       {Math.abs(activeStep - index) <= 2 ? (
                         <Card className={classes.root}>
-                          <CardContent className={classes.content}>
-                            <Typography gutterBottom variant="h3">
-                              <Link to={path}>{title}</Link>
-                            </Typography>
-                            <Typography variant="body1">{excerpt}</Typography>
-                          </CardContent>
-
-                          <CardMedia
-                            className={classes.cover}
-                            image={publicURL}
-                            title="Live from space album cover"
-                          />
+                          <Grid container justify="center">
+                            <Grid item md={8} xs={12}>
+                              <CardMedia
+                                className={classes.cover}
+                                image={publicURL}
+                                title="Live from space album cover"
+                              />
+                            </Grid>
+                            <Grid item md={4} xs={12}>
+                              <CardContent className={classes.content}>
+                                <Typography gutterBottom variant="h3">
+                                  <Link
+                                    className={classes.contentTitle}
+                                    to={path}
+                                  >
+                                    {title}
+                                  </Link>
+                                </Typography>
+                                <Typography variant="body1">
+                                  {excerpt}
+                                </Typography>
+                              </CardContent>
+                            </Grid>
+                          </Grid>
                         </Card>
                       ) : null}
                     </div>

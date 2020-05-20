@@ -3,17 +3,14 @@ import React from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import SEO from "../components/SEO";
-// import HomeFeatures from "../components/HomeFeatures";
 import Carousel from "../components/Carousel";
 import withStyles from "@material-ui/styles/withStyles";
 import { Typography } from "@material-ui/core";
 import Page from "../components/Page";
-import "../css/home.css";
 import Header from "../components/Header";
 import SectionInfo from "../components/SectionInfo";
-// import AOS from 'aos'
 import "aos/dist/aos.css";
-import Footer from "../components/Footer";
+import "../css/home.css";
 const AOS = typeof window !== `undefined` ? require("aos") : null;
 
 if (AOS) {
@@ -71,6 +68,31 @@ const Home = (props) => {
         <Carousel />
 
         <SectionInfo />
+
+        {/*<HomeFeatures />*/}
+
+        {/*<Card
+          action={
+            <Button
+              className={props.classes.root}
+              color="secondary"
+              component={Link}
+              to="/programs"
+              variant="contained"
+            >
+              View All Programs
+          </Button>
+          }
+          avatar={
+            <Avatar>
+              <Gift />
+            </Avatar>
+          }
+          style={{ minHeight: 523 }}
+          title="Our Teaching Programs"
+        >
+          
+        </Card>*/}
       </Page>
     </div>
   );
