@@ -3,13 +3,22 @@ import React from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import SEO from "../components/SEO";
+// import HomeFeatures from "../components/HomeFeatures";
 import Carousel from "../components/Carousel";
 import withStyles from "@material-ui/styles/withStyles";
-import OnlineLearningPanel from "../components/OnlineLearningPanel";
 import { Typography } from "@material-ui/core";
 import Page from "../components/Page";
 import "../css/home.css";
 import Header from "../components/Header";
+import SectionInfo from "../components/SectionInfo";
+// import AOS from 'aos'
+import "aos/dist/aos.css";
+import Footer from "../components/Footer";
+const AOS = typeof window !== `undefined` ? require("aos") : null;
+
+if (AOS) {
+  AOS.init();
+}
 
 const styles = () => ({
   root: {
@@ -38,8 +47,17 @@ const Home = (props) => {
         className="background"
         alt="title"
       />
-      <Typography variant="h4" className="title">
+      <Typography
+        variant="h4"
+        className="title"
+        data-aos="fade-down"
+        data-aos-delay="1000"
+      >
         {props.data.allContentfulFranchisee.edges[0].node.title}
+        <div className="subTitle">
+          <p>Find out more</p>
+          <img src={require("../assets/chevron.jpeg")} />
+        </div>
       </Typography>
 
       <Page>
@@ -52,8 +70,7 @@ const Home = (props) => {
 
         <Carousel />
 
-        {/* Program track */}
-        <OnlineLearningPanel />
+        <SectionInfo />
       </Page>
     </div>
   );

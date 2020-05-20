@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     background: "transparent",
     position: "absolute !important",
+    boxShadow: "none !important",
   },
 }));
 
@@ -32,7 +33,7 @@ const Header = (props) => {
   const classes = useStyles();
   //console.log("NNNNNNNNNNNNNN " + companyName);
   return (
-    <div>
+    <div data-aos="slide-left" data-aos-duration="1000">
       <AppBar
         position="static"
         id="appBar"

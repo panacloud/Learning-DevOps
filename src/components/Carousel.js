@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withPrefix, graphql, StaticQuery } from "gatsby";
+import { Link, graphql, StaticQuery } from "gatsby";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -11,10 +11,26 @@ import CardMedia from "@material-ui/core/CardMedia";
 import { autoPlay } from "react-swipeable-views-utils";
 import withStyles from "@material-ui/styles/withStyles";
 import carouselData from "../services/carousel-service.json";
+import { Grid } from "@material-ui/core";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const styles = {
+  root: {
+    display: "flex",
+    flexDirection: "row-reverse",
+  },
   cardMedia: {
-    height: "200px",
+    height: "300px",
+    // width: '517px'
+  },
+  content: {
+    width: "50%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  cover: {
+    width: "80%",
+    height: "400px",
   },
 };
 
@@ -43,7 +59,7 @@ class Carousel extends React.Component {
 
   render() {
     const { activeStep } = this.state;
-    const { classes, items } = this.props;
+    const { classes } = this.props;
     const filteredData = [];
     return (
       <Paper elevation={0}>
@@ -100,7 +116,7 @@ class Carousel extends React.Component {
           }}
         ></StaticQuery>
 
-        <div>
+        <div data-aos="fade-up">
           <Typography>
             {(this.items[activeStep] || { title: "qwerty" }).title}
           </Typography>
@@ -126,21 +142,19 @@ class Carousel extends React.Component {
                   return (
                     <div key={index}>
                       {Math.abs(activeStep - index) <= 2 ? (
-                        <Card>
-                          <CardMedia
-                            className={classes.cardMedia}
-                            image={publicURL}
-                          />
-                          <CardContent>
-                            <Typography
-                              component="h2"
-                              gutterBottom
-                              variant="h5"
-                            >
+                        <Card className={classes.root}>
+                          <CardContent className={classes.content}>
+                            <Typography gutterBottom variant="h3">
                               <Link to={path}>{title}</Link>
                             </Typography>
-                            <Typography component="p">{excerpt}</Typography>
+                            <Typography variant="body1">{excerpt}</Typography>
                           </CardContent>
+
+                          <CardMedia
+                            className={classes.cover}
+                            image={publicURL}
+                            title="Live from space album cover"
+                          />
                         </Card>
                       ) : null}
                     </div>

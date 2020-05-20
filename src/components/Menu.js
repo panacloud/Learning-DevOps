@@ -1,15 +1,6 @@
 import React from "react";
 import { StaticQuery, Link, graphql } from "gatsby";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import { Github } from "mdi-material-ui";
-import withStyles from "@material-ui/styles/withStyles";
-
-const styles = (theme) => ({
-  menuButton: {
-    color: "white",
-  },
-});
 
 const Menu = (props) => {
   const {
@@ -23,7 +14,9 @@ const Menu = (props) => {
     <div>
       {menuLinks.map((link) => (
         <Link key={link.name} to={link.link}>
-          <Button style={{ color: "white" }}>{link.name}</Button>
+          <Button style={{ color: "white" }}>
+            <b>{link.name}</b>
+          </Button>
         </Link>
       ))}
       <a

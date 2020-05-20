@@ -1,16 +1,30 @@
+body {
+  overflow-x: hidden;
+}
 .background {
   height: 100vh;
+  object-fit: cover;
+  object-position: left;
   width: 100%;
 }
 
 .title {
   color: white;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 40%;
+  /* left: 50%; */
   transform: translate(-50%, -50%);
   text-align: center;
-  width: 80%;
+  width: 100%;
+  font-weight: 700 !important;
+}
+
+.subTitle {
+  font-size: 23px;
+}
+.subTitle > img {
+  width: 80px;
+  border-radius: 102px;
 }
 
 .sectionInfo {
