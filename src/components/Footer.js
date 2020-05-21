@@ -2,50 +2,29 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import Hidden from "@material-ui/core/Hidden";
 import withStyles from "@material-ui/styles/withStyles";
-import useCompanyName from "../hooks/useCompanyNameData";
 
 const styles = (theme) => ({
-  divider: {
-    // marginTop: theme.spacing(6),
-    // marginBottom: theme.spacing(3),
-  },
   footer: {
-    // marginBottom: theme.spacing(3),
-    // whiteSpace: "nowrap",
+    marginTop: "50px",
+    height: "60px",
   },
 });
 
 const Footer = withStyles(styles)((props) => {
-  const companyName = useCompanyName();
-  //console.log("NNNNNNNNNNNNNN " + companyName);
-  const {
-    classes,
-    data: {
-      site: {
-        siteMetadata: {
-          title,
-          contact: { email, phone },
-        },
-      },
-    },
-  } = props;
   return (
-    <>
-      <Divider className={classes.divider} />
-      <footer className={classes.footer} id="footer">
-      <span>
-           <br/>
+    <div className={props.classes.footer}>
+      <Divider />
+      <footer id="footer">
+        <span>
+          <br />
           <Typography component="span" variant="caption">
             ©{new Date().getFullYear()} {"Panacloud LLC, USA "}
-            <br />
-           
-            <br />
           </Typography>
+          <br />
         </span>
       </footer>
-    </>
+    </div>
   );
 });
 
