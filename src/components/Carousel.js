@@ -33,6 +33,20 @@ const styles = {
   contentTitle: {
     color: "#706aaf",
   },
+  findMore: {
+    display: "flex",
+    alignItems: "center",
+    color: "#706aaf",
+    fontWeight: "700",
+    marginTop: "10px",
+  },
+  findMoreImg: {
+    marginLeft: "25px",
+    width: "53px",
+    background: "#f4f5f6",
+    padding: "10px",
+    borderRadius: "34px",
+  },
 };
 
 class Carousel extends React.Component {
@@ -153,16 +167,26 @@ class Carousel extends React.Component {
                             </Grid>
                             <Grid item md={4} xs={12}>
                               <CardContent className={classes.content}>
-                                <Typography gutterBottom variant="h3">
-                                  <Link
-                                    className={classes.contentTitle}
-                                    to={path}
-                                  >
-                                    {title}
-                                  </Link>
+                                <Typography
+                                  gutterBottom
+                                  variant="h3"
+                                  className={classes.contentTitle}
+                                >
+                                  {title}
                                 </Typography>
                                 <Typography variant="body1">
                                   {excerpt}
+
+                                  <Link to={path}>
+                                    <div className={classes.findMore}>
+                                      Find more
+                                      <img
+                                        className={classes.findMoreImg}
+                                        src={require("../assets/arrow.png")}
+                                        alt="arrow"
+                                      />
+                                    </div>
+                                  </Link>
                                 </Typography>
                               </CardContent>
                             </Grid>
