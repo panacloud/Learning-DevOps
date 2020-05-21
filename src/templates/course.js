@@ -1,11 +1,14 @@
 import withRoot from "../utils/withRoot";
 import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
+import {
+  Typography,
+  Card,
+  CardContent,
+  Grid,
+  Container,
+  GridList,
+} from "@material-ui/core";
 import withStyles from "@material-ui/styles/withStyles";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import SEO from "../components/SEO";
@@ -35,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   centerContent: {
     textAlign: "center",
   },
+  courseOutline: {
+    marginTop: "20px",
+  },
 }));
 const CourseDetails = (props) => {
   // All programs list
@@ -59,110 +65,152 @@ const CourseDetails = (props) => {
         <h1 className="program-title">
           {course.courseNumber} {course.title}
         </h1>
-        <div>Description:</div>
-        <div
+        <Typography variant="h4">Description</Typography>
+        <Typography
           dangerouslySetInnerHTML={{
-            __html: course.description.childMarkdownRemark.html,
+            __html: course?.description.childMarkdownRemark?.html,
           }}
-        ></div>
-        <div>This Course is taught in the following Track: </div>
-        <div>
-          <Link to={"/programs/tracks/" + belongsToTrack.slug}>
-            {belongsToTrack.title} Course Sequence
-          </Link>
-        </div>
-        <br />
-        {prereqCourses.length > 0 ? (
-          <div>Course Prerequisites: </div>
-        ) : (
-          <div>Course Prerequisites: None</div>
-        )}
-        {prereqCourses.map((prereq, key) => {
-          return (
-            <div key={key}>
-              <Link to={"/programs/tracks/courses/" + prereq.courseNumber}>
-                {prereq.courseNumber} {prereq.title}
-              </Link>
-            </div>
-          );
-        })}
-        {certification && (
-          <ol>
-            <h5 style={{ color: "#296" }}>
-              Also prepares the student for the following Certifications:
-            </h5>
-            {certification?.map((cert, key) => {
-              return (
-                <li key={key}>
-                  <a href={cert.url} target="_blank">
-                    {cert.title}
-                  </a>
-                </li>
-              );
-            })}
-          </ol>
-        )}
-        {textBooks && (
-          <ol>
-            <h5 style={{ color: "#296" }}>Text Book(s):</h5>
-            {textBooks?.map((book, key) => {
-              return (
-                <li key={key}>
-                  <a href={book.url} target="_blank">
-                    {book.title} by {book.authors}
-                  </a>
-                </li>
-              );
-            })}
-          </ol>
-        )}
-        {referenceBooks && (
-          <ol>
-            <h5 style={{ color: "#296" }}>Reference Book(s):</h5>
-            {referenceBooks?.map((book, key) => {
-              return (
-                <li key={key}>
-                  <a href={book.url} target="_blank">
-                    {book.title} by {book.authors}
-                  </a>
-                </li>
-              );
-            })}
-          </ol>
-        )}
-        <div>Course Outline:</div>
-        {sections
-          ? sections.map((item, key) => {
-              console.log("item", item);
-              return (
-                <div key={key}>
-                  <div>
-                    {item.serialNumber}. {item.title} (Week {item.weeks})
-                  </div>
-                  {item.lineItem?.map((line, key) => {
+        ></Typography>
+
+        <Card gutterBottom>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              This Course is taught in the following Track <br />
+            </Typography>
+            <ul>
+              <li>
+                <Link to={"/programs/tracks/" + belongsToTrack.slug}>
+                  {belongsToTrack.title} Course Sequence
+                </Link>
+              </li>
+            </ul>
+
+            <Typography gutterBottom variant="h6">
+              Course Prerequisites
+            </Typography>
+            <ul>
+              {prereqCourses.length > 0 ? (
+                prereqCourses.map((prereq, key) => {
+                  return (
+                    <div key={key}>
+                      <Link
+                        to={"/programs/tracks/courses/" + prereq.courseNumber}
+                      >
+                        {prereq.courseNumber} {prereq.title}
+                      </Link>
+                    </div>
+                  );
+                })
+              ) : (
+                <li>None</li>
+              )}
+            </ul>
+
+            {certification && (
+              <div>
+                <Typography gutterBottom variant="h6">
+                  Also prepares the student for the following Certifications
+                </Typography>
+                <ol>
+                  {certification.map((cert, key) => {
                     return (
-                      <div key={key}>
-                        <div>{line.title}</div>
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html:
-                              line.shortDescription.childMarkdownRemark.html,
-                          }}
-                        ></div>
-                      </div>
+                      <li key={key}>
+                        <a href={cert.url} target="_blank">
+                          {cert.title}
+                        </a>
+                      </li>
                     );
                   })}
-                  {item.quiz && (
-                    <div>
-                      {item.quiz?.title} in Week {item.quiz?.week}
-                    </div>
-                  )}
+                </ol>
+              </div>
+            )}
 
-                  <br />
-                </div>
-              );
-            })
-          : null}
+            {textBooks && (
+              <div>
+                <Typography gutterBottom variant="h6">
+                  Text Book(s)
+                </Typography>
+                <ol>
+                  {textBooks.map((book, key) => {
+                    return (
+                      <li key={key}>
+                        <a href={book.url} target="_blank">
+                          {book.title} by {book.authors}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </div>
+            )}
+
+            {referenceBooks && (
+              <div>
+                <Typography gutterBottom variant="h6">
+                  Reference Book(s)
+                </Typography>
+                <ol>
+                  {referenceBooks.map((book, key) => {
+                    return (
+                      <li key={key}>
+                        <a href={book.url} target="_blank">
+                          {book.title} by {book.authors}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Grid container spacing={2}>
+          <Grid item xs={12} className={classess.courseOutline}>
+            <Typography gutterBottom gutterTop variant="h4">
+              Course Outline
+            </Typography>
+          </Grid>
+
+          {sections
+            ? sections.map((item, key) => (
+                <Grid item md={12} xs={12}>
+                  <Card classes={classes.card}>
+                    <CardContent>
+                      <Typography variant="h6">
+                        {item.serialNumber}. {item.title} (Week {item.weeks})
+                      </Typography>
+                      {item.lineItem
+                        ? item.lineItem.map((line, key) => {
+                            return (
+                              <div key={key}>
+                                <Typography variant="subtitle1" gutterBottom>
+                                  <b>{line.title}</b>
+                                </Typography>
+
+                                <Typography
+                                  component="p"
+                                  dangerouslySetInnerHTML={{
+                                    __html:
+                                      line?.shortDescription
+                                        ?.childMarkdownRemark?.html,
+                                  }}
+                                ></Typography>
+                              </div>
+                            );
+                          })
+                        : null}
+                      {item.quiz && (
+                        <div>
+                          {item.quiz.title} in Week {item.quiz.week}
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))
+            : null}
+        </Grid>
       </div>
     </Page>
   );

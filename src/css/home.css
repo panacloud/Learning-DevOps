@@ -1,0 +1,42 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+.background {
+  height: 100vh;
+  object-fit: cover;
+  object-position: left;
+  width: 100%;
+}
+
+.title {
+  color: white;
+  position: absolute;
+  top: 33%;
+  left: 16%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 70%;
+  font-weight: 700 !important;
+}
+
+.subTitle {
+  font-size: 23px;
+}
+.subTitle > img {
+  width: 80px;
+  border-radius: 102px;
+}
+
+.sectionInfo {
+  height: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 1.8em !important;
+  }
+}

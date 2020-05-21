@@ -53,25 +53,25 @@ exports.createPages = async ({ graphql, actions }) => {
                       title
                       url
                     }
-                    textBooks{
+                    textBooks {
                       title
                       authors
                       url
                     }
-                    referenceBooks{
+                    referenceBooks {
                       title
                       authors
                       url
                     }
-                    sections{
+                    sections {
                       title
                       serialNumber
                       weeks
-                      quiz{
+                      quiz {
                         title
                         week
                       }
-                      lineItem{
+                      lineItem {
                         title
                         shortDescription {
                           childMarkdownRemark {
@@ -116,25 +116,25 @@ exports.createPages = async ({ graphql, actions }) => {
                       title
                       url
                     }
-                    textBooks{
+                    textBooks {
                       title
                       authors
                       url
                     }
-                    referenceBooks{
+                    referenceBooks {
                       title
                       authors
                       url
                     }
-                    sections{
+                    sections {
                       title
                       serialNumber
                       weeks
-                      quiz{
+                      quiz {
                         title
                         week
                       }
-                      lineItem{
+                      lineItem {
                         title
                         shortDescription {
                           childMarkdownRemark {
@@ -179,25 +179,25 @@ exports.createPages = async ({ graphql, actions }) => {
                       title
                       url
                     }
-                    textBooks{
+                    textBooks {
                       title
                       authors
                       url
                     }
-                    referenceBooks{
+                    referenceBooks {
                       title
                       authors
                       url
                     }
-                    sections{
+                    sections {
                       title
                       serialNumber
                       weeks
-                      quiz{
+                      quiz {
                         title
                         week
                       }
-                      lineItem{
+                      lineItem {
                         title
                         shortDescription {
                           childMarkdownRemark {
@@ -265,9 +265,10 @@ exports.createPages = async ({ graphql, actions }) => {
       });
       techCoursePrerequisite.push(course);
     });
-    
-    if (isDoOnceFlag) {//Becuase innovation and app development tracks are in 
-                       //all programs therefore create them only once
+
+    if (isDoOnceFlag) {
+      //Becuase innovation and app development tracks are in
+      //all programs therefore create them only once
       isDoOnceFlag = false;
 
       innovationTrack = program.innovationTrack;
@@ -326,7 +327,6 @@ exports.createPages = async ({ graphql, actions }) => {
         });
         appDevCoursePrerequisite.push(course);
       });
-
     }
   });
 };

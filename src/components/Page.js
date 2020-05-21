@@ -19,9 +19,10 @@ const styles = {
 };
 
 const Component = ({ children, classes, title }) => {
+  const url = typeof window !== "undefined" ? window.location.pathname : "";
   return (
-    <>
-      <Header />
+    <React.Fragment>
+      {url !== "/" ? <Header /> : ""}
       <Grid
         className={classes.container}
         container
@@ -38,7 +39,7 @@ const Component = ({ children, classes, title }) => {
           <Footer />
         </Grid>
       </Grid>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -1,57 +1,52 @@
 import withRoot from "../utils/withRoot";
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import PropTypes from "prop-types";
-import SEO from "../components/SEO";
-import Card from "../components/Card";
-import Page from "../components/Page";
-import HomeFeatures from "../components/HomeFeatures";
-import Button from "@material-ui/core/Button";
 import Carousel from "../components/Carousel";
-import Avatar from "@material-ui/core/Avatar";
-import { Gift } from "mdi-material-ui";
 import withStyles from "@material-ui/styles/withStyles";
+import SectionInfo from "../components/SectionInfo";
+import MainSection from "../components/MainSection";
+import { Grid } from "@material-ui/core";
+import "aos/dist/aos.css";
+import Footer from "../components/Footer";
+const AOS = typeof window !== `undefined` ? require("aos") : null;
+
+if (AOS) {
+  AOS.init();
+}
 
 const styles = () => ({
   root: {
     fontWeight: "bold",
   },
+  container: {
+    marginTop: 94,
+  },
+  contentBox: {
+    maxWidth: "calc(1136px - 60px)",
+    width: "calc(100% - 60px)",
+    marginTop: "94px !important",
+  },
 });
-const Home = (props) => {
-  //const programs = props.data.allMarkdownRemark.edges;
-  return (
-    <Page title={props.data.allContentfulFranchisee.edges[0].node.title}>
-      <SEO title="Home">
-        <meta
-          content="Beautiful Gatsby Material UI Contentful Business Starter. Tiny code. Well organized. Ready to customize and go."
-          name="description"
-        />
-      </SEO>
 
-      <HomeFeatures />
-      <Card
-        action={
-          <Button
-            className={props.classes.root}
-            color="secondary"
-            component={Link}
-            to="/programs"
-            variant="contained"
-          >
-            View All Programs
-          </Button>
-        }
-        avatar={
-          <Avatar>
-            <Gift />
-          </Avatar>
-        }
-        style={{ minHeight: 523 }}
-        title="Our Teaching Programs"
-      >
-        <Carousel />
-      </Card>
-    </Page>
+const Home = (props) => {
+  return (
+    <React.Fragment>
+      <MainSection
+        title={props.data.allContentfulFranchisee.edges[0].node.title}
+      />
+
+      <Grid container direction="row" justify="center">
+        <Grid className={props.classes.contentBox} item>
+          <Carousel />
+        </Grid>
+        <Grid className={props.classes.contentBox} item>
+          <SectionInfo />
+        </Grid>
+      </Grid>
+
+      <Footer />
+    </React.Fragment>
   );
 };
 

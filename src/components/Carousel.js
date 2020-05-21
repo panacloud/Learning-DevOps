@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withPrefix, graphql, StaticQuery } from "gatsby";
+import { Link, graphql, StaticQuery } from "gatsby";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -11,10 +11,41 @@ import CardMedia from "@material-ui/core/CardMedia";
 import { autoPlay } from "react-swipeable-views-utils";
 import withStyles from "@material-ui/styles/withStyles";
 import carouselData from "../services/carousel-service.json";
+import { Grid } from "@material-ui/core";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const styles = {
+  root: {
+    display: "flex",
+    boxShadow: "none !important",
+  },
   cardMedia: {
-    height: "200px",
+    height: "300px",
+  },
+  content: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  cover: {
+    height: "400px",
+  },
+  contentTitle: {
+    color: "#706aaf",
+  },
+  findMore: {
+    display: "flex",
+    alignItems: "center",
+    color: "#706aaf",
+    fontWeight: "700",
+    marginTop: "10px",
+  },
+  findMoreImg: {
+    marginLeft: "25px",
+    width: "53px",
+    background: "#f4f5f6",
+    padding: "10px",
+    borderRadius: "34px",
   },
 };
 
@@ -43,7 +74,7 @@ class Carousel extends React.Component {
 
   render() {
     const { activeStep } = this.state;
-    const { classes, items } = this.props;
+    const { classes } = this.props;
     const filteredData = [];
     return (
       <Paper elevation={0}>
@@ -100,7 +131,7 @@ class Carousel extends React.Component {
           }}
         ></StaticQuery>
 
-        <div>
+        <div data-aos="fade-up">
           <Typography>
             {(this.items[activeStep] || { title: "qwerty" }).title}
           </Typography>
@@ -110,7 +141,6 @@ class Carousel extends React.Component {
             index={activeStep}
             onChangeIndex={this.handleStepChange}
           >
-            {/* {JSON.stringify(this.items)} */}
             {this.items.length > 0
               ? this.items.map((item, index) => {
                   const {
@@ -126,21 +156,41 @@ class Carousel extends React.Component {
                   return (
                     <div key={index}>
                       {Math.abs(activeStep - index) <= 2 ? (
-                        <Card>
-                          <CardMedia
-                            className={classes.cardMedia}
-                            image={publicURL}
-                          />
-                          <CardContent>
-                            <Typography
-                              component="h2"
-                              gutterBottom
-                              variant="h5"
-                            >
-                              <Link to={path}>{title}</Link>
-                            </Typography>
-                            <Typography component="p">{excerpt}</Typography>
-                          </CardContent>
+                        <Card className={classes.root}>
+                          <Grid container justify="center">
+                            <Grid item md={8} xs={12}>
+                              <CardMedia
+                                className={classes.cover}
+                                image={publicURL}
+                                title="Live from space album cover"
+                              />
+                            </Grid>
+                            <Grid item md={4} xs={12}>
+                              <CardContent className={classes.content}>
+                                <Typography
+                                  gutterBottom
+                                  variant="h3"
+                                  className={classes.contentTitle}
+                                >
+                                  {title}
+                                </Typography>
+                                <Typography variant="body1">
+                                  {excerpt}
+
+                                  <Link to={path}>
+                                    <div className={classes.findMore}>
+                                      Find more
+                                      <img
+                                        className={classes.findMoreImg}
+                                        src={require("../assets/arrow.png")}
+                                        alt="arrow"
+                                      />
+                                    </div>
+                                  </Link>
+                                </Typography>
+                              </CardContent>
+                            </Grid>
+                          </Grid>
                         </Card>
                       ) : null}
                     </div>

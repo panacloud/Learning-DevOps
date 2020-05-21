@@ -1,5 +1,4 @@
 import React from "react";
-import { StaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby";
 import Menu from "./Menu";
 import MenuMobile from "./MenuMobile";
@@ -8,17 +7,38 @@ import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
-import Chip from "@material-ui/core/Chip";
-import Avatar from "@material-ui/core/Avatar";
-import { MaterialUi } from "mdi-material-ui";
-import useCompanyName from "../hooks/useCompanyNameData";
+import { makeStyles, Slide, useScrollTrigger } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    background: "transparent",
+    position: "absolute !important",
+    boxShadow: "none !important",
+  },
+}));
+
+function HideOnScroll(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
 
 const Header = (props) => {
-  const companyName = useCompanyName();
+  const url = typeof window !== "undefined" ? window.location.pathname : "";
+  const classes = useStyles();
   //console.log("NNNNNNNNNNNNNN " + companyName);
   return (
-    <div>
-      <AppBar id="appBar">
+    <div data-aos="slide-left" data-aos-duration="1000">
+      <AppBar
+        position="static"
+        id="appBar"
+        className={url === "/" ? classes.appBar : ""}
+      >
         <Toolbar>
           <Grid
             alignItems="center"
@@ -27,7 +47,14 @@ const Header = (props) => {
             spacing={8}
           >
             <Grid item>
-            <Link to="/"><img src="https://images.ctfassets.net/6y7x6a0he6ux/3KHz62otb9GvG0quUFy7Dv/9ee403ef1f030bda89bdd6f1f7036e7a/4iru_white" alt="Smiley face" height="43.2" width="72"/></Link>
+              <Link to="/">
+                <img
+                  src="https://images.ctfassets.net/6y7x6a0he6ux/3KHz62otb9GvG0quUFy7Dv/9ee403ef1f030bda89bdd6f1f7036e7a/4iru_white"
+                  alt="Smiley face"
+                  height="43.2"
+                  width="72"
+                />
+              </Link>
             </Grid>
             <Grid item>
               <Hidden smDown>
