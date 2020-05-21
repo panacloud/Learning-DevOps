@@ -1,0 +1,20 @@
+.linkBtns {
+  color: white !important;
+  text-transform: none !important;
+  background: #706aaf !important;
+  margin-right: 30px !important;
+  padding: 5px 19px !important;
+  border-radius: 20px !important;
+}
+.linkBtns:hover {
+  background-color: #706aaf !important;
+  opacity: 0.9 !important;
+}
+
+.linkBtnsHome {
+  color: white !important;
+  text-transform: none !important;
+  margin-right: 30px !important;
+  padding: 5px 19px !important;
+  font-weight: 600 !important;
+}

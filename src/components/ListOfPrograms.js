@@ -5,67 +5,145 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import { withPrefix } from "gatsby";
 import withStyles from "@material-ui/styles/withStyles";
 import programs from "../hooks/useProgramsData";
+import "aos/dist/aos.css";
+const AOS = typeof window !== `undefined` ? require("aos") : null;
+
+if (AOS) {
+  AOS.init();
+}
 
 const styles = {
-  cardMedia: {
-    height: "200px",
+  content: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
-  cardStyle: {
+  cover: {
     height: "400px",
   },
-  color: {
-    color: "black",
+  root: {
+    display: "flex",
+    boxShadow: "none !important",
+  },
+  findMore: {
+    display: "flex",
+    alignItems: "center",
+    color: "#706aaf",
+    fontWeight: "700",
+    marginTop: "10px",
+  },
+  findMoreImg: {
+    marginLeft: "25px",
+    width: "53px",
+    background: "#f4f5f6",
+    padding: "10px",
+    borderRadius: "34px",
+  },
+  contentTitle: {
+    color: "#706aaf",
+  },
+  rootWithMargin: {
+    display: "flex",
+    boxShadow: "none !important",
+    marginTop: "70px",
   },
 };
 
 const ListOfPrograms = (props) => {
   const { classes } = props;
-  //console.log("AAAAAAAAAAAA");
   const programsAvailable = programs();
-  //console.log(programsAvailable);
-  return (
-    <Grid
-      alignItems="flex-start"
-      container
-      direction="row"
-      justify="center"
-      spacing={8}
+  return programsAvailable.map((program, index) => (
+    <Card
+      className={index === 0 ? classes.root : classes.rootWithMargin}
+      data-aos="fade-up"
+      key={"/programs/" + program.slug}
     >
-      {programsAvailable.map((program) => {
-        //console.log('zzzzzzzzzzzzzzzzzz ' + program.image.file.url);
-        return (
-          <Grid item key={"/programs/" + program.slug} md={6} xs={12}>
-            <Card style={styles.cardStyle}>
-              <CardMedia
-                className={classes.cardMedia}
-                image={program.image.file.url}
-              />
-              <CardContent>
-                <Typography component="h2" gutterBottom variant="h5">
-                  <Link
-                    to={"/programs/" + program.slug}
-                    state={{ program: program }}
-                  >
-                    Certified {program.title} Professional
-                  </Link>
-                </Typography>
-                
+      <Grid container justify="center">
+        {index === 1 || index === 3 ? (
+          <React.Fragment>
+            <Grid item md={4} xs={12}>
+              <CardContent className={classes.content}>
                 <Typography
-                  component="p"
+                  gutterBottom
+                  variant="h4"
+                  className={classes.contentTitle}
+                >
+                  Certified {program.title} Professional
+                </Typography>
+                <Typography
+                  variant="body1"
                   dangerouslySetInnerHTML={{
                     __html: program.shortDescription.childMarkdownRemark.html,
                   }}
                 ></Typography>
+                <Link
+                  to={"/programs/" + program.slug}
+                  state={{ program: program }}
+                >
+                  <div className={classes.findMore}>
+                    Find more
+                    <img
+                      className={classes.findMoreImg}
+                      src={require("../assets/arrow.png")}
+                      alt="arrow"
+                    />
+                  </div>
+                </Link>
               </CardContent>
-            </Card>
-          </Grid>
-        );
-      })}
-    </Grid>
-  );
+            </Grid>
+            <Grid item md={8} xs={12}>
+              <CardMedia
+                className={classes.cover}
+                image={program.image.file.url}
+              />
+            </Grid>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <Grid item md={8} xs={12}>
+              <CardMedia
+                className={classes.cover}
+                image={program.image.file.url}
+              />
+            </Grid>
+            <Grid item md={4} xs={12}>
+              <CardContent className={classes.content}>
+                <Typography
+                  gutterBottom
+                  variant="h4"
+                  className={classes.contentTitle}
+                >
+                  Certified {program.title} Professional
+                </Typography>
+                <Typography
+                  variant="body1"
+                  dangerouslySetInnerHTML={{
+                    __html: program.shortDescription.childMarkdownRemark.html,
+                  }}
+                ></Typography>
+                <Link
+                  to={"/programs/" + program.slug}
+                  state={{ program: program }}
+                >
+                  <div className={classes.findMore}>
+                    Find more
+                    <img
+                      className={classes.findMoreImg}
+                      src={require("../assets/arrow.png")}
+                      alt="arrow"
+                    />
+                  </div>
+                </Link>
+              </CardContent>
+            </Grid>
+          </React.Fragment>
+        )}
+      </Grid>
+    </Card>
+  ));
 };
 
 export default withStyles(styles)(ListOfPrograms);

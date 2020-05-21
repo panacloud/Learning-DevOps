@@ -10,9 +10,13 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, Slide, useScrollTrigger } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
+  appBarHome: {
     background: "transparent",
     position: "absolute !important",
+    boxShadow: "none !important",
+  },
+  appBarOthers: {
+    background: "white",
     boxShadow: "none !important",
   },
 }));
@@ -33,11 +37,11 @@ const Header = (props) => {
   const classes = useStyles();
   //console.log("NNNNNNNNNNNNNN " + companyName);
   return (
-    <div data-aos="slide-left" data-aos-duration="1000">
+    <div>
       <AppBar
         position="static"
         id="appBar"
-        className={url === "/" ? classes.appBar : ""}
+        className={url === "/" ? classes.appBarHome : classes.appBarOthers}
       >
         <Toolbar>
           <Grid

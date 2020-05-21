@@ -1,8 +1,10 @@
 import React from "react";
 import { StaticQuery, Link, graphql } from "gatsby";
 import Button from "@material-ui/core/Button";
+import "../css/menu.css";
 
 const Menu = (props) => {
+  const url = typeof window !== "undefined" ? window.location.pathname : "";
   const {
     data: {
       site: {
@@ -14,8 +16,8 @@ const Menu = (props) => {
     <div>
       {menuLinks.map((link) => (
         <Link key={link.name} to={link.link}>
-          <Button style={{ color: "white" }}>
-            <b>{link.name}</b>
+          <Button className={url === "/" ? "linkBtnsHome" : "linkBtns"}>
+            {link.name}
           </Button>
         </Link>
       ))}
