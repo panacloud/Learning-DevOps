@@ -1,5 +1,5 @@
 import withRoot from "../utils/withRoot";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "gatsby";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
@@ -20,6 +20,14 @@ const styles = {
   },
   cardStyle: {
     height: "400px",
+  },
+  headings: {
+    color: "#706aaf",
+    textAlign: "center",
+    marginBottom: "10px !important",
+  },
+  mainCard: {
+    boxShadow: "none !important",
   },
 };
 const useStyles = makeStyles((theme) => ({
@@ -50,121 +58,106 @@ const TrackDetails = (props) => {
 
   useEffect(() => {});
   return (
-    <Page title={track.title}>
+    <Page>
       <SEO title={track.title} />
-      <Grid
-        alignItems="flex-start"
-        container
-        direction="row"
-        justify="center"
-        spacing={4}
-      >
-        <Grid item md={12} xs={12}>
-          <Card>
-            <CardContent>
-              <Typography component="h3" gutterBottom variant="h6">
-                Objective of the Track:
-              </Typography>
-              <div dangerouslySetInnerHTML={createObjectiveMarkup()} />
-              {certifications && (
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <ol>
-                    <Typography
-                      style={{ textAlign: "center", color: "indigo" }}
-                      variant="h6"
-                    >
-                      Also prepares the student for the following Certifications
-                    </Typography>
-                    {certifications?.map((cert, key) => {
-                      return (
-                        <li key={key} style={{ margin: "5px 0px 5px 25%" }}>
-                          <a href={cert.url} target="_blank">
-                            {cert.title}
-                          </a>
-                        </li>
-                      );
-                    })}
-                  </ol>
-                </div>
-              )}
-              <Grid container spacing={2}>
-                {track.courses.map((course) => {
-                  return (
-                    <Grid
-                      className="card-pad bg-color-applicationDev  card-box"
-                      item
-                      key={course.quarter}
-                      md={3}
-                      xs={12}
-                    >
-                      <div className="card-pad">
-                        <Card
-                          className="card-pad"
-                          // style={styles.pad}
-                          className={classes.root}
-                          variant="outlined"
-                        >
-                          <CardContent className={useStyles.centerContent}>
-                            <Typography
-                              variant="h6"
-                              component="h6"
-                              className={classess.centerContent}
-                              gutterBottom
-                            >
-                              Quarter {course.quarter}
-                            </Typography>
-                            <Typography
-                              variant="h6"
-                              component="h6"
-                              className={classess.centerContent}
-                            >
-                              {course.courseNumber}
-                            </Typography>
-                            <Typography
-                              className={classes.pos}
-                              color="textSecondary"
-                            ></Typography>
-                            <Typography
-                              variant="body2"
-                              component="p"
-                              className={classess.centerContent}
-                            >
-                              <Link
-                                className="link-title"
-                                to={
-                                  "/programs/tracks/courses/" +
-                                  course.courseNumber
-                                }
-                              >
-                                {course.title}
-                              </Link>
-                              {/* {'"a benevolent smile"'} */}
-                            </Typography>
-                            <Typography className="arrow-right">
-                              <img
-                                height="20px"
-                                width="20px"
-                                src={require("../pages/team/point-to.png")}
-                              />
-                            </Typography>
-                          </CardContent>
-                        </Card>
-                      </div>
-                      {/* </Paper> */}
-                    </Grid>
-                  );
-                })}
-                <article>
-                  {documentToReactComponents(track.description.json)}
-                </article>
-                ;
-              </Grid>
-            </CardContent>
-            <br />
-            <br />
-          </Card>
-        </Grid>
-      </Grid>
+      <div>
+        <Typography variant="h3" className={props.classes.headings}>
+          {track.title}
+        </Typography>
+
+        <Card data-aos="fade-up" className={classes.mainCard}>
+          <CardContent>
+            <Typography gutterBottom variant="h5">
+              Objective of the Track
+            </Typography>
+            <Typography
+              variant="body1"
+              dangerouslySetInnerHTML={createObjectiveMarkup()}
+            ></Typography>
+
+            {certifications && (
+              <div>
+                <Typography variant="h6">
+                  Also prepares the student for the following Certifications
+                </Typography>
+                <ol>
+                  {certifications.map((cert, key) => (
+                    <li key={key}>
+                      <a
+                        href={cert.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {cert.title}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+
+            <Grid
+              container
+              justify="center"
+              alignItems="center"
+              spacing={4}
+              data-aos="fade-up"
+            >
+              {track.courses.map((course) => (
+                <Grid
+                  className="card-pad bg-color-technical card-box"
+                  item
+                  key={course.quarter}
+                  md={3}
+                  xs={12}
+                >
+                  <Link
+                    className="link-color"
+                    to={"/programs/tracks/courses/" + course.courseNumber}
+                  >
+                    <div className="card-pad pad">
+                      <Card className="card-pad bg-color-technical">
+                        <CardContent className={useStyles.centerContent}>
+                          <Typography
+                            className={classess.centerContent}
+                            gutterBottom
+                          >
+                            Quarter {course.quarter}
+                          </Typography>
+                          <Typography variant="h5" component="h2"></Typography>
+                          <Typography
+                            className={classes.pos}
+                            color="textSecondary"
+                          ></Typography>
+                          <Typography
+                            variant="body2"
+                            component="p"
+                            className={classess.centerContent}
+                          >
+                            {course.title}
+                          </Typography>
+                          <Typography className="arrow-right">
+                            <img
+                              height="20px"
+                              width="20px"
+                              src={require("../pages/team/point-to.png")}
+                              alt="arrow"
+                            />
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </Link>
+                </Grid>
+              ))}
+            </Grid>
+
+            <Typography variant="body1">
+              {documentToReactComponents(track.description.json)}
+            </Typography>
+          </CardContent>
+        </Card>
+      </div>
     </Page>
   );
 };
