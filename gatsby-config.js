@@ -22,7 +22,15 @@ module.exports = {
         link: "/courses",
       },
       {
-        name: "Team",
+        name: "Classes",
+        link: "/classes",
+      },
+      {
+        name: "Instructors",
+        link: "/instructors",
+      },
+      {
+        name: "Management Team",
         link: "/team",
       },
     ],
