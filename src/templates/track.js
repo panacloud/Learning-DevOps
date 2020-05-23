@@ -1,15 +1,15 @@
-import withRoot from "../utils/withRoot";
-import React, { useEffect } from "react";
-import { Link } from "gatsby";
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import withStyles from "@material-ui/styles/withStyles";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import SEO from "../components/SEO";
-import Page from "../components/Page";
-import { makeStyles } from "@material-ui/core/styles";
+import withRoot from "../utils/withRoot"
+import React, { useEffect } from "react"
+import { Link } from "gatsby"
+import Grid from "@material-ui/core/Grid"
+import Card from "@material-ui/core/Card"
+import CardContent from "@material-ui/core/CardContent"
+import Typography from "@material-ui/core/Typography"
+import withStyles from "@material-ui/styles/withStyles"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import SEO from "../components/SEO"
+import Page from "../components/Page"
+import { makeStyles } from "@material-ui/core/styles"
 
 const styles = {
   cardMedia: {
@@ -29,8 +29,8 @@ const styles = {
   mainCard: {
     boxShadow: "none !important",
   },
-};
-const useStyles = makeStyles((theme) => ({
+}
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
@@ -42,24 +42,24 @@ const useStyles = makeStyles((theme) => ({
   centerContent: {
     textAlign: "center",
   },
-}));
-const TrackDetails = (props) => {
+}))
+const TrackDetails = props => {
   // All programs list
-  const track = props.pageContext.track;
+  const track = props.pageContext.track
 
-  const { classes } = props;
-  const classess = useStyles();
+  const { classes } = props
+  const classess = useStyles()
 
   function createObjectiveMarkup() {
-    return { __html: track.objective.childMarkdownRemark.html };
+    return { __html: track.objective.childMarkdownRemark.html }
   }
 
-  const certifications = track.certifications;
+  const certifications = track.certifications
 
-  useEffect(() => {});
+  useEffect(() => {})
   return (
     <Page>
-      <SEO title={track.title} />
+      {/* <SEO title={track.title} /> */}
       <div>
         <Typography variant="h3" className={props.classes.headings}>
           {track.title}
@@ -103,7 +103,7 @@ const TrackDetails = (props) => {
               spacing={4}
               data-aos="fade-up"
             >
-              {track.courses.map((course) => (
+              {track.courses.map(course => (
                 <Grid
                   className="card-pad bg-color-technical card-box"
                   item
@@ -159,7 +159,7 @@ const TrackDetails = (props) => {
         </Card>
       </div>
     </Page>
-  );
-};
+  )
+}
 
-export default withRoot(withStyles(styles)(TrackDetails));
+export default withRoot(withStyles(styles)(TrackDetails))

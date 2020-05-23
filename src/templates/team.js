@@ -1,13 +1,13 @@
-import withRoot from "../utils/withRoot";
-import React from "react";
-import { graphql } from "gatsby";
-import SEO from "../components/SEO";
-import Page from "../components/Page";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import { withPrefix } from "gatsby";
-import withStyles from "@material-ui/styles/withStyles";
+import withRoot from "../utils/withRoot"
+import React from "react"
+import { graphql } from "gatsby"
+import SEO from "../components/SEO"
+import Page from "../components/Page"
+import Grid from "@material-ui/core/Grid"
+import Paper from "@material-ui/core/Paper"
+import Typography from "@material-ui/core/Typography"
+import { withPrefix } from "gatsby"
+import withStyles from "@material-ui/styles/withStyles"
 
 const styles = {
   paper: {
@@ -16,18 +16,18 @@ const styles = {
   image: {
     width: "100%",
   },
-};
+}
 
 const Detail = ({ classes, data }) => {
   const {
     title,
     image: { publicURL },
     jobtitle,
-  } = data.markdownRemark.frontmatter;
-  const { html } = data.markdownRemark;
+  } = data.markdownRemark.frontmatter
+  const { html } = data.markdownRemark
   return (
     <Page>
-      <SEO title={title} />
+      {/* <SEO title={title} /> */}
       <Paper className={classes.paper}>
         <Grid
           alignItems="flex-start"
@@ -51,8 +51,8 @@ const Detail = ({ classes, data }) => {
         </Grid>
       </Paper>
     </Page>
-  );
-};
+  )
+}
 
 export const query = graphql`
   query($id: String!) {
@@ -68,6 +68,6 @@ export const query = graphql`
       html
     }
   }
-`;
+`
 
-export default withRoot(withStyles(styles)(Detail));
+export default withRoot(withStyles(styles)(Detail))

@@ -1,23 +1,23 @@
-import withRoot from "../utils/withRoot";
-import React, { useEffect } from "react";
-import { Link } from "gatsby";
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import withStyles from "@material-ui/styles/withStyles";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import SEO from "../components/SEO";
-import Page from "../components/Page";
-import { makeStyles } from "@material-ui/core/styles";
-import CardActions from "@material-ui/core/CardActions";
-import "../css/program.css";
-import "aos/dist/aos.css";
-const AOS = typeof window !== `undefined` ? require("aos") : null;
+import withRoot from "../utils/withRoot"
+import React, { useEffect } from "react"
+import { Link } from "gatsby"
+import Grid from "@material-ui/core/Grid"
+import Card from "@material-ui/core/Card"
+import CardContent from "@material-ui/core/CardContent"
+import CardMedia from "@material-ui/core/CardMedia"
+import Typography from "@material-ui/core/Typography"
+import withStyles from "@material-ui/styles/withStyles"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import SEO from "../components/SEO"
+import Page from "../components/Page"
+import { makeStyles } from "@material-ui/core/styles"
+import CardActions from "@material-ui/core/CardActions"
+import "../css/program.css"
+import "aos/dist/aos.css"
+const AOS = typeof window !== `undefined` ? require("aos") : null
 
 if (AOS) {
-  AOS.init();
+  AOS.init()
 }
 
 const styles = {
@@ -34,8 +34,8 @@ const styles = {
   cardStyle: {
     height: "400px",
   },
-};
-const useStyles = makeStyles((theme) => ({
+}
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
@@ -47,28 +47,28 @@ const useStyles = makeStyles((theme) => ({
   centerContent: {
     textAlign: "center",
   },
-}));
+}))
 
-const ProgramDetails = (props) => {
+const ProgramDetails = props => {
   // All programs list
-  const program = props.pageContext.program;
-  const technicalTrack = program.technicalTrack;
-  const innovationTrack = program.innovationTrack;
-  const appDevelopmentTrack = program.appDevelopmentTrack;
-  const { classes } = props;
-  const classess = useStyles();
+  const program = props.pageContext.program
+  const technicalTrack = program.technicalTrack
+  const innovationTrack = program.innovationTrack
+  const appDevelopmentTrack = program.appDevelopmentTrack
+  const { classes } = props
+  const classess = useStyles()
 
   const scroll = () => {
     if (typeof window !== "undefined") {
-      window.scrollBy(0, window.innerHeight);
+      window.scrollBy(0, window.innerHeight)
     }
-  };
+  }
 
-  useEffect(() => {});
+  useEffect(() => {})
   return (
     <div>
       <Page>
-        <SEO title="Program of Study" />
+        {/* <SEO title="Program of Study" /> */}
         <Card className="mainCard">
           <Grid container justify="center">
             <Grid item md={6} xs={12}>
@@ -130,7 +130,7 @@ const ProgramDetails = (props) => {
               </Link>
             </Typography>
           </Grid>
-          {technicalTrack.courses.map((course) => {
+          {technicalTrack.courses.map(course => {
             return (
               <Grid
                 className="card-pad bg-color-technical card-box"
@@ -178,7 +178,7 @@ const ProgramDetails = (props) => {
                   </div>
                 </Link>
               </Grid>
-            );
+            )
           })}
         </Grid>
 
@@ -197,7 +197,7 @@ const ProgramDetails = (props) => {
               </Link>
             </Typography>
           </Grid>
-          {innovationTrack.courses.map((course) => {
+          {innovationTrack.courses.map(course => {
             return (
               <Grid
                 className="card-pad bg-color-innovation card-box"
@@ -245,7 +245,7 @@ const ProgramDetails = (props) => {
                   </div>
                 </Link>
               </Grid>
-            );
+            )
           })}
         </Grid>
 
@@ -264,7 +264,7 @@ const ProgramDetails = (props) => {
               </Link>
             </Typography>
           </Grid>
-          {appDevelopmentTrack.courses.map((course) => {
+          {appDevelopmentTrack.courses.map(course => {
             return (
               <Grid
                 className="card-pad bg-color-applicationDev card-box"
@@ -312,12 +312,12 @@ const ProgramDetails = (props) => {
                   </div>
                 </Link>
               </Grid>
-            );
+            )
           })}
         </Grid>
       </Page>
     </div>
-  );
-};
+  )
+}
 
-export default withRoot(withStyles(styles)(ProgramDetails));
+export default withRoot(withStyles(styles)(ProgramDetails))

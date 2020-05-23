@@ -1,20 +1,20 @@
-import withRoot from "../../utils/withRoot";
-import React from "react";
-import { Link, graphql, withPrefix } from "gatsby";
-import Typography from "@material-ui/core/Typography";
-import SEO from "../../components/SEO";
-import Page from "../../components/Page";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import IconButton from "@material-ui/core/IconButton";
-import { Rocket } from "mdi-material-ui";
+import withRoot from "../../utils/withRoot"
+import React from "react"
+import { Link, graphql, withPrefix } from "gatsby"
+import Typography from "@material-ui/core/Typography"
+import SEO from "../../components/SEO"
+import Page from "../../components/Page"
+import GridList from "@material-ui/core/GridList"
+import GridListTile from "@material-ui/core/GridListTile"
+import GridListTileBar from "@material-ui/core/GridListTileBar"
+import IconButton from "@material-ui/core/IconButton"
+import { Rocket } from "mdi-material-ui"
 
-const Team = (props) => {
-  const teams = props.data.allMarkdownRemark.edges;
+const Team = props => {
+  const teams = props.data.allMarkdownRemark.edges
   return (
     <Page title="Meet the Team">
-      <SEO title="Meet the Team" />
+      {/* <SEO title="Meet the Team" /> */}
       <Typography paragraph>
         We are here to help! Let us know what we can do. And we're of course
         always interested to find new recruits to join our amazing team. We are
@@ -25,7 +25,7 @@ const Team = (props) => {
       </Typography>
 
       <GridList cellHeight={500} cols={3}>
-        {teams.map((edge) => {
+        {teams.map(edge => {
           const {
             node: {
               frontmatter: {
@@ -35,7 +35,7 @@ const Team = (props) => {
                 jobtitle,
               },
             },
-          } = edge;
+          } = edge
           return (
             <Link key={path} to={path}>
               <GridListTile cols={1}>
@@ -54,12 +54,12 @@ const Team = (props) => {
                 />
               </GridListTile>
             </Link>
-          );
+          )
         })}
       </GridList>
     </Page>
-  );
-};
+  )
+}
 
 export const query = graphql`
   query TeamQuery {
@@ -82,6 +82,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-export default withRoot(Team);
+export default withRoot(Team)

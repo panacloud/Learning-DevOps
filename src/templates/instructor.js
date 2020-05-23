@@ -1,17 +1,17 @@
-import withRoot from "../utils/withRoot";
-import React, { useEffect } from "react";
-import { Link } from "gatsby";
-import { Typography, Card, CardContent, Grid } from "@material-ui/core";
-import withStyles from "@material-ui/styles/withStyles";
-import SEO from "../components/SEO";
-import Page from "../components/Page";
-import { makeStyles } from "@material-ui/core/styles";
-import "aos/dist/aos.css";
-const AOS = typeof window !== `undefined` ? require("aos") : null;
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import withRoot from "../utils/withRoot"
+import React, { useEffect } from "react"
+import { Link } from "gatsby"
+import { Typography, Card, CardContent, Grid } from "@material-ui/core"
+import withStyles from "@material-ui/styles/withStyles"
+import SEO from "../components/SEO"
+import Page from "../components/Page"
+import { makeStyles } from "@material-ui/core/styles"
+import "aos/dist/aos.css"
+const AOS = typeof window !== `undefined` ? require("aos") : null
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 if (AOS) {
-  AOS.init();
+  AOS.init()
 }
 
 const styles = {
@@ -33,8 +33,8 @@ const styles = {
     textAlign: "center",
     marginBottom: "10px !important",
   },
-};
-const useStyles = makeStyles((theme) => ({
+}
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
@@ -49,21 +49,21 @@ const useStyles = makeStyles((theme) => ({
   courseOutline: {
     marginTop: "20px",
   },
-}));
-const InstructorDetails = (props) => {
+}))
+const InstructorDetails = props => {
   // All programs list
-  const instructor = props.pageContext.instructor;
+  const instructor = props.pageContext.instructor
 
-  console.log("Instructor " + JSON.stringify(instructor));
+  console.log("Instructor " + JSON.stringify(instructor))
 
-  const { classes } = props;
-  const classess = useStyles();
+  const { classes } = props
+  const classess = useStyles()
 
-  useEffect(() => {});
+  useEffect(() => {})
   //I am unable to show video from
   return (
     <Page title="Instructor ">
-      <SEO title="Instructor" />
+      {/* <SEO title="Instructor" /> */}
       <div>
         {/* <Typography variant="h3" className={props.classes.headings}>
           <a href={instructor.url}>{instructor.name}</a>
@@ -86,7 +86,7 @@ const InstructorDetails = (props) => {
         ></iframe>
       </div>
     </Page>
-  );
-};
+  )
+}
 
-export default withRoot(withStyles(styles)(InstructorDetails));
+export default withRoot(withStyles(styles)(InstructorDetails))

@@ -1,16 +1,16 @@
-import withRoot from "../utils/withRoot";
-import React, { useEffect } from "react";
-import { Link } from "gatsby";
-import { Typography, Card, CardContent, Grid } from "@material-ui/core";
-import withStyles from "@material-ui/styles/withStyles";
-import SEO from "../components/SEO";
-import Page from "../components/Page";
-import { makeStyles } from "@material-ui/core/styles";
-import "aos/dist/aos.css";
-const AOS = typeof window !== `undefined` ? require("aos") : null;
+import withRoot from "../utils/withRoot"
+import React, { useEffect } from "react"
+import { Link } from "gatsby"
+import { Typography, Card, CardContent, Grid } from "@material-ui/core"
+import withStyles from "@material-ui/styles/withStyles"
+import SEO from "../components/SEO"
+import Page from "../components/Page"
+import { makeStyles } from "@material-ui/core/styles"
+import "aos/dist/aos.css"
+const AOS = typeof window !== `undefined` ? require("aos") : null
 
 if (AOS) {
-  AOS.init();
+  AOS.init()
 }
 
 const styles = {
@@ -32,8 +32,8 @@ const styles = {
     textAlign: "center",
     marginBottom: "10px !important",
   },
-};
-const useStyles = makeStyles((theme) => ({
+}
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
@@ -48,26 +48,26 @@ const useStyles = makeStyles((theme) => ({
   courseOutline: {
     marginTop: "20px",
   },
-}));
-const CourseDetails = (props) => {
+}))
+const CourseDetails = props => {
   // All programs list
-  const course = props.pageContext.course;
-  const certification = course.certification;
-  const textBooks = course.textBooks;
-  const referenceBooks = course.referenceBooks;
-  const sections = course.sections;
-  const belongsToTrack = props.pageContext.track;
-  const prereqCourses = props.pageContext.prereq;
+  const course = props.pageContext.course
+  const certification = course.certification
+  const textBooks = course.textBooks
+  const referenceBooks = course.referenceBooks
+  const sections = course.sections
+  const belongsToTrack = props.pageContext.track
+  const prereqCourses = props.pageContext.prereq
 
-  console.log("Sections " + JSON.stringify(sections));
+  console.log("Sections " + JSON.stringify(sections))
 
-  const { classes } = props;
-  const classess = useStyles();
+  const { classes } = props
+  const classess = useStyles()
 
-  useEffect(() => {});
+  useEffect(() => {})
   return (
     <Page title="Course Syllabus">
-      <SEO title="Course Syllabus" />
+      {/* <SEO title="Course Syllabus" /> */}
       <div>
         <Typography variant="h3" className={props.classes.headings}>
           {course.courseNumber} {course.title}
@@ -106,7 +106,7 @@ const CourseDetails = (props) => {
                         {prereq.courseNumber} {prereq.title}
                       </Link>
                     </div>
-                  );
+                  )
                 })
               ) : (
                 <li>None</li>
@@ -130,7 +130,7 @@ const CourseDetails = (props) => {
                           {cert.title}
                         </a>
                       </li>
-                    );
+                    )
                   })}
                 </ol>
               </div>
@@ -153,7 +153,7 @@ const CourseDetails = (props) => {
                           {book.title} by {book.authors}
                         </a>
                       </li>
-                    );
+                    )
                   })}
                 </ol>
               </div>
@@ -176,7 +176,7 @@ const CourseDetails = (props) => {
                           {book.title} by {book.authors}
                         </a>
                       </li>
-                    );
+                    )
                   })}
                 </ol>
               </div>
@@ -213,7 +213,7 @@ const CourseDetails = (props) => {
                                 // }}
                                 ></div>
                               </div>
-                            );
+                            )
                           })
                         : null}
                       {item.quiz && (
@@ -229,7 +229,7 @@ const CourseDetails = (props) => {
         </Grid>
       </div>
     </Page>
-  );
-};
+  )
+}
 
-export default withRoot(withStyles(styles)(CourseDetails));
+export default withRoot(withStyles(styles)(CourseDetails))
