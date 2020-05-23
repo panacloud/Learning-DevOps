@@ -1,7 +1,7 @@
 import withRoot from "../../utils/withRoot"
 import React from "react"
 import { graphql } from "gatsby"
-import SEO from "../../components/SEO"
+// import SEO from "../../components/SEO"
 import Page from "../../components/Page"
 import useInstructorsData from "../../hooks/useInstructorsData"
 import { Link } from "gatsby"

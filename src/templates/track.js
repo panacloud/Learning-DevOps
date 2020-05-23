@@ -7,7 +7,7 @@ import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
 import withStyles from "@material-ui/styles/withStyles"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import SEO from "../components/SEO"
+// import SEO from "../components/SEO"
 import Page from "../components/Page"
 import { makeStyles } from "@material-ui/core/styles"
 

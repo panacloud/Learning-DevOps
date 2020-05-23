@@ -1,7 +1,7 @@
 import withRoot from "../utils/withRoot"
 import React from "react"
 import { graphql } from "gatsby"
-import SEO from "../components/SEO"
+// import SEO from "../components/SEO"
 import Page from "../components/Page"
 import Grid from "@material-ui/core/Grid"
 import Paper from "@material-ui/core/Paper"
