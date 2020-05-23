@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: xmflsct/action-publish-gatsby@v1 # Uses this action to run further steps
         with:
           name: "daniyalnagori" # Not required, default to action's maintainer
           email: "daniyalnagori@yahoo.com" # Not required, default to action's maintainer
