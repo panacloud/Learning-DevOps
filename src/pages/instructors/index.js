@@ -1,18 +1,18 @@
-import withRoot from "../../utils/withRoot";
-import React from "react";
-import { graphql } from "gatsby";
-import SEO from "../../components/SEO";
-import Page from "../../components/Page";
-import useInstructorsData from "../../hooks/useInstructorsData";
-import { Link } from "gatsby";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import withRoot from "../../utils/withRoot"
+import React from "react"
+import { graphql } from "gatsby"
+import SEO from "../../components/SEO"
+import Page from "../../components/Page"
+import useInstructorsData from "../../hooks/useInstructorsData"
+import { Link } from "gatsby"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-const Instructors = (props) => {
-  const instructors = useInstructorsData();
-  console.log(instructors);
+const Instructors = props => {
+  const instructors = useInstructorsData()
+  console.log(instructors)
   return (
     <Page title="Instructors">
-      <SEO title="Instructors" />
+      {/* <SEO title="Instructors" /> */}
       {instructors.map((ins, index) => {
         return (
           <div>
@@ -34,10 +34,10 @@ const Instructors = (props) => {
             <br />
             <br />
           </div>
-        );
+        )
       })}
     </Page>
-  );
-};
+  )
+}
 
-export default withRoot(Instructors);
+export default withRoot(Instructors)
