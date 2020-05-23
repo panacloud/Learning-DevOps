@@ -3,6 +3,8 @@ import React from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import Carousel from "../components/Carousel";
+import RecentProjects from "../components/RecentProjects";
+import AboutSection from "../components/AboutSection";
 import withStyles from "@material-ui/styles/withStyles";
 import SectionInfo from "../components/SectionInfo";
 import MainSection from "../components/MainSection";
@@ -10,6 +12,8 @@ import { Grid } from "@material-ui/core";
 import "aos/dist/aos.css";
 import Footer from "../components/Footer";
 const AOS = typeof window !== `undefined` ? require("aos") : null;
+import "./index.css";
+
 
 if (AOS) {
   AOS.init();
@@ -44,7 +48,8 @@ const Home = (props) => {
           <SectionInfo />
         </Grid>
       </Grid>
-
+      <RecentProjects />
+      <AboutSection />
       <Footer />
     </React.Fragment>
   );
