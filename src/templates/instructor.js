@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
 const InstructorDetails = (props) => {
   // All programs list
   const instructor = props.pageContext.instructor;
-  
 
   console.log("Instructor " + JSON.stringify(instructor));
 
@@ -61,22 +60,25 @@ const InstructorDetails = (props) => {
   const classess = useStyles();
 
   useEffect(() => {});
-  //I am unable to show video from 
+  //I am unable to show video from
   return (
     <Page title="Instructor ">
       <SEO title="Instructor" />
       <div>
         <Typography variant="h3" className={props.classes.headings}>
-        <a href={instructor.url}>{instructor.name}</a>
-          
+          <a href={instructor.url}>{instructor.name}</a>
         </Typography>
-        
-        <img src={instructor.picture.file.url} alt="Profile Picture" width="100" height="125"></img>
-        <Typography variant="h6">{documentToReactComponents(instructor.description.json)}</Typography>        
-        
-          
 
-        </div>
+        <img
+          src={instructor.picture.file.url}
+          alt="Profile Picture"
+          width="100"
+          height="125"
+        ></img>
+        <Typography variant="h6">
+          {documentToReactComponents(instructor.description.json)}
+        </Typography>
+      </div>
     </Page>
   );
 };
