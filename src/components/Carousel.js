@@ -179,7 +179,7 @@ class Carousel extends React.Component {
 
                                   <Link to={path}>
                                     <div className={classes.findMore}>
-                                      Find more
+                                      Find moree
                                       <img
                                         className={classes.findMoreImg}
                                         src={require("../assets/arrow.png")}

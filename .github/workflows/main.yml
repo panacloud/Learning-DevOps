@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - zia
 name: build gatsby
 jobs:
   build_gatsby:
