@@ -72,9 +72,10 @@ const InstructorDetails = (props) => {
         </Typography>
         
         <img src={instructor.picture.file.url} alt="Profile Picture" width="100" height="125"></img>
-        <Typography variant="h6">{documentToReactComponents(instructor.description.json)}</Typography>        
-        
-          
+        <Typography variant="h6">{documentToReactComponents(instructor.description.json)}</Typography>
+        <iframe width="560" height="315" src={instructor.youTubeVideo}
+        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+         allowfullscreen></iframe>
 
         </div>
     </Page>
