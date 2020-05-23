@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - zia
+      - master
 name: build gatsby
 jobs:
   build_gatsby:
@@ -19,9 +19,21 @@ jobs:
           GH_API_KEY: ${{ secrets.PA_TOKEN }}
         run: yarn build
 
+        # github page config
       - name: deploy
         uses: maxheld83/ghpages@v0.2.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_PAT: ${{ secrets.PA_TOKEN }}
           BUILD_DIR: "public/"
+
+          #  s3 config
+      - uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: "${{ secrets.AWS_S3_BUCKET }}"
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: "us-west-1" # optional: defaults to us-east-1
+          SOURCE_DIR: "public" # optional: defaults to entire repository
