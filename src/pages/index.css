@@ -1,0 +1,183 @@
+body { background: #fff; }
+.bg-even {
+    background-color: #d0c9c926;
+}
+
+.section {
+    padding: 30px 0 60px;
+    font-family: "RaleWay", sans-serif;
+}
+
+.section h2 {
+    font-size: 45px;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.section h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 60%;
+    height: 4px;
+    background: #706aaf;
+    display: inline-block;
+    border-radius: 500px;
+}
+
+.section h2::after {
+    content: "";
+    position: absolute;
+    left: 60%;
+    bottom: 1px;
+    width: 20%;
+    height: 2px;
+    background: #706aaf;
+    display: inline-block;
+    border-radius: 500px;
+}
+
+.section p {
+    font-family: "Roboto", sans-serif;
+    line-height: 1.8em;
+}
+
+.section img {
+    max-width: 100%;
+}
+
+.section .card p {
+    font-size: 16px;
+}
+
+.section .card {
+    height: 100%;
+    padding-bottom: 40px;
+    background: none;
+    border: none;
+}
+
+.section .card .card-head img {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
+}
+
+.section .card .card-head {
+    position: relative;
+}
+
+.section .card .badge {
+    border-bottom: 2px solid #706aaf;
+    border-radius: 0;
+    padding: 2px 0;
+    font-size: 11px;
+}
+
+.section .card h4 {
+    line-height: 1.4em;
+    padding: 0 0 15px;
+    font-weight: 600;
+}
+
+.section .card .card-head::before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid #000;
+    left: 0;
+    bottom: -15px;
+}
+
+.section .card .card-body {
+    margin: 0 0 0 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.section .read-more-1 a:hover, .section .read-more-1 a:focus {
+    text-decoration: none;
+}
+
+.section .read-more-1 {
+    padding: 10px 0;
+}
+
+.section .read-more-1 a {
+    font-size: 14px;
+    color: #706aaf;
+    font-family: "Roboto", sans-serif;
+    padding: 8px 12px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition-duration: 0.6s;
+}
+
+.section .read-more-1 a>.fa {
+    padding: 0 0 0 10px;
+    font-size: 120%;
+}
+
+.section .read-more-1 a:hover, .section .read-more-1 a:focus {
+    background: #706aaf;
+    color: #fff;
+}
+
+.section .read-more-stripe {
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0), 0 7px 14px 0 rgba(50,50,93,.1);
+    display: block;
+    /* text-align: center; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 15px 25px;
+    justify-content: space-between;
+}
+
+
+.section .read-more-stripe .read-more-1 {
+    /* width: 210px; */
+    text-align: right;
+    flex-basis: 20%;
+}
+
+.section .read-more-stripe h5 {
+    flex-basis: 20%;
+    line-height: 1.5em;
+}
+
+.section .read-more-stripe p {
+    margin: 0;
+    flex-basis: 60%;
+}
+
+@font-face {
+    font-family: "OpenSans";
+    src: url("../assets/fonts/OpenSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../assets/fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "RobotoLight";
+    src: url("../assets/fonts/Roboto-Light.ttf");
+}
+
+@font-face {
+    font-family: "RaleWay";
+    src: url("../assets/fonts/Raleway-Medium.ttf");
+}
