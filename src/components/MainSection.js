@@ -1,19 +1,19 @@
-import React from "react";
-import { Typography } from "@material-ui/core";
+import React from "react"
+import { Typography } from "@material-ui/core"
 
-import Header from "./Header";
-import "../css/home.css";
+// import Header from "./Header";
+import "../css/home.css"
 
 const MainSection = ({ title }) => {
   const scroll = () => {
     if (typeof window !== "undefined") {
-      window.scrollBy(0, window.innerHeight);
+      window.scrollBy(0, window.innerHeight)
     }
-  };
+  }
 
   return (
     <React.Fragment>
-      <Header />
+      {/* <Header /> */}
       <img
         src={require("../assets/global.jpeg")}
         className="background"
@@ -33,7 +33,7 @@ const MainSection = ({ title }) => {
         </div>
       </Typography>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default MainSection;
+export default MainSection

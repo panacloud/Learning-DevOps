@@ -1,9 +1,9 @@
-import React from "react";
-import Header from "./Header";
-import Footer from "./Footer";
-import { Grid, Typography } from "@material-ui/core";
-import withStyles from "@material-ui/styles/withStyles";
-import "../css/style.styl";
+import React from "react"
+// import Header from "./Header";
+import Footer from "./Footer"
+import { Grid, Typography } from "@material-ui/core"
+import withStyles from "@material-ui/styles/withStyles"
+import "../css/style.styl"
 
 const styles = {
   container: {
@@ -16,13 +16,13 @@ const styles = {
   title: {
     textAlign: "center",
   },
-};
+}
 
 const Component = ({ children, classes, title }) => {
-  const url = typeof window !== "undefined" ? window.location.pathname : "";
+  const url = typeof window !== "undefined" ? window.location.pathname : ""
   return (
     <React.Fragment>
-      {url !== "/" ? <Header /> : ""}
+      {/* {url !== "/" ? <Header /> : ""} */}
       <Grid
         className={classes.container}
         container
@@ -40,7 +40,7 @@ const Component = ({ children, classes, title }) => {
         </Grid>
       </Grid>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default withStyles(styles)(Component);
+export default withStyles(styles)(Component)
