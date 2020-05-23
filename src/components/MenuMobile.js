@@ -1,19 +1,23 @@
 import React from "react";
 import { StaticQuery, Link, graphql } from "gatsby";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import IconButton from "@material-ui/core/IconButton";
 import { DotsVertical } from "mdi-material-ui";
 import withStyles from "@material-ui/styles/withStyles";
+import { MenuItem, Menu } from "@material-ui/core";
+import "../css/menu.css";
 
 const styles = {
   dotsVerticalIcon: {
-    color: "#efefef",
+    color: "#706aaf",
+  },
+  menuItem: {
+    color: "black !important",
   },
 };
 
 class MenuMobile extends React.Component {
+  url = typeof window !== "undefined" ? window.location.pathname : "";
+
   state = {
     anchorEl: null,
   };
@@ -36,32 +40,27 @@ class MenuMobile extends React.Component {
         },
       },
     } = this.props;
+
     return (
-      <>
+      <React.Fragment>
         <IconButton onClick={this.handleOpen}>
-          <DotsVertical className={classes.dotsVerticalIcon} />
+          <DotsVertical
+            className={this.url === "/" ? "dotHome" : "dotsVerticalIcon"}
+          />
         </IconButton>
-        <ClickAwayListener onClickAway={this.handleClose}>
-          <Menu
-            anchorEl={anchorEl}
-            onClose={this.handleClose}
-            open={Boolean(anchorEl)}
-          >
-            {menuLinks.map((link) => (
-              <Link key={link.name} to={link.link}>
-                <MenuItem>{link.name}</MenuItem>
-              </Link>
-            ))}
-            <a
-              href="https://github.com/bluepeter/gatsby-material-ui-business-starter"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <MenuItem>Fork me on Github</MenuItem>
-            </a>
-          </Menu>
-        </ClickAwayListener>
-      </>
+        <Menu
+          anchorEl={this.state.anchorEl}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          onClose={this.handleClose}
+          open={Boolean(this.state.anchorEl)}
+        >
+          {menuLinks.map((link) => (
+            <Link key={link.name} to={link.link}>
+              <MenuItem className="linkBtnsHomeMobile">{link.name}</MenuItem>
+            </Link>
+          ))}
+        </Menu>
+      </React.Fragment>
     );
   }
 }

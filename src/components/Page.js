@@ -7,7 +7,7 @@ import "../css/style.styl";
 
 const styles = {
   container: {
-    marginTop: 94,
+    marginTop: "50px",
   },
   contentBox: {
     maxWidth: "calc(1136px - 60px)",

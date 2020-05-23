@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
     background: "white",
     boxShadow: "none !important",
   },
+  logo: {
+    background: "#706aaf",
+    padding: "1px",
+    borderRadius: "3px",
+  },
 }));
 
 function HideOnScroll(props) {
@@ -35,7 +40,7 @@ function HideOnScroll(props) {
 const Header = (props) => {
   const url = typeof window !== "undefined" ? window.location.pathname : "";
   const classes = useStyles();
-  //console.log("NNNNNNNNNNNNNN " + companyName);
+
   return (
     <div>
       <AppBar
@@ -53,6 +58,7 @@ const Header = (props) => {
             <Grid item>
               <Link to="/">
                 <img
+                  className={url === "/" ? "" : classes.logo}
                   src="https://images.ctfassets.net/6y7x6a0he6ux/3KHz62otb9GvG0quUFy7Dv/9ee403ef1f030bda89bdd6f1f7036e7a/4iru_white"
                   alt="Smiley face"
                   height="43.2"

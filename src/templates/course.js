@@ -1,20 +1,18 @@
 import withRoot from "../utils/withRoot";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "gatsby";
-import {
-  Typography,
-  Card,
-  CardContent,
-  Grid,
-  Container,
-  GridList,
-} from "@material-ui/core";
+import { Typography, Card, CardContent, Grid } from "@material-ui/core";
 import withStyles from "@material-ui/styles/withStyles";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import SEO from "../components/SEO";
 import Page from "../components/Page";
 import { makeStyles } from "@material-ui/core/styles";
-import CardActions from "@material-ui/core/CardActions";
+import "aos/dist/aos.css";
+const AOS = typeof window !== `undefined` ? require("aos") : null;
+
+if (AOS) {
+  AOS.init();
+}
+
 const styles = {
   cardMedia: {
     height: "200px",
@@ -24,6 +22,15 @@ const styles = {
   },
   cardStyle: {
     height: "400px",
+  },
+  card: {
+    boxShadow: "none !important",
+    marginTop: "10px",
+  },
+  headings: {
+    color: "#706aaf",
+    textAlign: "center",
+    marginBottom: "10px !important",
   },
 };
 const useStyles = makeStyles((theme) => ({
@@ -62,17 +69,17 @@ const CourseDetails = (props) => {
     <Page title="Course Syllabus">
       <SEO title="Course Syllabus" />
       <div>
-        <h1 className="program-title">
+        <Typography variant="h3" className={props.classes.headings}>
           {course.courseNumber} {course.title}
-        </h1>
+        </Typography>
         <Typography variant="h4">Description</Typography>
-        <Typography
-          dangerouslySetInnerHTML={{
-            __html: course?.description.childMarkdownRemark?.html,
-          }}
-        ></Typography>
+        <div
+        // dangerouslySetInnerHTML={{
+        //   __html: course.description.childMarkdownRemark.html,
+        // }}
+        ></div>
 
-        <Card gutterBottom>
+        <Card gutterBottom className={props.classes.card} data-aos="fade-up">
           <CardContent>
             <Typography variant="h6" gutterBottom>
               This Course is taught in the following Track <br />
@@ -115,7 +122,11 @@ const CourseDetails = (props) => {
                   {certification.map((cert, key) => {
                     return (
                       <li key={key}>
-                        <a href={cert.url} target="_blank">
+                        <a
+                          href={cert.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           {cert.title}
                         </a>
                       </li>
@@ -134,7 +145,11 @@ const CourseDetails = (props) => {
                   {textBooks.map((book, key) => {
                     return (
                       <li key={key}>
-                        <a href={book.url} target="_blank">
+                        <a
+                          href={book.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           {book.title} by {book.authors}
                         </a>
                       </li>
@@ -153,7 +168,11 @@ const CourseDetails = (props) => {
                   {referenceBooks.map((book, key) => {
                     return (
                       <li key={key}>
-                        <a href={book.url} target="_blank">
+                        <a
+                          href={book.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           {book.title} by {book.authors}
                         </a>
                       </li>
@@ -167,7 +186,7 @@ const CourseDetails = (props) => {
 
         <Grid container spacing={2}>
           <Grid item xs={12} className={classess.courseOutline}>
-            <Typography gutterBottom gutterTop variant="h4">
+            <Typography gutterBottom variant="h4">
               Course Outline
             </Typography>
           </Grid>
@@ -175,7 +194,7 @@ const CourseDetails = (props) => {
           {sections
             ? sections.map((item, key) => (
                 <Grid item md={12} xs={12}>
-                  <Card classes={classes.card}>
+                  <Card className={props.classes.card} data-aos="fade-up">
                     <CardContent>
                       <Typography variant="h6">
                         {item.serialNumber}. {item.title} (Week {item.weeks})
@@ -187,15 +206,12 @@ const CourseDetails = (props) => {
                                 <Typography variant="subtitle1" gutterBottom>
                                   <b>{line.title}</b>
                                 </Typography>
-
-                                <Typography
-                                  component="p"
-                                  dangerouslySetInnerHTML={{
-                                    __html:
-                                      line?.shortDescription
-                                        ?.childMarkdownRemark?.html,
-                                  }}
-                                ></Typography>
+                                <div
+                                // dangerouslySetInnerHTML={{
+                                //   __html:
+                                //     line.shortDescription.childMarkdownRemark.html,
+                                // }}
+                                ></div>
                               </div>
                             );
                           })

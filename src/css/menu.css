@@ -1,14 +1,14 @@
 .linkBtns {
-  color: white !important;
+  color: #706aaf !important;
   text-transform: none !important;
-  background: #706aaf !important;
+  background: none !important;
   margin-right: 30px !important;
   padding: 5px 19px !important;
   border-radius: 20px !important;
+  font-weight: 600 !important;
 }
 .linkBtns:hover {
-  background-color: #706aaf !important;
-  opacity: 0.9 !important;
+  background-color: #0000000a !important;
 }
 
 .linkBtnsHome {
@@ -17,4 +17,25 @@
   margin-right: 30px !important;
   padding: 5px 19px !important;
   font-weight: 600 !important;
+}
+
+.linkBtnsHomeMobile {
+  color: #706aaf !important;
+  text-transform: none !important;
+  padding: 5px 19px !important;
+  font-weight: 600 !important;
+}
+
+.dotsVerticalIcon {
+  color: #706aaf;
+}
+
+.dotHome {
+  color: white;
+}
+
+@media only screen and (max-width: 960px) {
+  .dotsHome {
+    color: white;
+  }
 }
