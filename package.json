@@ -10,8 +10,7 @@
     "fix": "eslint --fix src/ && prettier --write 'src/**/*.js'",
     "start": "npm run develop",
     "build": "gatsby build --prefix-paths",
-    "serve": "gatsby serve",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "serve": "gatsby serve"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
