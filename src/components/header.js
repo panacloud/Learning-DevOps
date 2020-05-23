@@ -1,42 +1,87 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import React from "react";
+import { Link } from "gatsby";
+import Menu from "./Menu";
+import MenuMobile from "./MenuMobile";
+import Hidden from "@material-ui/core/Hidden";
+import Grid from "@material-ui/core/Grid";
+import Toolbar from "@material-ui/core/Toolbar";
+import AppBar from "@material-ui/core/AppBar";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles, Slide, useScrollTrigger } from "@material-ui/core";
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
+const useStyles = makeStyles((theme) => ({
+  appBarHome: {
+    background: "transparent",
+    position: "absolute !important",
+    boxShadow: "none !important",
+  },
+  appBarOthers: {
+    background: "white",
+    boxShadow: "none !important",
+  },
+  logo: {
+    background: "#706aaf",
+    padding: "1px",
+    borderRadius: "3px",
+  },
+}));
+
+function HideOnScroll(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
+
+const Header = (props) => {
+  const url = typeof window !== "undefined" ? window.location.pathname : "";
+  const classes = useStyles();
+
+  return (
+    <div>
+      <AppBar
+        position="static"
+        id="appBar"
+        className={url === "/" ? classes.appBarHome : classes.appBarOthers}
+      >
+        <Toolbar>
+          <Grid
+            alignItems="center"
+            container
+            justify="space-between"
+            spacing={8}
+          >
+            <Grid item>
+              <Link to="/">
+                <img
+                  className={url === "/" ? "" : classes.logo}
+                  src="https://images.ctfassets.net/6y7x6a0he6ux/3KHz62otb9GvG0quUFy7Dv/9ee403ef1f030bda89bdd6f1f7036e7a/4iru_white"
+                  alt="Smiley face"
+                  height="43.2"
+                  width="72"
+                />
+              </Link>
+            </Grid>
+            <Grid item>
+              <Hidden smDown>
+                <Typography component="span" variant="caption">
+                  <Menu />
+                </Typography>
+              </Hidden>
+              <Hidden mdUp>
+                <MenuMobile />
+              </Hidden>
+            </Grid>
+          </Grid>
+          <Grid item />
+        </Toolbar>
+      </AppBar>
     </div>
-  </header>
-)
+  );
+};
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
+export default Header;

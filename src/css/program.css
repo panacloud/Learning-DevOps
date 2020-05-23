@@ -1,0 +1,113 @@
+.bg-color-technical div {
+  /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3) !important; */
+  height: 180px;
+  color: white;
+  /* background-color: rgba(25, 42, 86, 0.3); */
+  background-color: #42318c;
+}
+.bg-color-innovation div {
+  /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3) !important; */
+  height: 180px;
+  color: white;
+  /* background-color: rgba(25, 42, 86, 0.5); */
+  background-color: #42318c;
+}
+.bg-color-applicationDev div {
+  /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3) !important; */
+  height: 180px;
+  color: white;
+  /* background-color: rgba(25, 42, 86, 0.9); */
+  background-color: #42318c;
+}
+
+.link-title {
+  color: white;
+}
+
+.card-box {
+  cursor: pointer;
+}
+
+.card-box .MuiTypography-body1 {
+  font-size: 1.5em !important;
+  padding-top: 15px;
+}
+
+.card-box .MuiPaper-root {
+  transition: all 0.4s ease-in-out;
+}
+
+.card-box:hover .MuiPaper-root {
+  height: 180px;
+  margin-top: -15px;
+}
+
+.arrow-right {
+  text-align: center;
+  padding: 0px;
+  display: none;
+}
+
+.card-box:hover .arrow-right {
+  display: block;
+}
+
+.link-color {
+  color: white;
+}
+
+.mainCard {
+  box-shadow: none !important;
+  background: transparent !important;
+  margin-bottom: 15vh;
+}
+
+.mainHeading {
+  color: #706aaf;
+  width: 90%;
+}
+
+.subHeading {
+  margin-top: 19px !important;
+  width: 90%;
+}
+
+.findMore {
+  display: flex;
+  align-items: center;
+  color: #706aaf;
+  font-weight: 700;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.findMoreImg {
+  margin-left: 25px;
+  width: 53px;
+  background: #f4f5f6;
+  padding: 10px;
+  border-radius: 34px;
+  transform: rotate(90deg);
+}
+
+.descriptionCard {
+  box-shadow: none !important;
+  margin-bottom: 15vh;
+}
+
+.cover {
+  height: 400px;
+}
+
+.trackSection {
+  /* height: 80vh; */
+  margin-bottom: 15vh !important;
+}
+
+.trackTitle {
+  text-align: center;
+}
+
+.trackTitle > a {
+  color: #706aaf;
+}
