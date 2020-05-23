@@ -22,7 +22,6 @@ const UseClassesData = () => {
                   url
                 }
               }
-              
             }
           }
         }

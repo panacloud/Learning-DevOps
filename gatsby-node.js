@@ -9,6 +9,20 @@ exports.createPages = async ({ graphql, actions }) => {
       allContentfulFranchisee {
         edges {
           node {
+            instructors {
+              name
+              slug
+              description {
+                json
+              }
+              url
+              youTubeVideo
+              picture {
+                file {
+                  url
+                }
+              }
+            }
             courseCatalog {
               programsAvailable {
                 slug
@@ -224,6 +238,20 @@ exports.createPages = async ({ graphql, actions }) => {
   const availablePrograms =
     detailProgram.data.allContentfulFranchisee.edges[0].node.courseCatalog
       .programsAvailable;
+
+  const instructors = detailProgram.data.allContentfulFranchisee.edges[0].node.instructors;
+
+  instructors.map((instructor) => {
+    createPage({
+      path: "/instructors/" + instructor.slug + "/",
+      component: path.resolve(`./src/templates/instructor.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        instructor: instructor,
+      },
+    })
+  });
 
   var technicalTrack;
   let isDoOnceFlag = true;
