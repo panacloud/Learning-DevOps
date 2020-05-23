@@ -9,9 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-
-      - name: yarn install
-        run: yarn install
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.14.1"
+      - run: npm install
 
       - name: gatsby build
         env:
