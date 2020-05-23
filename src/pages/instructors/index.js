@@ -3,39 +3,29 @@ import React from "react";
 import { graphql } from "gatsby";
 import SEO from "../../components/SEO";
 import Page from "../../components/Page";
-//import List from "../../components/List";
-import ListOfPrograms from "../../components/ListOfPrograms";
-import useCoursesData from "../../hooks/useCoursesData";
+import useInstructorsData from "../../hooks/useInstructorsData";
 import { Link } from "gatsby";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-const Programs = (props) => {
-  const programsAvailable = useCoursesData();
-  let courses = [];
+const Instructors = (props) => {
+  const instructors = useInstructorsData();
 
-  programsAvailable.map((p, index) => {
-    courses = courses.concat(p.technicalTrack.courses);
-    if(index == programsAvailable.length - 1){
-        courses = courses.concat(p.appDevelopmentTrack.courses);
-        courses = courses.concat(p.innovationTrack.courses);
-    }
-  });
-  
-  //console.log("Programs: " + JSON.stringify(programsAvailable));
   return (
-    <Page title="Course Catalog">
-      <SEO title="Course Catalog" />
-      {courses.map((c, index) => {
+    <Page title="Instructors">
+      <SEO title="Instructors" />
+      {instructors.map((ins, index) => {
         return (
             <div>
-                <Link to={ "/programs/tracks/courses/" + c.courseNumber}>
-                        {c.courseNumber + " " + c.title}
+                <img src={ins.picture.file.url} alt="Profile Picture" width="75" height="75"></img>
+                <div>
+                <Link to={ "/instructors/" + ins.slug}>
+                        {ins.name}
                 </Link>
-              
-                <div
-                    dangerouslySetInnerHTML={{
-                    __html: c.description.childMarkdownRemark.html,
-                    }}
-                ></div>
+                </div>
+                <article>
+                  {documentToReactComponents(ins.description.json)}
+                </article>
+                
                 <br/>
                 <br/>
             </div>
@@ -48,4 +38,4 @@ const Programs = (props) => {
 
 
 
-export default withRoot(Programs);
+export default withRoot(Instructors);
