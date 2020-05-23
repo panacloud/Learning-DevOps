@@ -6,11 +6,8 @@
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
-    "lint": "eslint src/ && prettier --check 'src/**/*.js'",
-    "fix": "eslint --fix src/ && prettier --write 'src/**/*.js'",
     "start": "npm run develop",
-    "build": "gatsby build --prefix-paths",
-    "serve": "gatsby serve"
+    "build": "gatsby build"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
