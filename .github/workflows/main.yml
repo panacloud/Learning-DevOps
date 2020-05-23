@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - dev
 name: build gatsby
 jobs:
   build_gatsby:
@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - uses: xmflsct/action-publish-gatsby@v1 # Uses this action to run further steps
+        with:
+          name: "daniyalnagori" # Not required, default to action's maintainer
+          email: "daniyalnagori@yahoo.com" # Not required, default to action's maintainer
+          contentfulSpace: ${{ secrets.CONTENTFUL_SPACEID }} # Your Space ID in Contentful
+          contentfulToken: ${{ secrets.CONTENTFUL_ACCESSTOKEN }} # Your access token of Contentful
 
       - name: yarn install
         run: yarn install
@@ -16,6 +22,7 @@ jobs:
       - name: gatsby build
         env:
           GH_API_KEY: ${{ secrets.PA_TOKEN }}
+
         run: yarn build
 
       - name: deploy
