@@ -27,7 +27,7 @@
     "gatsby-plugin-stylus": "2.2.3",
     "gatsby-source-contentful": "^2.3.3",
     "gatsby-source-filesystem": "2.2.4",
-    "gatsby-transformer-remark": "2.7.3",
+    "gatsby-transformer-remark": "5.25.1",
     "gh-pages": "2.2.0",
     "jss": "10.1.1",
     "mdi-material-ui": "6.13.2",
